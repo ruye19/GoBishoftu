@@ -12,7 +12,7 @@ const exploreItems = [
     description: "Ancient rock-hewn church carved from volcanic stone.",
     details:
       "One of Ethiopia's most sacred pilgrimage sites, dating back centuries. The intricate carvings and historical significance make this a must-visit for cultural enthusiasts.",
-    image: "adadi-maryam-rock-church-ethiopia.jpg?height=300&width=400",
+    image: "/adadi-maryam-rock-church-ethiopia.jpg",
     location: "South Bishoftu",
   },
   {
@@ -22,7 +22,7 @@ const exploreItems = [
     description: "Spectacular 45-meter waterfall with misty surroundings.",
     details:
       'Also known as "Tis Issat" or "Smoking Water" by locals, this majestic waterfall is a natural marvel. The best viewing is during the rainy season from July to September.',
-    image: "blue-nile-falls-waterfall-ethiopia.jpg?height=300&width=400",
+    image: "/blue-nile-falls-waterfall-ethiopia.jpg",
     location: "East of Bishoftu",
   },
   {
@@ -32,7 +32,7 @@ const exploreItems = [
     description: "Serene waterfall surrounded by lush vegetation.",
     details:
       "A hidden gem perfect for adventurers seeking off-the-beaten-path experiences. Great for photography and swimming in the natural pools.",
-    image: "/DebreZelekeFalls.jpg?height=300&width=400",
+    image: "/DebreZelekeFalls.jpg",
     location: "North Bishoftu",
   },
   {
@@ -42,7 +42,7 @@ const exploreItems = [
     description: "Natural geothermal springs for relaxation and wellness.",
     details:
       "Immerse yourself in the therapeutic hot springs rich in minerals. Perfect for wellness retreats and spa treatments in a natural setting.",
-    image: "BishoftuHotSpringsSpa.jpg?height=300&width=400",
+    image: "/BishoftuHotSpringsSpa.jpg",
     location: "Central Bishoftu",
   },
   {
@@ -52,7 +52,7 @@ const exploreItems = [
     description: "Challenging mountain trek with panoramic Rift Valley views.",
     details:
       "A rewarding hike for adventure seekers with breathtaking views at the summit. Guides are recommended for safety and cultural insights.",
-    image: "/MountZiqualaHike.jpg?height=300&width=400",
+    image: "/MountZiqualaHike.jpg",
     location: "West of Bishoftu",
   },
   {
@@ -62,7 +62,7 @@ const exploreItems = [
     description: "Authentic Ethiopian market experience with local goods.",
     details:
       "Explore traditional crafts, local products, and authentic Ethiopian culture. Interact with local artisans and learn about traditional practices.",
-    image: "/Local MarketCulturalTour.jpg?height=300&width=400",
+    image: "/local-market-cultural-tour.jpg",
     location: "Bishoftu Town Center",
   },
   {
@@ -73,7 +73,7 @@ const exploreItems = [
       "Professional local guides for authentic Bishoftu experiences.",
     details:
       "Experienced guides offering personalized tours including cultural immersion, adventure hikes, and historical site visits. Available in multiple languages.",
-    image: "/bishoftu-adventures.jpg?height=300&width=400",
+    image: "/bishoftu-adventures.jpg",
     contact: "guides@gobisoftu.local",
     location: "Bishoftu",
   },
@@ -84,7 +84,7 @@ const exploreItems = [
     description: "Specialized adventure tour operator for Bishoftu region.",
     details:
       "Offering customized tour packages including mountain expeditions, cultural tours, and luxury experiences. Multi-day packages available.",
-    image: "EthiopiaAdventureTravelCo.jpg?height=300&width=400",
+    image: "/EthiopiaAdventureTravelCo.jpg",
     contact: "info@ethiopiaadventure.com",
     location: "Bishoftu",
   },
@@ -95,7 +95,7 @@ const exploreItems = [
     description: "Cultural and historical guided tours throughout Bishoftu.",
     details:
       "Deep dives into Ethiopian heritage, ancient history, and local traditions. Expert historians and cultural consultants lead all tours.",
-    image: "/heritage-hotel-traditional.jpg?height=300&width=400",
+    image: "/heritage-hotel-traditional.jpg",
     contact: "heritage@gobisoftu.travel",
     location: "Bishoftu",
   },
