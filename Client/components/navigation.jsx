@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoLogo } from "./go-logo";
@@ -12,6 +12,22 @@ export function Navigation() {
   const isActive = (path) => {
     return pathname === path;
   };
+
+  // lock background scroll when mobile menu is open
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (open) {
+      document.documentElement.classList.add("overflow-hidden");
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.documentElement.classList.remove("overflow-hidden");
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.documentElement.classList.remove("overflow-hidden");
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [open]);
 
   return (
     <nav className="bg-background border-b border-border sticky top-0 z-50">
@@ -93,10 +109,57 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile menu panel */}
-      {open && (
-        <div className="md:hidden bg-background border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+      {/* Mobile backdrop + slide-in panel (hidden on md+) */}
+      <div
+        className={`md:hidden fixed inset-0 z-40 transition-opacity ${
+          open ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        aria-hidden={!open}
+      >
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/40 transition-opacity ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setOpen(false)}
+        />
+
+        {/* Slide-in panel */}
+        <div
+          className={`absolute top-0 right-0 h-full w-64 bg-background border-l border-border transform transition-transform duration-300 ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="px-4 py-4">
+            <div className="flex items-center justify-between mb-4">
+              <Link href="/" className="flex items-center gap-2 group">
+                <GoLogo />
+                <span className="text-lg font-bold text-foreground">
+                  Bishoftu
+                </span>
+              </Link>
+              <button
+                aria-label="Close menu"
+                onClick={() => setOpen(false)}
+                className="p-2 rounded-md text-foreground/80 hover:bg-muted"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
             <nav className="flex flex-col gap-2">
               <Link
                 href="/"
@@ -134,7 +197,7 @@ export function Navigation() {
             </nav>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
