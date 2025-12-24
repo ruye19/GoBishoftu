@@ -5,56 +5,58 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 
 const exploreItems = [
-  {
+  
+   {
     id: 1,
-    name: "Adadi Maryam Church",
-    category: "Cultural Site",
-    description: "Ancient rock-hewn church carved from volcanic stone.",
-    details:
-      "One of Ethiopia's most sacred pilgrimage sites, dating back centuries. The intricate carvings and historical significance make this a must-visit for cultural enthusiasts.",
-    image: "/adadi-maryam-rock-church-ethiopia.jpg",
-    location: "South Bishoftu",
-  },
-  {
-    id: 2,
-    name: "Blue Nile Falls",
+    name: "Lake Hora",
     category: "Natural Wonder",
-    description: "Spectacular 45-meter waterfall with misty surroundings.",
+    description: "Crater lake surrounded by resorts and cultural sites.",
     details:
-      'Also known as "Tis Issat" or "Smoking Water" by locals, this majestic waterfall is a natural marvel. The best viewing is during the rainy season from July to September.',
-    image: "/blue-nile-falls-waterfall-ethiopia.jpg",
-    location: "East of Bishoftu",
-  },
-  {
-    id: 3,
-    name: "Debre Zeleke Falls",
-    category: "Natural Wonder",
-    description: "Serene waterfall surrounded by lush vegetation.",
-    details:
-      "A hidden gem perfect for adventurers seeking off-the-beaten-path experiences. Great for photography and swimming in the natural pools.",
-    image: "/DebreZelekeFalls.jpg",
-    location: "North Bishoftu",
-  },
-  {
-    id: 4,
-    name: "Bishoftu Hot Springs Spa",
-    category: "Natural Wonder",
-    description: "Natural geothermal springs for relaxation and wellness.",
-    details:
-      "Immerse yourself in the therapeutic hot springs rich in minerals. Perfect for wellness retreats and spa treatments in a natural setting.",
-    image: "/BishoftuHotSpringsSpa.jpg",
+      "Lake Hora is one of the most famous lakes in Bishoftu. It is a volcanic crater lake located near the town center and is surrounded by resorts and cultural centers. The lake is also known for hosting annual cultural and religious events (Irreecha).",
+    image: "lakkk.jpg", // real photo 
     location: "Central Bishoftu",
   },
   {
-    id: 5,
-    name: "Mount Ziquala Hike",
+    id: 2,
+    name: "Lake Babogaya",
     category: "Natural Wonder",
-    description: "Challenging mountain trek with panoramic Rift Valley views.",
+    description: "Peaceful freshwater lake ideal for relaxation.",
     details:
-      "A rewarding hike for adventure seekers with breathtaking views at the summit. Guides are recommended for safety and cultural insights.",
-    image: "/MountZiqualaHike.jpg",
-    location: "West of Bishoftu",
+      "Lake Babogaya is nearly the same size as Lake Hora and is known for its scenic beauty and surrounding vegetation. It’s also a lovely place for birdwatching and sunset views. :contentReference[oaicite:6]{index=6}",
+    image: "lake babogaya.jpg", // scenic lake view 
+    location: "North Bishoftu",
   },
+  {
+    id: 3,
+    name: "Lake Kuriftu",
+    category: "Natural Wonder",
+    description: "Luxury lakeside destination with resort facilities.",
+    details:
+      "Kuriftu Lake is home to Kuriftu Resort & Spa, a well-known resort in the region. The area blends natural beauty with leisure activities and is a popular stop for visitors. :contentReference[oaicite:8]{index=8}",
+    image: "lake bishe.jpg", // general crater lake view; match similar lakes 
+    location: "East Bishoftu",
+  },
+  {
+    id: 4,
+    name: "Lake Bishoftu (Arsedi)",
+    category: "Natural Wonder",
+    description: "Historic crater lake with cultural significance.",
+    details:
+      "Also known as Lake Arsedi, this lake features steep crater surroundings and scenic views from the rim. Spirits like swimming and hiking are popular here. :contentReference[oaicite:10]{index=10}",
+    image: "arsedi.jpg", // scenic water view 
+    location: "South Bishoftu",
+  },
+  {
+    id: 5,
+    name: "Lake Chelekleka",
+    category: "Natural Wonder",
+    description: "Seasonal wetland famous for migratory birds.",
+    details:
+      "Lake Chelekleka is a shallow seasonal lake west of the town. It’s a good spot for birdwatching — including flamingos, pelicans, and other waterfowl — especially in the wetter months. :contentReference[oaicite:12]{index=12}",
+    image: "chelaleka.jpg", // representative lake/wetland view
+    location: "West Bishoftu",
+  },
+
   {
     id: 6,
     name: "Local Market Cultural Tour",
