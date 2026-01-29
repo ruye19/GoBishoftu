@@ -1,40 +1,41 @@
- 'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function AdminLoginPage() {
-  const router = useRouter()
-  const [formState, setFormState] = useState({ username: '', password: '' })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState('')
+  const router = useRouter();
+  const [formState, setFormState] = useState({ username: "", password: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (event) => {
     setFormState((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    setError('')
-    setIsSubmitting(true)
+    event.preventDefault();
+    setError("");
+    setIsSubmitting(true);
 
     // Placeholder: replace with real authentication call.
-    await new Promise((resolve) => setTimeout(resolve, 600))
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
-    setIsSubmitting(false)
+    setIsSubmitting(false);
     if (!formState.username || !formState.password) {
-      setError('Enter both username and password.')
-      return
+      setError("Enter both username and password.");
+      return;
     }
 
-    router.push('/admin/dashboard')
-  }
+    // Navigate to the existing admin dashboard route
+    router.push("/admin");
+  };
 
   return (
     <section className="flex min-h-screen items-center justify-center bg-muted/40 px-4 py-12">
@@ -82,7 +83,7 @@ export default function AdminLoginPage() {
           )}
 
           <Button className="w-full" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Signing in…' : 'Access Dashboard'}
+            {isSubmitting ? "Signing in…" : "Access Dashboard"}
           </Button>
         </form>
 
@@ -91,7 +92,5 @@ export default function AdminLoginPage() {
         </p>
       </div>
     </section>
-  )
+  );
 }
-
-
