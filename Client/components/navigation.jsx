@@ -71,6 +71,26 @@ export function Navigation() {
             >
               Explore
             </Link>
+            <Link
+              href="/investment"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/investment")
+                  ? "text-primary font-semibold"
+                  : "text-foreground/70 hover:text-foreground"
+              }`}
+            >
+              Investment
+            </Link>
+            <Link
+              href="/about"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/about")
+                  ? "text-primary font-semibold"
+                  : "text-foreground/70 hover:text-foreground"
+              }`}
+            >
+              About
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -193,6 +213,28 @@ export function Navigation() {
                 onClick={() => setOpen(false)}
               >
                 Explore
+              </Link>
+              <Link
+                href="/investment"
+                className={`text-sm font-medium py-2 ${
+                  isActive("/investment")
+                    ? "text-primary font-semibold"
+                    : "text-foreground/80"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                Investment
+              </Link>
+              <Link
+                href="/about"
+                className={`text-sm font-medium py-2 ${
+                  isActive("/about")
+                    ? "text-primary font-semibold"
+                    : "text-foreground/80"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                About
               </Link>
             </nav>
           </div>
