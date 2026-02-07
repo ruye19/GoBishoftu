@@ -25,7 +25,7 @@ export default function Home() {
       description:
         "Luxury resort with spa, swimming pools, and lakeside views.",
       image: "/kuriftu-resort.jpg",
-      link: "/accommodations/kuriftu",
+      link: "/accommodations",
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ export default function Home() {
       description:
         "Comfortable rooms with modern amenities in central Bishoftu.",
       image: "/luxury-hotel.jpg",
-      link: "/accommodations/bishoftu-luxury",
+      link: "/accommodations",
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ export default function Home() {
       type: "Resort",
       description: "Relaxing lakeside resort perfect for families and couples.",
       image: "/lake-resort.jpg",
-      link: "/accommodations/lake-resort",
+      link: "/accommodations",
     },
     {
       id: 4,
@@ -50,7 +50,7 @@ export default function Home() {
       type: "Guest House",
       description: "Affordable and cozy stay with friendly staff and services.",
       image: "/comfort-guest-house.jpg",
-      link: "/accommodations/comfort-guest-house",
+      link: "/accommodations",
     },
   ];
   const featuredAgencies = [
@@ -60,7 +60,7 @@ export default function Home() {
       category: "Tour Operator",
       rating: 4.9,
       image: "/bishoftu-adventures.jpg",
-      link: "/agencies/bishoftu-adventures",
+      link: "/explore",
     },
     {
       id: 2,
@@ -68,7 +68,7 @@ export default function Home() {
       category: "Travel Agency",
       rating: 4.7,
       image: "/rift-valley-tours.jpg",
-      link: "/agencies/rift-valley-tours",
+      link: "/explore",
     },
     {
       id: 3,
@@ -76,7 +76,7 @@ export default function Home() {
       category: "Tour Operator",
       rating: 4.8,
       image: "/ethiopia-travel-experts.jpg",
-      link: "/agencies/ethiopia-travel-experts",
+      link: "/explore",
     },
   ];
 
@@ -89,7 +89,7 @@ export default function Home() {
       image: "lakkk.jpg",
       location: "Bishoftu",
       rating: 4.8,
-      link: "/explore/lake-hora",
+      link: "/explore",
     },
     {
       id: 2,
@@ -99,7 +99,7 @@ export default function Home() {
       image: "/lake babogaya.jpg",
       location: "Bishoftu",
       rating: 4.7,
-      link: "/explore/lake-babogaya",
+      link: "/explore",
     },
     {
       id: 3,
@@ -109,7 +109,7 @@ export default function Home() {
       image: "adadi-maryam-rock-church-ethiopia.jpg",
       location: "Bishoftu",
       rating: 4.6,
-      link: "/explore/st-gabriel",
+      link: "/explore",
     },
     {
       id: 4,
@@ -119,7 +119,7 @@ export default function Home() {
       image: "/local-market-cultural-tour.jpg",
       location: "Bishoftu",
       rating: 4.5,
-      link: "/explore/local-market-tour",
+      link: "/explore",
     },
   ];
 
