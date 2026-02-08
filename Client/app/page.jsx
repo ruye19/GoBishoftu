@@ -208,22 +208,35 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Accommodation Type Cards */}
+            {/* Accommodation Type Nav (single-line, navbar-style) */}
             <section className="section-padding bg-background">
               <div className="container-custom px-4 py-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {accommodationTypes.map((type) => (
-                    <Link
-                      key={type.name}
-                      href={`/accommodations?type=${type.value}`}
-                    >
-                      <div className="block bg-card rounded-lg px-4 h-12 flex items-center justify-center text-center hover:shadow-lg transition-transform hover:-translate-y-0.5">
-                        <span className="font-display text-lg font-semibold text-foreground">
+                <div className="overflow-x-auto">
+                  <nav className="flex items-center gap-3 md:gap-6 whitespace-nowrap">
+                    {accommodationTypes.map((type) => (
+                      <Link
+                        key={type.name}
+                        href={`/accommodations?type=${type.value}`}
+                        className="flex-1"
+                      >
+                        <div
+                          className="
+              w-full
+              px-5 py-3
+              rounded-full
+              text-center
+              bg-card
+              hover:bg-primary/5
+              transition
+              font-medium
+              text-foreground
+            "
+                        >
                           {type.name}
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
+                        </div>
+                      </Link>
+                    ))}
+                  </nav>
                 </div>
               </div>
             </section>
