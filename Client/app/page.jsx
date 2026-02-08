@@ -155,7 +155,7 @@ export default function Home() {
       icon: TentTree,
       description: "Luxury resorts with spa and recreational facilities",
       count: 18,
-      color: "bg-terracotta/10 text-terracotta",
+      color: "bg-primary/10 text-primary",
     },
   ];
 
@@ -163,35 +163,29 @@ export default function Home() {
     <>
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 md:py-32 bg-gradient-to-br from-background via-background to-primary/5">
+        <section className="relative py-20 md:py-32 bg-gradient-nature">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <div className="animate-fade-up">
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                   Discover the Soul of Ethiopia/Bishoftu
                 </h1>
-                <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
+                <p className="font-body text-lg text-foreground/70 mb-8 leading-relaxed">
                   Experience luxury and adventure in Bishoftu. Explore stunning
                   natural wonders, ancient cultural sites, and authentic
                   Ethiopian hospitality. Your journey to unforgettable memories
                   starts here.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href="/accommodations"
-                    className="px-8 py-3 bg-[#D4AF37] text-[#123845] rounded-lg font-semibold hover:shadow-lg hover:opacity-90 transition-all text-center"
-                  >
+                  <Link href="/accommodations" className="btn-cta">
                     Browse Accommodations
                   </Link>
-                  <Link
-                    href="/explore"
-                    className="px-8 py-3 border-2 border-[#123845] text-[#123845] rounded-lg font-semibold hover:bg-[#123845]/10 transition-all text-center"
-                  >
+                  <Link href="/explore" className="btn-cta-outline">
                     Explore Sites
                   </Link>
                 </div>
               </div>
-              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-card animate-fade-in">
                 <img
                   src={landscapeimage.src}
                   alt="Bishoftu landscape"
@@ -206,40 +200,27 @@ export default function Home() {
         <section className="py-12 md:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Hotels & Resorts
               </h2>
-              <p className="text-lg text-foreground/70">
+              <p className="font-body text-lg text-foreground/70">
                 Top places to stay for a comfortable Bishoftu experience
               </p>
             </div>
 
             {/* Accommodation Type Cards */}
             <section className="section-padding bg-background">
-              <div className="container-custom px-4">
-                <div className="grid grid-cols-4 md:grid-cols-4 gap-4 md:gap-4">
+              <div className="container-custom px-4 py-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {accommodationTypes.map((type) => (
                     <Link
                       key={type.name}
                       href={`/accommodations?type=${type.value}`}
                     >
-                      <div className="card-tourism group cursor-pointer bg-card rounded-lg">
-                        <div className="p-6 text-center">
-                          <div
-                            className={`w-16 h-16 rounded-full ${type.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
-                          >
-                            <type.icon className="w-8 h-8" />
-                          </div>
-                          <h3 className="font-serif text-xl font-semibold text-foreground mb-2">
-                            {type.name}
-                          </h3>
-                          {/* <p className="text-muted-foreground text-sm mb-3">
-                            {type.description}
-                          </p>
-                          <span className="text-primary font-medium text-sm">
-                            {type.count} listings
-                          </span> */}
-                        </div>
+                      <div className="block bg-card rounded-lg px-4 h-12 flex items-center justify-center text-center hover:shadow-lg transition-transform hover:-translate-y-0.5">
+                        <span className="font-display text-lg font-semibold text-foreground">
+                          {type.name}
+                        </span>
                       </div>
                     </Link>
                   ))}
@@ -248,14 +229,14 @@ export default function Home() {
             </section>
 
             {/* Mobile: horizontal scrollable list */}
-            <div className="md:hidden -mx-4 px-4">
+            <div className="md:hidden -mx-4 py-4 px-4">
               <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
                 {hotels.map((hotel) => (
                   <div
                     key={hotel.id}
                     className="flex-shrink-0 w-[300px] snap-start"
                   >
-                    <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div className="bg-card rounded-xl overflow-hidden shadow-card hover-lift">
                       <img
                         src={hotel.image || "/placeholder.svg"}
                         alt={hotel.name}
@@ -283,7 +264,7 @@ export default function Home() {
               {hotels.map((hotel) => (
                 <div
                   key={hotel.id}
-                  className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
                 >
                   <img
                     src={hotel.image || "/placeholder.svg"}
@@ -308,10 +289,7 @@ export default function Home() {
         </section>
 
         <div className="text-center my-2">
-          <Link
-            href="/accommodations"
-            className="px-8 py-3 my-3 bg-[#D4AF37] text-[#123845] rounded-lg font-semibold hover:shadow-lg hover:opacity-90 transition-all inline-block"
-          >
+          <Link href="/accommodations" className="btn-cta my-3 inline-block">
             Explore All Accommodations
           </Link>
         </div>
@@ -321,10 +299,10 @@ export default function Home() {
         <section className="py-5 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-foreground mb-2">
+              <h2 className="font-display text-3xl font-bold text-foreground mb-2">
                 Top Attractions
               </h2>
-              <p className="text-foreground/70">
+              <p className="font-body text-foreground/70">
                 Explore Bishoftu’s lakes, culture, and natural beauty
               </p>
             </div>
@@ -336,27 +314,7 @@ export default function Home() {
                   <div
                     key={item.id}
                     tabIndex={0}
-                    className="
-                      min-w-[260px]
-                      snap-start
-                      bg-card
-                      rounded-xl
-                      overflow-hidden
-                      shadow-md
-                      transition-all
-                      duration-300
-
-                      hover:shadow-xl
-                      hover:-translate-y-1
-
-                      focus-within:shadow-xl
-                      focus-within:-translate-y-1
-                      focus-within:ring-2
-                      focus-within:ring-primary
-                      focus-within:ring-offset-2
-
-                      active:shadow-xl
-                    "
+                    className="min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
                   >
                     <img
                       src={item.image}
@@ -366,7 +324,7 @@ export default function Home() {
                     <div className="p-4">
                       <div className="flex justify-between text-sm text-muted-foreground mb-1">
                         <span>{item.location}</span>
-                        <span className="text-yellow-500">★ {item.rating}</span>
+                        <span className="text-accent">★ {item.rating}</span>
                       </div>
                       <h3 className="font-bold text-lg mb-2">{item.name}</h3>
                       <p className="text-sm text-foreground/70 mb-3">
@@ -383,7 +341,7 @@ export default function Home() {
               {attractions.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all"
+                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
                 >
                   <img
                     src={item.image}
@@ -395,7 +353,7 @@ export default function Home() {
                       <span className="flex items-center gap-1">
                         <MapPin className="w-4 h-4" /> {item.location}
                       </span>
-                      <span className="text-yellow-500">★ {item.rating}</span>
+                      <span className="text-accent">★ {item.rating}</span>
                     </div>
                     <h3 className="text-xl font-bold mb-3">{item.name}</h3>
                     <p className="text-sm text-foreground/70 mb-4">
@@ -413,10 +371,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-10">
-              <Link
-                href="/explore"
-                className="px-8 py-3 bg-[#D4AF37] text-[#123845] rounded-lg font-semibold hover:shadow-lg transition-all inline-block"
-              >
+              <Link href="/explore" className="btn-cta inline-block">
                 View All Attractions
               </Link>
             </div>
@@ -426,10 +381,10 @@ export default function Home() {
         {/* About Us Section */}
         <section className="py-8 flex items-center justify-center bg-background/">
           <div className="max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
               About Us
             </h2>
-            <p className="text-lg text-foreground/70 leading-relaxed">
+            <p className="font-body text-lg text-foreground/70 leading-relaxed">
               Discover the heart of Ethiopia's lake city, where volcanic wonders
               meet rich Oromo heritage and boundless opportunities.
             </p>
@@ -447,10 +402,10 @@ export default function Home() {
         <section className="py-8 md:py-12 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Top Tour & Travel Agencies
               </h2>
-              <p className="text-lg text-foreground/70">
+              <p className="font-body text-lg text-foreground/70">
                 Reliable agencies to plan your perfect Bishoftu experience
               </p>
             </div>
@@ -459,7 +414,7 @@ export default function Home() {
               {featuredAgencies.map((agency) => (
                 <div
                   key={agency.id}
-                  className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
                 >
                   <img
                     src={agency.image || "/placeholder.svg"}
@@ -472,7 +427,7 @@ export default function Home() {
                         {agency.category}
                       </div>
                       <div className="flex items-center gap-1">
-                        <span className="text-yellow-500">★</span>
+                        <span className="text-accent">★</span>
                         <span className="text-sm font-semibold text-foreground">
                           {agency.rating}
                         </span>

@@ -249,7 +249,7 @@ export default function AccommodationsClient() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Desktop Filters Sidebar */}
             <div className="hidden lg:block lg:col-span-1">
-              <div className="bg-card rounded-xl p-6 shadow-md sticky top-24">
+              <div className="bg-card rounded-xl p-6 shadow-card sticky top-24">
                 <h3 className="text-xl font-bold mb-6">Filters</h3>
                 <Filters />
               </div>
@@ -267,7 +267,7 @@ export default function AccommodationsClient() {
                 {filteredAccommodations.map((acc) => (
                   <div
                     key={acc.id}
-                    className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                    className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
                   >
                     <img
                       src={acc.image || "/placeholder.svg"}
@@ -282,8 +282,8 @@ export default function AccommodationsClient() {
                           </div>
                           <h3 className="text-lg font-bold">{acc.name}</h3>
                         </div>
-                        <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded">
-                          <span className="text-yellow-500">★</span>
+                        <div className="flex items-center gap-1 bg-accent/15 px-2 py-1 rounded">
+                          <span className="text-accent">★</span>
                           <span className="text-sm font-semibold">
                             {acc.rating}
                           </span>
@@ -318,7 +318,7 @@ export default function AccommodationsClient() {
                           href={acc.bookingUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2 bg-[oklch(0.62_0.2_50)] text-white rounded-lg font-semibold hover:opacity-90 transition-all text-sm"
+                          className="btn-cta text-sm py-2 px-4"
                         >
                           Book Now
                         </a>

@@ -159,10 +159,10 @@ export default function ExplorePage() {
         {/* Header */}
         <section className="bg-gradient-to-br from-secondary/10 to-accent/5 py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               Explore Bishoftu
             </h1>
-            <p className="text-lg text-foreground/70">
+            <p className="font-body text-lg text-foreground/70">
               Discover cultural heritage, natural wonders, and connect with
               experienced travel professionals.
             </p>
@@ -178,7 +178,7 @@ export default function ExplorePage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-lg font-semibold transition-all ${
                   selectedCategory === category
-                    ? "bg-primary text-primary-foreground shadow-lg"
+                    ? "bg-primary text-primary-foreground shadow-soft"
                     : "bg-card border border-border text-foreground hover:border-primary"
                 }`}
               >
@@ -192,7 +192,7 @@ export default function ExplorePage() {
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
               >
                 <img
                   src={item.image || "/placeholder.svg"}
@@ -264,7 +264,7 @@ export default function ExplorePage() {
                 {travelAgents.map((agent) => (
                   <div
                     key={agent.id}
-                    className="bg-card rounded-xl p-6 shadow-md hover:shadow-xl transition-all"
+                    className="bg-card rounded-xl p-6 shadow-card hover-lift"
                   >
                     <img
                       src={agent.image || "/placeholder.svg"}
@@ -280,7 +280,7 @@ export default function ExplorePage() {
                     {agent.contact && (
                       <a
                         href={`mailto:${agent.contact}`}
-                        className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-all text-sm"
+                        className="btn-cta text-sm py-2 px-4 inline-block"
                       >
                         Contact Agent
                       </a>
@@ -296,7 +296,7 @@ export default function ExplorePage() {
           <div className="h-16"></div>
           <div className="container-custom px-4">
             <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
                 Why Explore With Us?
               </h2>
               <p className="text-primary-foreground/80 max-w-2xl mx-auto">
@@ -310,7 +310,7 @@ export default function ExplorePage() {
                   <div className="w-16 h-16 rounded-full bg-primary-foreground/10 flex items-center justify-center mx-auto mb-4">
                     <benefit.icon className="w-8 h-8" />
                   </div>
-                  <h3 className="font-serif text-xl font-semibold mb-2">
+                  <h3 className="font-display text-xl font-semibold mb-2">
                     {benefit.title}
                   </h3>
                   <p className="text-primary-foreground/70">

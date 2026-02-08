@@ -4,39 +4,58 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Page background & large surfaces (Primary ≈60%) */
+  --background: #EAF2F8;
+  /* Primary text */
+  --foreground: #1E2933;
+  /* Surface / Cards */
+  --card: #FFFFFF;
+  --card-foreground: #1E2933;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E2933;
+  /* Deep blue for section headers / nav (semantic “primary” in UI) */
+  --primary: #1F4E6C;
+  --primary-foreground: #FFFFFF;
+  /* Secondary blue (same as primary for consistency) */
+  --secondary: #1F4E6C;
+  --secondary-foreground: #FFFFFF;
+  /* Muted backgrounds & secondary text */
+  --muted: #E0E8EE;
+  --muted-foreground: #5F6C76;
+  /* Accent — CTAs and active states only (#F4C430) */
+  --accent: #F4C430;
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: #D1D9E0;
+  --input: #FFFFFF;
+  --ring: #1F4E6C;
+  --chart-1: #1F4E6C;
+  --chart-2: #F4C430;
+  --chart-3: #5F6C76;
+  --chart-4: #EAF2F8;
+  --chart-5: #1E2933;
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #1F4E6C;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #1F4E6C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E0E8EE;
+  --sidebar-accent-foreground: #1E2933;
+  --sidebar-border: #2d5a75;
+  --sidebar-ring: #F4C430;
+
+  /* Gradients using palette */
+  --gradient-hero: linear-gradient(135deg, #1F4E6C 0%, #163a52 100%);
+  --gradient-gold: linear-gradient(135deg, #F4C430 0%, #e0b028 100%);
+  --gradient-sunset: linear-gradient(135deg, #EAF2F8 0%, #D1D9E0 50%, #F4C430 100%);
+  --gradient-nature: linear-gradient(180deg, #EAF2F8 0%, #E0E8EE 100%);
+
+  /* Shadows — subtle for cards */
+  --shadow-soft: 0 2px 8px rgba(31, 78, 108, 0.08);
+  --shadow-card: 0 2px 12px rgba(30, 41, 51, 0.06);
+  --shadow-hover: 0 8px 24px rgba(30, 41, 51, 0.1);
+  --shadow-gold: 0 4px 16px rgba(244, 196, 48, 0.25);
 }
 
 .dark {
@@ -77,25 +96,6 @@
 @theme inline {
   --font-sans: "Geist", "Geist Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
-
-  /* Updated to Dark Teal/Deep Blue, Charcoal, Cream, and Gold luxury palette */
-  --color-primary: #123845; /* Dark Teal / Deep Blue */
-  --color-primary-foreground: #f8f4e6; /* Ivory / Cream */
-  --color-secondary: #333333; /* Charcoal / Graphite */
-  --color-secondary-foreground: #f8f4e6; /* Ivory / Cream */
-  --color-accent: #d4af37; /* Gold accent */
-  --color-accent-foreground: #123845; /* Dark Teal text on gold */
-  --color-background: #f8f4e6; /* Ivory / Cream background */
-  --color-foreground: #333333; /* Charcoal text */
-  --color-card: #ffffff; /* White cards */
-  --color-card-foreground: #333333; /* Charcoal text */
-  --color-muted: #e8e4d6; /* Muted cream */
-  --color-muted-foreground: #666666; /* Muted charcoal */
-  --color-border: #d4cfc2; /* Subtle border */
-  --color-input: #f8f4e6; /* Input background */
-  --color-ring: #123845; /* Focus ring in dark teal */
-  --color-cta: #d4af37; /* Gold for CTAs */
-
   --radius: 0.625rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -140,6 +140,205 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "playfair display", Georgia, serif;
+    @apply tracking-tight;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@layer utilities {
+  /* Typography utilities */
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .font-body {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .bg-gradient-sunset {
+    background: var(--gradient-sunset);
+  }
+
+  .bg-gradient-nature {
+    background: var(--gradient-nature);
+  }
+
+  /* Shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Animation classes */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-hover);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Image overlay gradient */
+  .overlay-gradient {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(200 25% 15% / 0.7) 100%
+    );
+  }
+
+  .overlay-hero {
+    background: linear-gradient(
+      135deg,
+      rgba(31, 78, 108, 0.9) 0%,
+      rgba(22, 58, 82, 0.85) 100%
+    );
+  }
+
+  /* Card styles - inline hover-lift to avoid @apply custom utility */
+  .card-tourism {
+    @apply bg-card rounded-xl overflow-hidden transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-tourism:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* CTA button — Accent only (#F4C430), text on dark #FFFFFF */
+  .btn-cta {
+    @apply px-8 py-3 rounded-lg font-semibold transition-all text-center;
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  .btn-cta:hover {
+    @apply opacity-90;
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-cta-outline {
+    @apply px-8 py-3 rounded-lg font-semibold transition-all text-center border-2;
+    border-color: var(--primary);
+    color: var(--foreground);
+  }
+
+  .btn-cta-outline:hover {
+    background-color: rgba(31, 78, 108, 0.08);
+  }
+
+  /* Gold accent text */
+  .text-gold-warm {
+    color: var(--accent);
+  }
+
+  .text-gold-light {
+    color: #f5d566;
+  }
+
+  /* Text gradient */
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

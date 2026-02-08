@@ -30,23 +30,23 @@ export function Navigation() {
   }, [open]);
 
   return (
-    <nav className="bg-background border-b border-border sticky top-0 z-50">
+    <nav className="bg-secondary border-b border-secondary-foreground/20 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <GoLogo />
-            <span className="text-xl font-bold text-foreground">Bishoftu</span>
+            <span className="font-display text-xl font-bold text-secondary-foreground">Bishoftu</span>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links — text on dark: #FFFFFF; active: accent */}
           <div className="hidden md:flex items-center gap-8">
             <Link
               href="/"
               className={`text-sm font-medium transition-colors ${
                 isActive("/")
-                  ? "text-primary font-semibold"
-                  : "text-foreground/70 hover:text-foreground"
+                  ? "text-accent font-semibold"
+                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
               }`}
             >
               Home
@@ -55,8 +55,8 @@ export function Navigation() {
               href="/accommodations"
               className={`text-sm font-medium transition-colors ${
                 isActive("/accommodations")
-                  ? "text-primary font-semibold"
-                  : "text-foreground/70 hover:text-foreground"
+                  ? "text-accent font-semibold"
+                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
               }`}
             >
               Accommodations
@@ -65,8 +65,8 @@ export function Navigation() {
               href="/explore"
               className={`text-sm font-medium transition-colors ${
                 isActive("/explore")
-                  ? "text-primary font-semibold"
-                  : "text-foreground/70 hover:text-foreground"
+                  ? "text-accent font-semibold"
+                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
               }`}
             >
               Explore
@@ -75,8 +75,8 @@ export function Navigation() {
               href="/investment"
               className={`text-sm font-medium transition-colors ${
                 isActive("/investment")
-                  ? "text-primary font-semibold"
-                  : "text-foreground/70 hover:text-foreground"
+                  ? "text-accent font-semibold"
+                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
               }`}
             >
               Investment
@@ -85,8 +85,8 @@ export function Navigation() {
               href="/about"
               className={`text-sm font-medium transition-colors ${
                 isActive("/about")
-                  ? "text-primary font-semibold"
-                  : "text-foreground/70 hover:text-foreground"
+                  ? "text-accent font-semibold"
+                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
               }`}
             >
               About
@@ -98,7 +98,7 @@ export function Navigation() {
             <button
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="p-2 rounded-md text-foreground/80 hover:bg-muted"
+              className="p-2 rounded-md text-secondary-foreground/90 hover:bg-white/10"
             >
               {/* simple hamburger icon */}
               <svg
@@ -144,9 +144,9 @@ export function Navigation() {
           onClick={() => setOpen(false)}
         />
 
-        {/* Slide-in panel */}
+        {/* Slide-in panel — same secondary surface, white text */}
         <div
-          className={`absolute top-0 right-0 h-full w-64 bg-background border-l border-border transform transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-64 bg-secondary border-l border-secondary-foreground/20 transform transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -154,14 +154,14 @@ export function Navigation() {
             <div className="flex items-center justify-between mb-4">
               <Link href="/" className="flex items-center gap-2 group">
                 <GoLogo />
-                <span className="text-lg font-bold text-foreground">
+                <span className="text-lg font-bold text-secondary-foreground">
                   Bishoftu
                 </span>
               </Link>
               <button
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="p-2 rounded-md text-foreground/80 hover:bg-muted"
+                className="p-2 rounded-md text-secondary-foreground/90 hover:bg-white/10"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -185,8 +185,8 @@ export function Navigation() {
                 href="/"
                 className={`text-sm font-medium py-2 ${
                   isActive("/")
-                    ? "text-primary font-semibold"
-                    : "text-foreground/80"
+                    ? "text-accent font-semibold"
+                    : "text-secondary-foreground/90"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -196,8 +196,8 @@ export function Navigation() {
                 href="/accommodations"
                 className={`text-sm font-medium py-2 ${
                   isActive("/accommodations")
-                    ? "text-primary font-semibold"
-                    : "text-foreground/80"
+                    ? "text-accent font-semibold"
+                    : "text-secondary-foreground/90"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -207,8 +207,8 @@ export function Navigation() {
                 href="/explore"
                 className={`text-sm font-medium py-2 ${
                   isActive("/explore")
-                    ? "text-primary font-semibold"
-                    : "text-foreground/80"
+                    ? "text-accent font-semibold"
+                    : "text-secondary-foreground/90"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -218,8 +218,8 @@ export function Navigation() {
                 href="/investment"
                 className={`text-sm font-medium py-2 ${
                   isActive("/investment")
-                    ? "text-primary font-semibold"
-                    : "text-foreground/80"
+                    ? "text-accent font-semibold"
+                    : "text-secondary-foreground/90"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -229,8 +229,8 @@ export function Navigation() {
                 href="/about"
                 className={`text-sm font-medium py-2 ${
                   isActive("/about")
-                    ? "text-primary font-semibold"
-                    : "text-foreground/80"
+                    ? "text-accent font-semibold"
+                    : "text-secondary-foreground/90"
                 }`}
                 onClick={() => setOpen(false)}
               >
