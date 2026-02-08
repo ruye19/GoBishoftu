@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { Button } from "../../components/ui/button";
+import { PhoneCall } from "lucide-react";
 
 const accommodations = [
   {
@@ -336,6 +338,39 @@ export default function AccommodationsClient() {
                   </p>
                 </div>
               )}
+              {/* Booking CTA */}
+              <section className="py-12 bg-secondary">
+                <div className="text-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 rounded-full">
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-secondary-foreground mb-4">
+                    Need Help Booking?
+                  </h2>
+                  <p className="text-lg text-secondary-foreground/80 mb-8">
+                    Our team can assist you in finding the perfect accommodation
+                    for your Bishoftu adventure. Contact us for personalized
+                    recommendations.
+                  </p>
+                  <Button
+                    size="lg"
+                    className="
+    bg-primary
+    text-primary-foreground
+    shadow-lg
+    transition-all
+    rounded-full
+    px-8
+    font-semibold
+
+    hover:brightness-150
+    hover:ring-2
+    hover:ring-primary/40
+    hover:-translate-y-0.5
+  "
+                  >
+                    <PhoneCall className="w-5 h-5" />
+                    Contact Us for Assistance
+                  </Button>
+                </div>
+              </section>
             </div>
           </div>
         </div>

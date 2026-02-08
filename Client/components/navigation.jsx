@@ -30,23 +30,23 @@ export function Navigation() {
   }, [open]);
 
   return (
-    <nav className="bg-secondary border-b border-secondary-foreground/20 sticky top-0 z-50">
+    <nav className="bg-background border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo — only element that stands out (GO circle + Bishoftu) */}
           <Link href="/" className="flex items-center gap-2 group">
             <GoLogo />
-            <span className="font-display text-xl font-bold text-secondary-foreground">Bishoftu</span>
+            <span className="font-display text-xl font-bold text-foreground">Bishoftu</span>
           </Link>
 
-          {/* Desktop Navigation Links — text on dark: #FFFFFF; active: accent */}
+          {/* Desktop Navigation Links — same as page text; active: accent */}
           <div className="hidden md:flex items-center gap-8">
             <Link
               href="/"
               className={`text-sm font-medium transition-colors ${
                 isActive("/")
                   ? "text-accent font-semibold"
-                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Home
@@ -56,7 +56,7 @@ export function Navigation() {
               className={`text-sm font-medium transition-colors ${
                 isActive("/accommodations")
                   ? "text-accent font-semibold"
-                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Accommodations
@@ -66,7 +66,7 @@ export function Navigation() {
               className={`text-sm font-medium transition-colors ${
                 isActive("/explore")
                   ? "text-accent font-semibold"
-                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Explore
@@ -76,7 +76,7 @@ export function Navigation() {
               className={`text-sm font-medium transition-colors ${
                 isActive("/investment")
                   ? "text-accent font-semibold"
-                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Investment
@@ -86,7 +86,7 @@ export function Navigation() {
               className={`text-sm font-medium transition-colors ${
                 isActive("/about")
                   ? "text-accent font-semibold"
-                  : "text-secondary-foreground/90 hover:text-secondary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               About
@@ -98,7 +98,7 @@ export function Navigation() {
             <button
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="p-2 rounded-md text-secondary-foreground/90 hover:bg-white/10"
+              className="p-2 rounded-md text-foreground/80 hover:bg-muted"
             >
               {/* simple hamburger icon */}
               <svg
@@ -144,9 +144,9 @@ export function Navigation() {
           onClick={() => setOpen(false)}
         />
 
-        {/* Slide-in panel — same secondary surface, white text */}
+        {/* Slide-in panel — card surface, dark text (matches page) */}
         <div
-          className={`absolute top-0 right-0 h-full w-64 bg-secondary border-l border-secondary-foreground/20 transform transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-64 bg-card border-l border-border shadow-card transform transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -154,14 +154,14 @@ export function Navigation() {
             <div className="flex items-center justify-between mb-4">
               <Link href="/" className="flex items-center gap-2 group">
                 <GoLogo />
-                <span className="text-lg font-bold text-secondary-foreground">
+                <span className="text-lg font-bold text-foreground">
                   Bishoftu
                 </span>
               </Link>
               <button
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="p-2 rounded-md text-secondary-foreground/90 hover:bg-white/10"
+                className="p-2 rounded-md text-foreground/80 hover:bg-muted"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,7 @@ export function Navigation() {
                 className={`text-sm font-medium py-2 ${
                   isActive("/")
                     ? "text-accent font-semibold"
-                    : "text-secondary-foreground/90"
+                    : "text-foreground/80"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -197,7 +197,7 @@ export function Navigation() {
                 className={`text-sm font-medium py-2 ${
                   isActive("/accommodations")
                     ? "text-accent font-semibold"
-                    : "text-secondary-foreground/90"
+                    : "text-foreground/80"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -208,7 +208,7 @@ export function Navigation() {
                 className={`text-sm font-medium py-2 ${
                   isActive("/explore")
                     ? "text-accent font-semibold"
-                    : "text-secondary-foreground/90"
+                    : "text-foreground/80"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -219,7 +219,7 @@ export function Navigation() {
                 className={`text-sm font-medium py-2 ${
                   isActive("/investment")
                     ? "text-accent font-semibold"
-                    : "text-secondary-foreground/90"
+                    : "text-foreground/80"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -230,7 +230,7 @@ export function Navigation() {
                 className={`text-sm font-medium py-2 ${
                   isActive("/about")
                     ? "text-accent font-semibold"
-                    : "text-secondary-foreground/90"
+                    : "text-foreground/80"
                 }`}
                 onClick={() => setOpen(false)}
               >
