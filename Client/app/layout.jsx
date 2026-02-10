@@ -34,9 +34,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${_geist.className} font-sans antialiased`}>
+      <body className={`${_geist.className} font-sans antialiased overflow-x-hidden`}>
         <Navigation />
-        <main>{children}</main>
+        <main className="pb-20 lg:pb-0">{children}</main>
         <Footer />
         <Analytics />
       </body>

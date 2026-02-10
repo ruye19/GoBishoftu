@@ -1,245 +1,106 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoLogo } from "./go-logo";
+import { Home, MapPin, Building2, CircleDollarSign, Info } from "lucide-react";
+
+const navItems = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/accommodations", label: "Accommodations", icon: Building2 },
+  { href: "/explore", label: "Explore", icon: MapPin },
+  { href: "/investment", label: "Investment", icon: CircleDollarSign },
+  { href: "/about", label: "About", icon: Info },
+];
 
 export function Navigation() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
 
   const isActive = (path) => {
-    return pathname === path;
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
   };
 
-  // lock background scroll when mobile menu is open
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-    if (open) {
-      document.documentElement.classList.add("overflow-hidden");
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.documentElement.classList.remove("overflow-hidden");
-      document.body.classList.remove("overflow-hidden");
-    }
-    return () => {
-      document.documentElement.classList.remove("overflow-hidden");
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [open]);
-
   return (
-    <nav className="bg-background border-b border-border sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex justify-between items-center h-16">
-          {/* Logo — only element that stands out (GO circle + Bishoftu) */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <GoLogo />
-            <span className="font-display text-xl font-bold text-foreground">Bishoftu</span>
-          </Link>
+    <>
+      {/* Desktop: top navbar (lg and up) */}
+      <nav
+        className="hidden lg:block bg-background border-b border-border sticky top-0 z-50"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center gap-2 group">
+              <GoLogo />
+              <span className=" font-display text-xl font-bold text-foreground">
+                Bishoftu
+              </span>
+            </Link>
 
-          {/* Desktop Navigation Links — same as page text; active: accent */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/"
-              className={`text-sm font-medium transition-colors ${
-                isActive("/")
-                  ? "text-accent font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/accommodations"
-              className={`text-sm font-medium transition-colors ${
-                isActive("/accommodations")
-                  ? "text-accent font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Accommodations
-            </Link>
-            <Link
-              href="/explore"
-              className={`text-sm font-medium transition-colors ${
-                isActive("/explore")
-                  ? "text-accent font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Explore
-            </Link>
-            <Link
-              href="/investment"
-              className={`text-sm font-medium transition-colors ${
-                isActive("/investment")
-                  ? "text-accent font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Investment
-            </Link>
-            <Link
-              href="/about"
-              className={`text-sm font-medium transition-colors ${
-                isActive("/about")
-                  ? "text-accent font-semibold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              About
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              aria-label="Toggle menu"
-              onClick={() => setOpen((v) => !v)}
-              className="p-2 rounded-md text-foreground/80 hover:bg-muted"
-            >
-              {/* simple hamburger icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {open ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+            <div className="flex items-center gap-8">
+              {navItems.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive(href)
+                      ? "text-accent font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile backdrop + slide-in panel (hidden on md+) */}
-      <div
-        className={`md:hidden fixed inset-0 z-40 transition-opacity ${
-          open ? "pointer-events-auto" : "pointer-events-none"
-        }`}
-        aria-hidden={!open}
+      {/* Mobile/Tablet: minimal top bar (logo only) */}
+      <header className="lg:hidden bg-background border-b border-border sticky top-0 z-40 shrink-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-start h-14 min-h-14">
+            <Link href="/" className="flex items-center gap-2 group">
+              <GoLogo />
+              <span className="font-display text-xl font-bold text-foreground">
+                Bishoftu
+              </span>
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile/Tablet: fixed bottom navigation (no overflow) */}
+      <nav
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 w-full max-w-[100vw] bg-background border-t border-border pb-[env(safe-area-inset-bottom)]"
+        aria-label="Bottom navigation"
       >
-        {/* Backdrop */}
-        <div
-          className={`absolute inset-0 bg-black/40 transition-opacity ${
-            open ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setOpen(false)}
-        />
-
-        {/* Slide-in panel — card surface, dark text (matches page) */}
-        <div
-          className={`absolute top-0 right-0 h-full w-64 bg-card border-l border-border shadow-card transform transition-transform duration-300 ${
-            open ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="px-4 py-4">
-            <div className="flex items-center justify-between mb-4">
-              <Link href="/" className="flex items-center gap-2 group">
-                <GoLogo />
-                <span className="text-lg font-bold text-foreground">
-                  Bishoftu
+        <div className="flex items-stretch justify-around min-h-0 h-16 max-w-[100%] overflow-hidden">
+          {navItems.map(({ href, label, icon: Icon }) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex flex-1 min-w-0 flex-col items-center justify-center gap-0.5 py-2 px-1 shrink-0 transition-colors ${
+                  active
+                    ? "text-accent font-semibold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Icon
+                  className="w-5 h-5 shrink-0"
+                  strokeWidth={active ? 2.5 : 2}
+                  aria-hidden
+                />
+                <span className="text-[10px] sm:text-xs truncate w-full text-center max-w-[80px]">
+                  {label}
                 </span>
               </Link>
-              <button
-                aria-label="Close menu"
-                onClick={() => setOpen(false)}
-                className="p-2 rounded-md text-foreground/80 hover:bg-muted"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <nav className="flex flex-col gap-2">
-              <Link
-                href="/"
-                className={`text-sm font-medium py-2 ${
-                  isActive("/")
-                    ? "text-accent font-semibold"
-                    : "text-foreground/80"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/accommodations"
-                className={`text-sm font-medium py-2 ${
-                  isActive("/accommodations")
-                    ? "text-accent font-semibold"
-                    : "text-foreground/80"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                Accommodations
-              </Link>
-              <Link
-                href="/explore"
-                className={`text-sm font-medium py-2 ${
-                  isActive("/explore")
-                    ? "text-accent font-semibold"
-                    : "text-foreground/80"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                Explore
-              </Link>
-              <Link
-                href="/investment"
-                className={`text-sm font-medium py-2 ${
-                  isActive("/investment")
-                    ? "text-accent font-semibold"
-                    : "text-foreground/80"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                Investment
-              </Link>
-              <Link
-                href="/about"
-                className={`text-sm font-medium py-2 ${
-                  isActive("/about")
-                    ? "text-accent font-semibold"
-                    : "text-foreground/80"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                About
-              </Link>
-            </nav>
-          </div>
+            );
+          })}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

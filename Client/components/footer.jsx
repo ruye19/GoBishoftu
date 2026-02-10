@@ -1,4 +1,15 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 export function Footer() {
+  const pathname = usePathname();
+
+  // Hide footer on admin-related routes
+  if (pathname?.startsWith("/admin") || pathname === "/admin-login") {
+    return null;
+  }
+
   return (
     <footer className="bg-secondary border-t border-secondary-foreground/20 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

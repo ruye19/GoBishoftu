@@ -1,5 +1,6 @@
 import Link from "next/link";
 import landscapeimage from "../public/image.png";
+import { GoLogo } from "@/components/go-logo";
 import {
   MapPin,
   Star,
