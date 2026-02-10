@@ -392,27 +392,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Us Section */}
-        <section className="py-8 flex items-center justify-center bg-background/">
-          <div className="max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              About Us
-            </h2>
-            <p className="font-body text-lg text-foreground/70 leading-relaxed">
-              Discover the heart of Ethiopia's lake city, where volcanic wonders
-              meet rich Oromo heritage and boundless opportunities.
-            </p>
-            <div className="mt-6">
-              <Link
-                href="/about"
-                className="text-primary font-semibold hover:underline"
-              >
-                See more →
-              </Link>
-            </div>
-          </div>
-        </section>
-
+        {/* top tour and travel agencies card */}
         <section className="py-8 md:py-12 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -463,6 +443,26 @@ export default function Home() {
           </div>
         </section>
 
+        {/* About Us Section */}
+        <section className="py-8 flex items-center justify-center bg-background/">
+          <div className="max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              About Us
+            </h2>
+            <p className="font-body text-lg text-foreground/70 leading-relaxed">
+              Discover the heart of Ethiopia's lake city, where volcanic wonders
+              meet rich Oromo heritage and boundless opportunities.
+            </p>
+            <div className="mt-6">
+              <Link
+                href="/about"
+                className="text-primary font-semibold hover:underline"
+              >
+                See more →
+              </Link>
+            </div>
+          </div>
+        </section>
         {/* </div>
         </section> */}
       </main>

@@ -235,10 +235,39 @@ export default function AboutPage() {
             </div>
           </div>
         </Section>
+        {/* About Go Bishoftu */}
+        <Section className="bg-muted/40">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader
+              subtitle="About Go Bishoftu"
+              title="A Digital Gateway to Bishoftu"
+              description="Connecting tourism, culture, and opportunity through technology"
+            />
 
-        {/* Vision & Values */}
+            <div className="space-y-8 text-muted-foreground">
+              <p className="text-lg leading-relaxed">
+                Go Bishoftu is a locally developed digital tourism platform
+                created to showcase the beauty, culture, and investment
+                potential of Bishoftu to the world. Built with deep local
+                knowledge and modern technology, the platform serves as a bridge
+                between visitors, local communities, tourism businesses, and
+                investors.
+              </p>
+
+              <p className="leading-relaxed">
+                Our goal is not only to promote tourism, but to create
+                meaningful digital experiences that support sustainable
+                development, empower local businesses, and present Bishoftu as a
+                city ready for global engagement.
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        {/* Mission & Vision */}
         <Section className="bg-primary text-primary-foreground">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Vision */}
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Target className="w-8 h-8 text-gold-warm" />
@@ -246,42 +275,51 @@ export default function AboutPage() {
                   Our Vision
                 </span>
               </div>
+
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Building Ethiopia's Premier Tourist Destination
+                Bishoftu on the Global Tourism Map
               </h2>
-              <p className="text-primary-foreground/80 text-lg leading-relaxed mb-6">
-                We envision Bishoftu as a world-class tourism destination that
-                showcases the best of Ethiopian natural beauty, culture, and
-                hospitality while driving sustainable economic growth for local
-                communities.
+
+              <p className="text-primary-foreground/80 text-lg leading-relaxed">
+                Our vision is to empower Oromia’s tourism sector by leveraging
+                digital platforms that celebrate the region’s natural beauty,
+                cultural heritage, and economic potential—starting with
+                Bishoftu.
               </p>
-              <p className="text-primary-foreground/80 leading-relaxed">
-                Through strategic investment, infrastructure development, and
-                community engagement, we are working to unlock the full
-                potential of our crater lakes and heritage sites for visitors
-                from around the globe.
+
+              <p className="text-primary-foreground/80 leading-relaxed mt-4">
+                We envision a future where Bishoftu stands proudly on the global
+                tourism map, supported by a vibrant online presence that
+                reflects its unique identity and invites the world to explore
+                its wonders.
               </p>
             </div>
+
+            {/* Mission */}
             <div>
-              <History className="w-8 h-8 text-gold-warm mb-4" />
-              <h3 className="font-display text-2xl font-bold mb-6">
-                Our Values
-              </h3>
-              <div className="space-y-6">
-                {values.map((value) => (
-                  <div key={value.title} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary-foreground/10 flex items-center justify-center flex-shrink-0">
-                      <value.icon className="w-6 h-6 text-gold-warm" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">{value.title}</h4>
-                      <p className="text-primary-foreground/70 text-sm">
-                        {value.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              <div className="flex items-center gap-3 mb-4">
+                <History className="w-8 h-8 text-gold-warm" />
+                <span className="text-sm font-medium tracking-wider uppercase text-gold-light">
+                  Our Mission
+                </span>
               </div>
+
+              <h3 className="font-display text-2xl font-bold mb-6">
+                Building Digital Experiences with Purpose
+              </h3>
+
+              <p className="text-primary-foreground/80 leading-relaxed mb-4">
+                Our mission is to design and develop a dynamic, user-centered
+                platform that showcases Bishoftu’s attractions while serving as
+                a gateway for tourism, investment, and community engagement.
+              </p>
+
+              <p className="text-primary-foreground/80 leading-relaxed">
+                As a locally owned and operated initiative, we use our technical
+                expertise and cultural insight to build digital solutions that
+                uplift our region and resonate with both local and international
+                audiences.
+              </p>
             </div>
           </div>
         </Section>
