@@ -25,7 +25,7 @@ const sidebarLinks = [
   { name: "Overview", path: "/dashboard", icon: LayoutDashboard },
   { name: "Attractions", path: "/dashboard/attractions", icon: Mountain },
   { name: "Accommodations", path: "/dashboard/accommodations", icon: Hotel },
-  { name: "Blog Posts", path: "/dashboard/blog", icon: FileText },
+  { name: "Investments", path: "/dashboard/investment", icon: FileText },
   { name: "Users", path: "/dashboard/users", icon: Users },
   { name: "Analytics", path: "/dashboard/analytics", icon: BarChart3 },
   { name: "Settings", path: "/dashboard/settings", icon: Settings },
