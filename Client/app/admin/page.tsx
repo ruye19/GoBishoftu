@@ -63,19 +63,31 @@ const recentAttractions = [
 ];
 
 const stats = [
-  { label: "Total Attractions", value: "24", change: "+3", icon: Mountain },
-  { label: "Accommodations", value: "12", change: "+2", icon: Hotel },
-  { label: "Blog Posts", value: "45", change: "+8", icon: FileText },
   {
-    label: "Monthly Visitors",
-    value: "12.4k",
-    change: "+15%",
-    icon: BarChart3,
+    label: "Total Attractions",
+    value: "24",
+    change: "+3",
+    icon: Mountain,
+    path: "/dashboard/attractions",
+  },
+  {
+    label: "Accommodations",
+    value: "12",
+    change: "+2",
+    icon: Hotel,
+    path: "/dashboard/accommodations",
+  },
+  {
+    label: "Blog Posts",
+    value: "45",
+    change: "+8",
+    icon: FileText,
+    path: "/dashboard/blog",
   },
 ];
 
 export default function AdminPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -83,8 +95,10 @@ export default function AdminPage() {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed left-0 top-20 bottom-0 z-40 bg-card border-r border-border transition-all duration-300",
-          sidebarOpen ? "w-64" : "w-20",
+          "fixed md:static left-0 top-20 bottom-0 z-40 bg-card border-r border-border transition-all duration-300",
+          sidebarOpen
+            ? "w-64 translate-x-0"
+            : "w-64 -translate-x-full md:translate-x-0 md:w-20",
         )}
       >
         <div className="flex flex-col h-full">
@@ -135,23 +149,41 @@ export default function AdminPage() {
           </div>
         </div>
       </aside>
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-30 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
       {/* Main Content */}
       <main
         className={cn(
           "flex-1 transition-all duration-300",
-          sidebarOpen ? "ml-64" : "ml-20",
+          "ml-0 md:ml-64",
+          !sidebarOpen && "md:ml-20",
         )}
       >
         <div className="p-6 lg:p-8">
           {/* Page Header */}
           <div className="flex items-center justify-between mb-8">
-            <div>
-              <h1 className="font-display text-3xl font-bold">Dashboard</h1>
-              <p className="text-muted-foreground">
-                Welcome back! Here's an overview of your site.
-              </p>
+            <div className="flex items-center gap-3">
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+
+              <div>
+                <h1 className="font-display text-3xl font-bold">Dashboard</h1>
+                <p className="text-muted-foreground">
+                  Welcome back! Here's an overview of your site.
+                </p>
+              </div>
             </div>
+
             <Button className="gap-2">
               <Plus className="w-4 h-4" />
               Add New
@@ -161,9 +193,10 @@ export default function AdminPage() {
           {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {stats.map((stat) => (
-              <div
+              <Link
                 key={stat.label}
-                className="bg-card rounded-xl p-6 shadow-card"
+                href={stat.path}
+                className="bg-card rounded-xl p-6 shadow-card hover:shadow-xl transition-all duration-300 cursor-pointer block"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -174,10 +207,10 @@ export default function AdminPage() {
                   </span>
                 </div>
                 <div className="font-display text-2xl font-bold">
-                  {stat.value}2
+                  {stat.value}
                 </div>
                 <p className="text-sm text-muted-foreground">{stat.label}</p>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -189,12 +222,14 @@ export default function AdminPage() {
                 <h2 className="font-display text-lg font-semibold">
                   Recent Attractions
                 </h2>
-                <Button variant="outline" size="sm">
-                  View All
-                </Button>
+                <Link href="/dashboard/attractions">
+                  <Button variant="outline" size="sm">
+                    View All
+                  </Button>
+                </Link>
               </div>
-              <div className="p-6">
-                <table className="w-full">
+              <div className="p-6 overflow-x-auto">
+                <table className="w-full min-w-[600px]">
                   <thead>
                     <tr className="text-left text-sm text-muted-foreground">
                       <th className="pb-3 font-medium">Name</th>
@@ -224,15 +259,19 @@ export default function AdminPage() {
                         </td>
                         <td className="py-3">
                           <div className="flex justify-end gap-1">
-                            <button className="p-1.5 rounded hover:bg-muted">
-                              <Eye className="w-4 h-4 text-muted-foreground" />
-                            </button>
-                            <button className="p-1.5 rounded hover:bg-muted">
-                              <Edit className="w-4 h-4 text-muted-foreground" />
-                            </button>
-                            <button className="p-1.5 rounded hover:bg-muted">
-                              <Trash2 className="w-4 h-4 text-destructive" />
-                            </button>
+                            <Link href={`/dashboard/attractions/${item.id}`}>
+                              <button className="p-1.5 rounded hover:bg-muted">
+                                <Eye className="w-4 h-4 text-muted-foreground" />
+                              </button>
+                            </Link>
+
+                            <Link
+                              href={`/dashboard/attractions/edit/${item.id}`}
+                            >
+                              <button className="p-1.5 rounded hover:bg-muted">
+                                <Edit className="w-4 h-4 text-muted-foreground" />
+                              </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>
@@ -248,35 +287,46 @@ export default function AdminPage() {
                 <h2 className="font-display text-lg font-semibold mb-4">
                   Quick Actions
                 </h2>
-                <div className="grid grid-cols-2 gap-4">
-                  <Button
-                    variant="outline"
-                    className="h-auto py-4 flex flex-col gap-2"
-                  >
-                    <Mountain className="w-6 h-6" />
-                    <span>Add Attraction</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-auto py-4 flex flex-col gap-2"
-                  >
-                    <Hotel className="w-6 h-6" />
-                    <span>Add Accommodation</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-auto py-4 flex flex-col gap-2"
-                  >
-                    <FileText className="w-6 h-6" />
-                    <span>Write Blog Post</span>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-auto py-4 flex flex-col gap-2"
-                  >
-                    <BarChart3 className="w-6 h-6" />
-                    <span>View Analytics</span>
-                  </Button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Link href="/dashboard/attractions/new">
+                    <Button
+                      variant="outline"
+                      className="h-auto py-4 flex flex-col gap-2 w-full"
+                    >
+                      <Mountain className="w-6 h-6" />
+                      <span>Add Attraction</span>
+                    </Button>
+                  </Link>
+
+                  <Link href="/dashboard/accommodations/new">
+                    <Button
+                      variant="outline"
+                      className="h-auto py-4 flex flex-col gap-2 w-full"
+                    >
+                      <Hotel className="w-6 h-6" />
+                      <span>Add Accommodation</span>
+                    </Button>
+                  </Link>
+
+                  <Link href="/dashboard/blog/new">
+                    <Button
+                      variant="outline"
+                      className="h-auto py-4 flex flex-col gap-2 w-full"
+                    >
+                      <FileText className="w-6 h-6" />
+                      <span>Write Blog Post</span>
+                    </Button>
+                  </Link>
+
+                  <Link href="/dashboard/analytics">
+                    <Button
+                      variant="outline"
+                      className="h-auto py-4 flex flex-col gap-2 w-full"
+                    >
+                      <BarChart3 className="w-6 h-6" />
+                      <span>View Analytics</span>
+                    </Button>
+                  </Link>
                 </div>
               </div>
 
