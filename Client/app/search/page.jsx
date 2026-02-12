@@ -111,7 +111,7 @@ const featuredAgencies = [
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
-  const query = searchParams.get("query")?.toLowerCase() || "";
+  const query = searchParams.get("q")?.toLowerCase() || "";
 
   // Filter function
   const filterItems = (items, keys) =>
