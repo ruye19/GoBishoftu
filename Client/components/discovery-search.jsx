@@ -111,11 +111,37 @@ export function DiscoverySearch({ className, data = {} }) {
           placeholder="Search hotels, attractions, agencies..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="flex-1 px-4 py-2 rounded-full border border-muted-foreground/30 focus:outline-none focus:ring-2 focus:ring-primary"
+          className="
+            flex-1
+            px-5
+            py-3
+            rounded-full
+            border
+            border-muted-foreground/30
+            bg-white dark:bg-gray-800 dark:text-white
+            shadow-sm
+            placeholder:text-muted-foreground/70
+            focus:outline-none
+            focus:ring-2
+            focus:ring-primary
+            focus:border-primary
+            transition
+          "
         />
+
         <button
           type="submit"
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition"
+          className="
+              px-5
+              py-3
+              rounded-full
+              bg-primary
+              text-primary-foreground
+              font-semibold
+              shadow-sm
+              hover:bg-primary/90
+              transition
+            "
         >
           Search
         </button>

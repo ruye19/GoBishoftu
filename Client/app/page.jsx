@@ -210,11 +210,11 @@ export default function Home() {
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
                 Discover the Soul of Ethiopia/Bishoftu
               </h1>
-              <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl">
+              {/* <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl">
                 Experience the breathtaking beauty of volcanic crater lakes,
                 rich Oromo heritage, and warm Ethiopian hospitality—just 47km
                 from Addis Ababa.
-              </p>
+              </p> */}
 
               <DiscoverySearch
                 className="mt-4 w-full"
@@ -279,7 +279,7 @@ export default function Home() {
             </section>
 
             {/* Mobile Scrollable Cards */}
-            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
+            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory px-2">
               {hotels.map((hotel) => (
                 <div
                   key={hotel.id}
@@ -344,7 +344,7 @@ export default function Home() {
 
         {/* Featured Attraction */}
         {/* Attractions Section */}
-        <section className="py-5 bg-background">
+        <section className="bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <h2 className="font-display text-3xl font-bold text-foreground mb-2">
@@ -408,6 +408,15 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div className="text-center my-6">
+          <Link
+            href="/explore"
+            className="btn-cta inline-block px-6 py-3 font-semibold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition"
+          >
+            View All Attractions
+          </Link>
+        </div>
 
         {/* Agencies Section */}
         <section className="py-8 md:py-12 bg-secondary/30">
