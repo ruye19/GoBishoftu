@@ -249,7 +249,7 @@ export default function Home() {
                       <Link
                         key={type.name}
                         href={`/accommodations?type=${type.value}`}
-                        className="flex-1"
+                        className="flex-shrink-0"
                       >
                         <div
                           className="
