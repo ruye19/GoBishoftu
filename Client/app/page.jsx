@@ -55,6 +55,14 @@ export default function Home() {
       image: "/comfort-guest-house.jpg",
       link: "/accommodations",
     },
+    {
+      id: 5,
+      name: "Comfort Guest House",
+      type: "Guest House",
+      description: "Affordable and cozy stay with friendly staff and services.",
+      image: "/comfort-guest-house.jpg",
+      link: "/accommodations",
+    },
   ];
   const featuredAgencies = [
     {
@@ -186,7 +194,7 @@ export default function Home() {
 
   return (
     <>
-      <main>
+      <main className="overflow-x-hidden">
         {/* Hero Section — discovery-focused, like About hero */}
         <section className="relative min-h-[65vh] flex items-center justify-center pt-20">
           <div className="absolute inset-0">
@@ -202,17 +210,15 @@ export default function Home() {
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
                 Discover the Soul of Ethiopia/Bishoftu
               </h1>
-              {/* <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl">
+              <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl">
                 Experience the breathtaking beauty of volcanic crater lakes,
                 rich Oromo heritage, and warm Ethiopian hospitality—just 47km
                 from Addis Ababa.
-              </p> */}
+              </p>
 
-              {/* Discovery Search – lightweight exploration search */}
               <DiscoverySearch
-                className="mt-2"
-                value={searchQuery}
-                onChange={(value) => setSearchQuery(value)}
+                className="mt-4 w-full"
+                data={{ hotels, attractions, agencies: featuredAgencies }}
               />
             </div>
           </div>
@@ -229,6 +235,7 @@ export default function Home() {
           )}
 
         {/* Featured Places */}
+        {/* Hotels & Resorts Section */}
         <section className="py-12 md:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -239,7 +246,6 @@ export default function Home() {
                 Top places to stay for a comfortable Bishoftu experience
               </p>
             </div>
-
             {/* Accommodation Type Nav (single-line, navbar-style) */}
             <section className="section-padding bg-background">
               <div className="container-custom px-4 py-4">
@@ -253,15 +259,15 @@ export default function Home() {
                       >
                         <div
                           className="
-          px-5 py-3
-          rounded-full
-          text-center
-          bg-card
-          hover:bg-primary/5
-          transition
-          font-medium
-          text-foreground
-        "
+                          px-5 py-3
+                          rounded-full
+                          text-center
+                          bg-card
+                          hover:bg-primary/5
+                          transition
+                          font-medium
+                          text-foreground
+                        "
                         >
                           {type.name}
                         </div>
@@ -272,40 +278,38 @@ export default function Home() {
               </div>
             </section>
 
-            {/* Mobile: horizontal scrollable list */}
-            <div className="md:hidden -mx-4 py-4 px-4">
-              <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
-                {filteredHotels.map((hotel) => (
-                  <div
-                    key={hotel.id}
-                    className="flex-shrink-0 w-[300px] snap-start"
-                  >
-                    <div className="bg-card rounded-xl overflow-hidden shadow-card hover-lift">
-                      <img
-                        src={hotel.image || "/placeholder.svg"}
-                        alt={hotel.name}
-                        className="w-full h-40 object-cover"
-                      />
-                      <div className="p-6">
-                        <div className="text-sm font-semibold text-primary mb-2">
-                          {hotel.type}
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground mb-2">
-                          {hotel.name}
-                        </h3>
-                        <p className="text-sm text-foreground/70 leading-relaxed">
-                          {hotel.description}
-                        </p>
+            {/* Mobile Scrollable Cards */}
+            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
+              {hotels.map((hotel) => (
+                <div
+                  key={hotel.id}
+                  className="flex-shrink-0 min-w-[260px] snap-start"
+                >
+                  <div className="bg-card rounded-xl overflow-hidden shadow-card hover-lift">
+                    <img
+                      src={hotel.image || "/placeholder.svg"}
+                      alt={hotel.name}
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="p-6">
+                      <div className="text-sm font-semibold text-primary mb-2">
+                        {hotel.type}
                       </div>
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        {hotel.name}
+                      </h3>
+                      <p className="text-sm text-foreground/70 leading-relaxed">
+                        {hotel.description}
+                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
-            {/* Desktop: grid layout */}
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {filteredHotels.map((hotel) => (
+            {/* Desktop Grid */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {hotels.map((hotel) => (
                 <div
                   key={hotel.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
@@ -339,7 +343,7 @@ export default function Home() {
         </div>
 
         {/* Featured Attraction */}
-        {/* Attractions */}
+        {/* Attractions Section */}
         <section className="py-5 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
@@ -351,38 +355,33 @@ export default function Home() {
               </p>
             </div>
 
-            {/* ✅ Mobile: horizontal scroll */}
-            <div className="md:hidden -mx-4 px-4">
-              <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
-                {filteredAttractions.map((item) => (
-                  <div
-                    key={item.id}
-                    tabIndex={0}
-                    className="min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="h-40 w-full object-cover"
-                    />
-                    <div className="p-4">
-                      <div className="flex justify-between text-sm text-muted-foreground mb-1">
-                        <span>{item.location}</span>
-                        <span className="text-accent">★ {item.rating}</span>
-                      </div>
-                      <h3 className="font-bold text-lg mb-2">{item.name}</h3>
-                      <p className="text-sm text-foreground/70 mb-3">
-                        {item.description}
-                      </p>
+            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
+              {attractions.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex-shrink-0 min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-40 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <div className="flex justify-between text-sm text-muted-foreground mb-1">
+                      <span>{item.location}</span>
+                      <span className="text-accent">★ {item.rating}</span>
                     </div>
+                    <h3 className="font-bold text-lg mb-2">{item.name}</h3>
+                    <p className="text-sm text-foreground/70 mb-3">
+                      {item.description}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
-            {/* ✅ Desktop: grid */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredAttractions.map((item) => (
+              {attractions.map((item) => (
                 <div
                   key={item.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
@@ -403,26 +402,14 @@ export default function Home() {
                     <p className="text-sm text-foreground/70 mb-4">
                       {item.description}
                     </p>
-                    <Link
-                      href={item.link}
-                      className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
-                    >
-                      Explore <ArrowRight className="w-4 h-4" />
-                    </Link>
                   </div>
                 </div>
               ))}
             </div>
-
-            <div className="text-center mt-10">
-              <Link href="/explore" className="btn-cta inline-block">
-                View All Attractions
-              </Link>
-            </div>
           </div>
         </section>
 
-        {/* top tour and travel agencies card */}
+        {/* Agencies Section */}
         <section className="py-8 md:py-12 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -434,8 +421,34 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {filteredAgencies.map((agency) => (
+            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
+              {featuredAgencies.map((agency) => (
+                <div
+                  key={agency.id}
+                  className="flex-shrink-0 min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift"
+                >
+                  <img
+                    src={agency.image || "/placeholder.svg"}
+                    alt={agency.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      {agency.name}
+                    </h3>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      {agency.category}
+                    </div>
+                    <div className="text-accent font-semibold mb-4">
+                      ★ {agency.rating}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden md:grid md:grid-cols-3 gap-8">
+              {featuredAgencies.map((agency) => (
                 <div
                   key={agency.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
@@ -446,26 +459,15 @@ export default function Home() {
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <div className="text-sm font-semibold text-accent">
-                        {agency.category}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-accent">★</span>
-                        <span className="text-sm font-semibold text-foreground">
-                          {agency.rating}
-                        </span>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-2">
                       {agency.name}
                     </h3>
-                    <Link
-                      href={agency.link}
-                      className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
-                    >
-                      Visit Agency
-                    </Link>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      {agency.category}
+                    </div>
+                    <div className="text-accent font-semibold mb-4">
+                      ★ {agency.rating}
+                    </div>
                   </div>
                 </div>
               ))}

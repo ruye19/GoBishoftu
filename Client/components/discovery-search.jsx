@@ -1,133 +1,141 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Search, MapPin, Hotel, Route } from "lucide-react";
 
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-const SUGGESTIONS = [
-  { label: "Lakes in Bishoftu", route: "/explore?category=lake" },
-  { label: "Luxury resorts & spas", route: "/accommodations?type=resort" },
-  {
-    label: "Guest houses with lake views",
-    route: "/accommodations?type=guest-house",
-  },
-  {
-    label: "Cultural experiences & markets",
-    route: "/explore?category=culture",
-  },
-  { label: "Hot springs & wellness", route: "/explore?category=wellness" },
-];
-
-const QUICK_CHIPS = [
-  { icon: MapPin, label: "Lakes", route: "/explore?category=lake" },
-  { icon: Hotel, label: "Hotels & Resorts", route: "/accommodations" },
-  { icon: Route, label: "Experiences", route: "/explore" },
-];
-
-export function DiscoverySearch({ className }) {
-  const router = useRouter();
+export function DiscoverySearch({ className, data = {} }) {
+  const { hotels = [], attractions = [], agencies = [] } = data;
   const [query, setQuery] = useState("");
+  const [filteredHotels, setFilteredHotels] = useState(hotels);
+  const [filteredAttractions, setFilteredAttractions] = useState(attractions);
+  const [filteredAgencies, setFilteredAgencies] = useState(agencies);
 
-  const filteredSuggestions =
-    query.trim().length < 2
-      ? []
-      : SUGGESTIONS.filter((item) =>
-          item.label.toLowerCase().includes(query.toLowerCase()),
-        ).slice(0, 4);
+  const router = useRouter();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const trimmed = query.trim();
-
-    if (!trimmed) {
-      router.push("/explore");
+  useEffect(() => {
+    if (!query) {
+      setFilteredHotels(hotels);
+      setFilteredAttractions(attractions);
+      setFilteredAgencies(agencies);
       return;
     }
 
-    // Simple routing heuristic – exploration first.
-    const lower = trimmed.toLowerCase();
-    if (
-      lower.includes("hotel") ||
-      lower.includes("resort") ||
-      lower.includes("stay")
-    ) {
-      router.push(`/accommodations?q=${encodeURIComponent(trimmed)}`);
-    } else {
-      router.push(`/explore?q=${encodeURIComponent(trimmed)}`);
-    }
-  }
+    const lower = query.toLowerCase();
 
-  function handleSuggestionClick(item) {
-    router.push(item.route);
-  }
+    setFilteredHotels(
+      hotels.filter(
+        (h) =>
+          h.name.toLowerCase().includes(lower) ||
+          h.type.toLowerCase().includes(lower),
+      ),
+    );
 
-  function handleChipClick(chip) {
-    router.push(chip.route);
-  }
+    setFilteredAttractions(
+      attractions.filter(
+        (a) =>
+          a.name.toLowerCase().includes(lower) ||
+          a.category.toLowerCase().includes(lower) ||
+          a.location.toLowerCase().includes(lower),
+      ),
+    );
+
+    setFilteredAgencies(
+      agencies.filter(
+        (ag) =>
+          ag.name.toLowerCase().includes(lower) ||
+          ag.category.toLowerCase().includes(lower),
+      ),
+    );
+  }, [query, hotels, attractions, agencies]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/search?query=${encodeURIComponent(query)}`);
+  };
+
+  const renderCard = (item, type = "hotel") => (
+    <div
+      key={item.id}
+      className="flex-shrink-0 min-w-[260px] sm:min-w-[280px] bg-card rounded-xl shadow-card overflow-hidden hover:shadow-lg transition"
+    >
+      {item.image && (
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-40 object-cover"
+        />
+      )}
+      <div className="p-4">
+        {type !== "agency" && (
+          <div className="text-sm text-primary font-semibold mb-1">
+            {item.type || item.category}
+          </div>
+        )}
+        <div className="font-bold text-lg">{item.name}</div>
+      </div>
+    </div>
+  );
+
+  const renderSection = (title, items, type) => {
+    if (!items.length) return null;
+    return (
+      <div className="mb-6">
+        <h4 className="font-semibold mb-2">{title}</h4>
+
+        {/* Mobile horizontal scroll */}
+        {/* Mobile horizontal scroll with partial peek */}
+        <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2 -ml-2">
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="flex-shrink-0 min-w-[260px] sm:min-w-[280px] snap-start"
+            >
+              {renderCard(item, type)}
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {items.map((item) => renderCard(item, type))}
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div className={cn("w-full max-w-2xl mx-auto py-5", className)}>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-3 rounded-full bg-card/95 p-1.5 shadow-card backdrop-blur-sm sm:flex-row sm:items-center"
-      >
-        <div className="flex items-center gap-2 rounded-full bg-background px-3 py-1.5 flex-1">
-          <Search className="h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search places, hotels, transport, attractions…"
-            className="border-none bg-transparent px-0 shadow-none focus-visible:ring-0"
-          />
-        </div>
-        <Button
+    <div className={`w-full ${className || ""}`}>
+      <form onSubmit={handleSubmit} className="flex w-full gap-2">
+        <input
+          type="text"
+          placeholder="Search hotels, attractions, agencies..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="flex-1 px-4 py-2 rounded-full border border-muted-foreground/30 focus:outline-none focus:ring-2 focus:ring-primary"
+        />
+        <button
           type="submit"
-          size="lg"
-          className="w-full rounded-full sm:w-auto"
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition"
         >
-          Explore Bishoftu
-        </Button>
+          Search
+        </button>
       </form>
 
-      {filteredSuggestions.length > 0 && (
-        <div className="mt-2 rounded-2xl bg-card/95 p-2 shadow-card backdrop-blur-sm">
-          <p className="px-2 pb-1 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            Suggestions
-          </p>
-          <ul className="space-y-1">
-            {filteredSuggestions.map((item) => (
-              <li key={item.label}>
-                <button
-                  type="button"
-                  onClick={() => handleSuggestionClick(item)}
-                  className="w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-muted/80"
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+      {query && (
+        <div className="mt-4 space-y-6 max-h-[60vh] overflow-y-auto px-2 sm:px-0">
+          {renderSection("Hotels & Resorts", filteredHotels, "hotel")}
+          {renderSection("Attractions", filteredAttractions, "attraction")}
+          {renderSection("Agencies", filteredAgencies, "agency")}
+
+          {!filteredHotels.length &&
+            !filteredAttractions.length &&
+            !filteredAgencies.length && (
+              <div className="text-center text-muted-foreground py-4">
+                No results found
+              </div>
+            )}
         </div>
       )}
-
-      {/* <div className="mt-3 flex flex-wrap justify-center gap-2">
-        {QUICK_CHIPS.map(({ icon: Icon, label, route }) => (
-          <button
-            key={label}
-            type="button"
-            onClick={() => handleChipClick({ route })}
-            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-          >
-            <Icon className="h-3.5 w-3.5" />
-            <span>{label}</span>
-          </button>
-        ))}
-      </div> */}
     </div>
   );
 }
