@@ -249,20 +249,19 @@ export default function Home() {
                       <Link
                         key={type.name}
                         href={`/accommodations?type=${type.value}`}
-                        className="flex-shrink-0"
+                        className="md:flex-1"
                       >
                         <div
                           className="
-                                    w-full
-                                    px-5 py-3
-                                    rounded-full
-                                    text-center
-                                    bg-card
-                                    hover:bg-primary/5
-                                    transition
-                                    font-medium
-                                    text-foreground
-                                  "
+          px-5 py-3
+          rounded-full
+          text-center
+          bg-card
+          hover:bg-primary/5
+          transition
+          font-medium
+          text-foreground
+        "
                         >
                           {type.name}
                         </div>
