@@ -1,6 +1,8 @@
+"use client";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import landscapeimage from "../public/image.png";
-import { GoLogo } from "@/components/go-logo";
+import { DiscoverySearch } from "@/components/discovery-search";
 import {
   MapPin,
   Star,
@@ -159,43 +161,72 @@ export default function Home() {
       color: "bg-primary/10 text-primary",
     },
   ];
+  const [searchQuery, setSearchQuery] = useState("");
+  const normalizedQuery = searchQuery.toLowerCase();
+
+  const filteredHotels = hotels.filter(
+    (hotel) =>
+      hotel.name.toLowerCase().includes(normalizedQuery) ||
+      hotel.type.toLowerCase().includes(normalizedQuery) ||
+      hotel.description.toLowerCase().includes(normalizedQuery),
+  );
+
+  const filteredAttractions = attractions.filter(
+    (item) =>
+      item.name.toLowerCase().includes(normalizedQuery) ||
+      item.category.toLowerCase().includes(normalizedQuery) ||
+      item.description.toLowerCase().includes(normalizedQuery),
+  );
+
+  const filteredAgencies = featuredAgencies.filter(
+    (agency) =>
+      agency.name.toLowerCase().includes(normalizedQuery) ||
+      agency.category.toLowerCase().includes(normalizedQuery),
+  );
 
   return (
     <>
       <main>
-        {/* Hero Section */}
-        {/*  <section className="relative py-20 md:py-32 bg-gradient-nature">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-up">
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-                  Discover the Soul of Ethiopia/Bishoftu
-                </h1>
-                <p className="font-body text-lg text-foreground/70 mb-8 leading-relaxed">
-                  Experience luxury and adventure in Bishoftu. Explore stunning
-                  natural wonders, ancient cultural sites, and authentic
-                  Ethiopian hospitality. Your journey to unforgettable memories
-                  starts here.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/accommodations" className="btn-cta">
-                    Browse Accommodations
-                  </Link>
-                  <Link href="/explore" className="btn-cta-outline">
-                    Explore Sites
-                  </Link>
-                </div>
-              </div>
-              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-card animate-fade-in">
-                <img
-                  src={landscapeimage.src}
-                  alt="Bishoftu landscape"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+        {/* Hero Section — discovery-focused, like About hero */}
+        <section className="relative min-h-[65vh] flex items-center justify-center pt-20">
+          <div className="absolute inset-0">
+            <img
+              src={landscapeimage.src}
+              alt="Bishoftu landscape"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 overlay-hero" />
+          </div>
+          <div className="relative z-10 px-4">
+            <div className="mx-auto flex max-w-3xl flex-col items-center text-center gap-6">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
+                Discover the Soul of Ethiopia/Bishoftu
+              </h1>
+              {/* <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl">
+                Experience the breathtaking beauty of volcanic crater lakes,
+                rich Oromo heritage, and warm Ethiopian hospitality—just 47km
+                from Addis Ababa.
+              </p> */}
+
+              {/* Discovery Search – lightweight exploration search */}
+              <DiscoverySearch
+                className="mt-2"
+                value={searchQuery}
+                onChange={(value) => setSearchQuery(value)}
+              />
             </div>
           </div>
-        </section> */}
+        </section>
+
+        {/* No Results Message */}
+        {searchQuery &&
+          filteredHotels.length === 0 &&
+          filteredAttractions.length === 0 &&
+          filteredAgencies.length === 0 && (
+            <div className="text-center py-16 text-muted-foreground">
+              No results found for "{searchQuery}"
+            </div>
+          )}
 
         {/* Featured Places */}
         <section className="py-12 md:py-24 bg-background">
@@ -245,7 +276,7 @@ export default function Home() {
             {/* Mobile: horizontal scrollable list */}
             <div className="md:hidden -mx-4 py-4 px-4">
               <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
-                {hotels.map((hotel) => (
+                {filteredHotels.map((hotel) => (
                   <div
                     key={hotel.id}
                     className="flex-shrink-0 w-[300px] snap-start"
@@ -275,7 +306,7 @@ export default function Home() {
 
             {/* Desktop: grid layout */}
             <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {hotels.map((hotel) => (
+              {filteredHotels.map((hotel) => (
                 <div
                   key={hotel.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
@@ -324,7 +355,7 @@ export default function Home() {
             {/* ✅ Mobile: horizontal scroll */}
             <div className="md:hidden -mx-4 px-4">
               <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
-                {attractions.map((item) => (
+                {filteredAttractions.map((item) => (
                   <div
                     key={item.id}
                     tabIndex={0}
@@ -352,7 +383,7 @@ export default function Home() {
 
             {/* ✅ Desktop: grid */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {attractions.map((item) => (
+              {filteredAttractions.map((item) => (
                 <div
                   key={item.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
@@ -405,7 +436,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredAgencies.map((agency) => (
+              {filteredAgencies.map((agency) => (
                 <div
                   key={agency.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
