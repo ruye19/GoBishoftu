@@ -97,7 +97,7 @@ export default function Home() {
       name: "Lake Hora",
       category: "Lake",
       description: "Famous crater lake known for Irreecha and scenic views.",
-      image: "lakkk.jpg",
+      image: "/lakkk.jpg",
       location: "Bishoftu",
       rating: 4.8,
       link: "/explore",
@@ -485,7 +485,7 @@ export default function Home() {
         </section>
 
         {/* About Us Section */}
-        <section className="py-8 flex items-center justify-center bg-background/">
+        <section className="py-8 flex items-center justify-center bg-background">
           <div className="max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
               About Us
