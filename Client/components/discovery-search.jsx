@@ -3,61 +3,52 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export function DiscoverySearch({ className, data = {} }) {
+export function DiscoverySearch({ className = "", data = {} }) {
   const { hotels = [], attractions = [], agencies = [] } = data;
+
   const [query, setQuery] = useState("");
-  const [filteredHotels, setFilteredHotels] = useState(hotels);
-  const [filteredAttractions, setFilteredAttractions] = useState(attractions);
-  const [filteredAgencies, setFilteredAgencies] = useState(agencies);
+  const [filtered, setFiltered] = useState({
+    hotels,
+    attractions,
+    agencies,
+  });
 
   const router = useRouter();
 
   useEffect(() => {
-    if (!query) {
-      setFilteredHotels(hotels);
-      setFilteredAttractions(attractions);
-      setFilteredAgencies(agencies);
+    if (!query.trim()) {
+      setFiltered({ hotels, attractions, agencies });
       return;
     }
 
     const lower = query.toLowerCase();
 
-    setFilteredHotels(
-      hotels.filter(
-        (h) =>
-          h.name.toLowerCase().includes(lower) ||
-          h.type.toLowerCase().includes(lower),
-      ),
-    );
+    const safeIncludes = (value) => value?.toLowerCase().includes(lower);
 
-    setFilteredAttractions(
-      attractions.filter(
+    setFiltered({
+      hotels: hotels.filter(
+        (h) => safeIncludes(h.name) || safeIncludes(h.type),
+      ),
+      attractions: attractions.filter(
         (a) =>
-          a.name.toLowerCase().includes(lower) ||
-          a.category.toLowerCase().includes(lower) ||
-          a.location.toLowerCase().includes(lower),
+          safeIncludes(a.name) ||
+          safeIncludes(a.category) ||
+          safeIncludes(a.location),
       ),
-    );
-
-    setFilteredAgencies(
-      agencies.filter(
-        (ag) =>
-          ag.name.toLowerCase().includes(lower) ||
-          ag.category.toLowerCase().includes(lower),
+      agencies: agencies.filter(
+        (ag) => safeIncludes(ag.name) || safeIncludes(ag.category),
       ),
-    );
+    });
   }, [query, hotels, attractions, agencies]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!query.trim()) return;
     router.push(`/search?query=${encodeURIComponent(query)}`);
   };
 
-  const renderCard = (item, type = "hotel") => (
-    <div
-      key={item.id}
-      className="flex-shrink-0 min-w-[260px] sm:min-w-[280px] bg-card rounded-xl shadow-card overflow-hidden hover:shadow-lg transition"
-    >
+  const Card = ({ item, type }) => (
+    <div className="bg-card rounded-xl shadow-card overflow-hidden hover:shadow-lg transition min-w-[260px] sm:min-w-[280px]">
       {item.image && (
         <img
           src={item.image}
@@ -65,6 +56,7 @@ export function DiscoverySearch({ className, data = {} }) {
           className="w-full h-40 object-cover"
         />
       )}
+
       <div className="p-4">
         {type !== "agency" && (
           <div className="text-sm text-primary font-semibold mb-1">
@@ -76,35 +68,38 @@ export function DiscoverySearch({ className, data = {} }) {
     </div>
   );
 
-  const renderSection = (title, items, type) => {
+  const Section = ({ title, items, type }) => {
     if (!items.length) return null;
+
     return (
       <div className="mb-6">
         <h4 className="font-semibold mb-2">{title}</h4>
 
-        {/* Mobile horizontal scroll */}
-        {/* Mobile horizontal scroll with partial peek */}
-        <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2 -ml-2">
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-2 -ml-2">
           {items.map((item) => (
             <div
-              key={item.id}
-              className="flex-shrink-0 min-w-[260px] sm:min-w-[280px] snap-start"
+              key={`${type}-${item.id}`}
+              className="flex-shrink-0 snap-start"
             >
-              {renderCard(item, type)}
+              <Card item={item} type={type} />
             </div>
           ))}
         </div>
 
-        {/* Desktop grid */}
+        {/* Desktop Grid */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {items.map((item) => renderCard(item, type))}
+          {items.map((item) => (
+            <Card key={`${type}-${item.id}`} item={item} type={type} />
+          ))}
         </div>
       </div>
     );
   };
 
   return (
-    <div className={`w-full ${className || ""}`}>
+    <div className={`w-full ${className}`}>
+      {/* Search Form */}
       <form onSubmit={handleSubmit} className="flex w-full gap-2">
         <input
           type="text"
@@ -118,7 +113,9 @@ export function DiscoverySearch({ className, data = {} }) {
             rounded-full
             border
             border-muted-foreground/30
-            bg-white dark:bg-gray-800 dark:text-white
+            bg-white
+            dark:bg-gray-800
+            dark:text-white
             shadow-sm
             placeholder:text-muted-foreground/70
             focus:outline-none
@@ -132,30 +129,39 @@ export function DiscoverySearch({ className, data = {} }) {
         <button
           type="submit"
           className="
-              px-5
-              py-3
-              rounded-full
-              bg-primary
-              text-primary-foreground
-              font-semibold
-              shadow-sm
-              hover:bg-primary/90
-              transition
-            "
+            px-5
+            py-3
+            rounded-full
+            bg-primary
+            text-primary-foreground
+            font-semibold
+            shadow-sm
+            hover:bg-primary/90
+            transition
+          "
         >
           Search
         </button>
       </form>
 
+      {/* Results */}
       {query && (
         <div className="mt-4 space-y-6 max-h-[60vh] overflow-y-auto px-2 sm:px-0">
-          {renderSection("Hotels & Resorts", filteredHotels, "hotel")}
-          {renderSection("Attractions", filteredAttractions, "attraction")}
-          {renderSection("Agencies", filteredAgencies, "agency")}
+          <Section
+            title="Hotels & Resorts"
+            items={filtered.hotels}
+            type="hotel"
+          />
+          <Section
+            title="Attractions"
+            items={filtered.attractions}
+            type="attraction"
+          />
+          <Section title="Agencies" items={filtered.agencies} type="agency" />
 
-          {!filteredHotels.length &&
-            !filteredAttractions.length &&
-            !filteredAgencies.length && (
+          {!filtered.hotels.length &&
+            !filtered.attractions.length &&
+            !filtered.agencies.length && (
               <div className="text-center text-muted-foreground py-4">
                 No results found
               </div>
