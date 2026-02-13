@@ -55,14 +55,6 @@ export default function Home() {
       image: "/comfort-guest-house.jpg",
       link: "/accommodations",
     },
-    {
-      id: 5,
-      name: "Comfort Guest House",
-      type: "Guest House",
-      description: "Affordable and cozy stay with friendly staff and services.",
-      image: "/comfort-guest-house.jpg",
-      link: "/accommodations",
-    },
   ];
   const featuredAgencies = [
     {
