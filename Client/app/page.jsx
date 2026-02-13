@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import landscapeimage from "../public/image.png";
+import { Search, MapPin, Hotel, Route } from "lucide-react";
 import { DiscoverySearch } from "@/components/discovery-search";
 import {
   MapPin,
