@@ -34,7 +34,7 @@ export default function AdminLoginPage() {
     }
 
     // Navigate to the existing admin dashboard route
-    router.push("/admin");
+    router.push("/dashboard");
   };
 
   return (
