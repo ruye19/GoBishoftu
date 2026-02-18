@@ -32,6 +32,18 @@ export default function DashboardLayout({ children }) {
 
   return (
     <div className="min-h-screen bg-muted/30 flex pt-20">
+      {/* Mobile Top Bar */}
+      <div className="fixed top-20 left-0 right-0 h-14 bg-card border-b border-border flex items-center px-4 md:hidden z-30">
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="p-2 rounded-lg hover:bg-muted"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+
+        <span className="ml-5 font-bold">Admin Dashboard</span>
+      </div>
+
       {/* Sidebar */}
       <aside
         className={cn(
@@ -66,7 +78,9 @@ export default function DashboardLayout({ children }) {
                 href={link.path}
                 className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors",
-                  pathname.startsWith(link.path)
+                  pathname === link.path ||
+                    (pathname.startsWith(link.path) &&
+                      link.path !== "/dashboard")
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   !sidebarOpen && "md:justify-center",
@@ -105,7 +119,7 @@ export default function DashboardLayout({ children }) {
       {/* Main Content */}
       <main
         className={cn(
-          "flex-1 transition-all duration-300",
+          "flex-1 transition-all duration-300 pt-14 md:pt-0",
           "ml-0 md:ml-64",
           !sidebarOpen && "md:ml-20",
         )}
