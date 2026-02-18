@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Eye, Pencil, Plus, Trash2 } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -346,121 +347,194 @@ export default function DashboardAccommodationsPage() {
           </p>
         </div>
 
-        <div className="p-6">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="text-left text-sm text-muted-foreground">
-                  <th className="pb-3 font-medium">Name</th>
-                  <th className="pb-3 font-medium">Type</th>
-                  <th className="pb-3 font-medium">Location</th>
-                  <th className="pb-3 font-medium">Price / Night</th>
-                  <th className="pb-3 font-medium">Status</th>
-                  <th className="pb-3 font-medium text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {accommodations.map((item) => (
-                  <tr key={item.id} className="align-middle">
-                    <td className="py-4 font-medium text-foreground">
-                      {item.name}
-                    </td>
-                    <td className="py-4 text-sm text-muted-foreground">
-                      {item.type}
-                    </td>
-                    <td className="py-4 text-sm text-muted-foreground">
-                      {item.location}
-                    </td>
-                    <td className="py-4 text-sm text-muted-foreground">
-                      ${item.pricePerNight}
-                    </td>
-                    <td className="py-4">
-                      <span
-                        className={cn(
-                          "text-xs px-2 py-1 rounded-full",
-                          statusPillClasses(item.status),
-                        )}
-                      >
-                        {item.status}
-                      </span>
-                    </td>
-                    <td className="py-4">
-                      <div className="flex justify-end gap-1">
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => openView(item)}
-                          aria-label={`View ${item.name}`}
-                        >
-                          <Eye className="w-4 h-4 text-muted-foreground" />
-                        </Button>
-
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => openEdit(item)}
-                          aria-label={`Edit ${item.name}`}
-                        >
-                          <Pencil className="w-4 h-4 text-muted-foreground" />
-                        </Button>
-
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="icon"
-                              aria-label={`Delete ${item.name}`}
-                            >
-                              <Trash2 className="w-4 h-4 text-destructive" />
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>
-                                Delete accommodation?
-                              </AlertDialogTitle>
-                              <AlertDialogDescription>
-                                This will remove <b>{item.name}</b> from the
-                                list. This is a mock UI action (local state
-                                only).
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>Cancel</AlertDialogCancel>
-                              <AlertDialogAction
-                                onClick={() => deleteAccommodation(item.id)}
-                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                              >
-                                Delete
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-
-                {accommodations.length === 0 && (
-                  <tr>
-                    <td
-                      colSpan={4}
-                      className="py-10 text-center text-sm text-muted-foreground"
+        {/* Scrollable container */}
+        {/* Table for Desktop */}
+        <div className="hidden md:block p-6 overflow-x-auto">
+          <table className="w-full min-w-[700px]">
+            <thead>
+              <tr className="text-left text-sm text-muted-foreground">
+                <th className="pb-3 font-medium">Name</th>
+                <th className="pb-3 font-medium">Type</th>
+                <th className="pb-3 font-medium">Location</th>
+                <th className="pb-3 font-medium">Price / Night</th>
+                <th className="pb-3 font-medium">Status</th>
+                <th className="pb-3 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border">
+              {accommodations.map((item) => (
+                <tr key={item.id}>
+                  <td className="py-4 font-medium text-foreground">
+                    {item.name}
+                  </td>
+                  <td className="py-4 text-sm text-muted-foreground">
+                    {item.type}
+                  </td>
+                  <td className="py-4 text-sm text-muted-foreground">
+                    {item.location}
+                  </td>
+                  <td className="py-4 text-sm text-muted-foreground">
+                    ${item.pricePerNight}
+                  </td>
+                  <td className="py-4">
+                    <span
+                      className={cn(
+                        "text-xs px-2 py-1 rounded-full",
+                        statusPillClasses(item.status),
+                      )}
                     >
-                      No accommodations yet. Click “Add Accommodation” to create
-                      one.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="py-4">
+                    {/* the break point */}
+                    <div className="flex justify-end gap-1">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => openView(item)}
+                        aria-label={`View ${item.name}`}
+                      >
+                        <Eye className="w-4 h-4 text-muted-foreground" />
+                      </Button>
+
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => openEdit(item)}
+                        aria-label={`Edit ${item.name}`}
+                      >
+                        <Pencil className="w-4 h-4 text-muted-foreground" />
+                      </Button>
+
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            aria-label={`Delete ${item.name}`}
+                          >
+                            <Trash2 className="w-4 h-4 text-destructive" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>
+                              Delete accommodation?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This will remove <b>{item.name}</b> from the list.
+                              This is a mock UI action (local state only).
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => deleteAccommodation(item.id)}
+                              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                            >
+                              Delete
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+
+              {accommodations.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={4}
+                    className="py-10 text-center text-sm text-muted-foreground"
+                  >
+                    No accommodations yet. Click “Add Accommodation” to create
+                    one.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
 
+      {/* Cards for Mobile */}
+      <div className="bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 max-w-full">
+        {accommodations.map((item) => (
+          <div
+            key={item.id}
+            className="border border-border rounded-xl p-4 shadow-sm"
+          >
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="font-medium text-foreground">{item.name}</h3>
+              <span
+                className={cn(
+                  "text-xs px-2 py-1 rounded-full",
+                  statusPillClasses(item.status),
+                )}
+              >
+                {item.status}
+              </span>
+            </div>
+            <p className="text-sm text-muted-foreground">Type: {item.type}</p>
+            <p className="text-sm text-muted-foreground">
+              Location: {item.location}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Price / Night: ${item.pricePerNight}
+            </p>
+            <div className="flex justify-end gap-2 mt-2">
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                onClick={() => openView(item)}
+              >
+                <Eye className="w-4 h-4 text-muted-foreground" />
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                onClick={() => openEdit(item)}
+              >
+                <Pencil className="w-4 h-4 text-muted-foreground" />
+              </Button>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button type="button" variant="ghost" size="icon">
+                    <Trash2 className="w-4 h-4 text-destructive" />
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Delete accommodation?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This will remove <b>{item.name}</b> from the list. This is
+                      a mock UI action (local state only).
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction
+                      onClick={() => deleteAccommodation(item.id)}
+                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Add/Edit Dialog */}
       {/* Add/Edit Dialog */}
       <Dialog
         open={dialogOpen}
@@ -469,7 +543,7 @@ export default function DashboardAccommodationsPage() {
           if (!v) resetDialog();
         }}
       >
-        <DialogContent className="sm:max-w-[520px]">
+        <DialogContent className="w-full max-w-sm sm:max-w-[520px] p-4 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{dialogTitle}</DialogTitle>
             <DialogDescription>{dialogDescription}</DialogDescription>
@@ -486,7 +560,7 @@ export default function DashboardAccommodationsPage() {
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, name: e.target.value }))
                   }
-                  placeholder="e.g. Kuriftu Resort & Spa"
+                  placeholder="Kuriftu Resort & Spa"
                   autoFocus={!readOnly}
                   disabled={readOnly}
                 />
@@ -499,12 +573,13 @@ export default function DashboardAccommodationsPage() {
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, location: e.target.value }))
                   }
-                  placeholder="e.g. Bishoftu / Lake Bishoftu"
+                  placeholder="Bishoftu / Lake Bishoftu"
                   disabled={readOnly}
                 />
               </div>
             </div>
 
+            {/* Type, Price, Rating */}
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="space-y-2">
                 <Label>Type</Label>
@@ -566,111 +641,61 @@ export default function DashboardAccommodationsPage() {
             </div>
 
             {/* Media & links */}
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="image">Image URL</Label>
-                <Input
-                  id="image"
-                  value={form.image}
-                  onChange={(e) =>
-                    setForm((prev) => ({ ...prev, image: e.target.value }))
-                  }
-                  placeholder="/lake-bishoftu.jpg"
-                  disabled={readOnly}
+            <div className="space-y-2">
+              <Label htmlFor="image">Upload Image</Label>
+              <Input
+                id="image"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) setForm((prev) => ({ ...prev, imageFile: file }));
+                }}
+                disabled={readOnly}
+              />
+              {form.imageFile && (
+                <img
+                  src={URL.createObjectURL(form.imageFile)}
+                  alt="Preview"
+                  className="mt-2 h-32 w-full object-cover rounded-md"
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="bookingUrl">Booking Link</Label>
-                <Input
-                  id="bookingUrl"
-                  value={form.bookingUrl}
-                  onChange={(e) =>
-                    setForm((prev) => ({
-                      ...prev,
-                      bookingUrl: e.target.value,
-                    }))
-                  }
-                  placeholder="https://www.booking.com/..."
-                  disabled={readOnly}
-                />
-              </div>
+              )}
             </div>
 
-            {/* Description & amenities */}
+            <div className="space-y-2">
+              <Label htmlFor="bookingUrl">Booking Link</Label>
+              <Input
+                id="bookingUrl"
+                value={form.bookingUrl}
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, bookingUrl: e.target.value }))
+                }
+                placeholder="https://www.booking.com/..."
+                disabled={readOnly}
+              />
+            </div>
+
+            {/* Description */}
             <div className="space-y-2">
               <Label htmlFor="description">Description</Label>
-              <Input
+              <Textarea
                 id="description"
                 value={form.description}
                 onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    description: e.target.value,
-                  }))
+                  setForm((prev) => ({ ...prev, description: e.target.value }))
                 }
                 placeholder="Short description visitors will see."
                 disabled={readOnly}
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="amenities">Services / Amenities</Label>
-              <Input
-                id="amenities"
-                value={form.amenitiesText}
-                onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    amenitiesText: e.target.value,
-                  }))
-                }
-                placeholder="Pool, WiFi, Restaurant, Spa..."
-                disabled={readOnly}
-              />
-              <p className="text-xs text-muted-foreground">
-                Separate items with commas. These map to the badges on the
-                public accommodations page.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <Label>Status</Label>
-              <Select
-                value={form.status}
-                onValueChange={(value) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    status: /** @type {AccommodationStatus} */ (value),
-                  }))
-                }
-                disabled={readOnly}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {STATUS_OPTIONS.map((s) => (
-                    <SelectItem key={s} value={s}>
-                      {s}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <DialogFooter className="gap-2 sm:gap-0">
+            {/* Footer Buttons */}
+            <div className="flex justify-end gap-3 mt-4">
               <Button type="button" variant="outline" onClick={resetDialog}>
                 {readOnly ? "Close" : "Cancel"}
               </Button>
-              {!readOnly && (
-                <Button
-                  type="submit"
-                  disabled={!form.name.trim() || !form.location.trim()}
-                >
-                  {mode === "add" ? "Add Accommodation" : "Save Changes"}
-                </Button>
-              )}
-            </DialogFooter>
+              {!readOnly && <Button type="submit">Save</Button>}
+            </div>
           </form>
         </DialogContent>
       </Dialog>

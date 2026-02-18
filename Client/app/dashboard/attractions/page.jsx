@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Eye, Pencil, Plus, Trash2 } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -408,6 +409,7 @@ export default function DashboardAttractionsPage() {
       </div>
 
       {/* Add/Edit/View Dialog */}
+      {/* Add/Edit/View Dialog */}
       <Dialog
         open={dialogOpen}
         onOpenChange={(v) => {
@@ -415,13 +417,14 @@ export default function DashboardAttractionsPage() {
           if (!v) resetDialog();
         }}
       >
-        <DialogContent className="sm:max-w-[540px]">
+        <DialogContent className="w-full max-w-sm sm:max-w-[540px] p-4 max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{dialogTitle}</DialogTitle>
             <DialogDescription>{dialogDescription}</DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Name & Category */}
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -436,6 +439,7 @@ export default function DashboardAttractionsPage() {
                   disabled={readOnly}
                 />
               </div>
+
               <div className="space-y-2">
                 <Label htmlFor="category">Category</Label>
                 <Input
@@ -450,6 +454,7 @@ export default function DashboardAttractionsPage() {
               </div>
             </div>
 
+            {/* Location */}
             <div className="space-y-2">
               <Label htmlFor="location">Location</Label>
               <Input
@@ -463,35 +468,43 @@ export default function DashboardAttractionsPage() {
               />
             </div>
 
+            {/* Upload Image */}
             <div className="space-y-2">
-              <Label htmlFor="image">Image URL</Label>
+              <Label htmlFor="image">Upload Image</Label>
               <Input
                 id="image"
-                value={form.image}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, image: e.target.value }))
-                }
-                placeholder="/lake-hora.jpg"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) setForm((prev) => ({ ...prev, imageFile: file }));
+                }}
                 disabled={readOnly}
               />
+              {form.imageFile && (
+                <img
+                  src={URL.createObjectURL(form.imageFile)}
+                  alt="Preview"
+                  className="mt-2 h-32 w-full object-cover rounded-md"
+                />
+              )}
             </div>
 
+            {/* Description */}
             <div className="space-y-2">
               <Label htmlFor="description">Description</Label>
-              <Input
+              <Textarea
                 id="description"
                 value={form.description}
                 onChange={(e) =>
-                  setForm((prev) => ({
-                    ...prev,
-                    description: e.target.value,
-                  }))
+                  setForm((prev) => ({ ...prev, description: e.target.value }))
                 }
                 placeholder="Short description visitors will see."
                 disabled={readOnly}
               />
             </div>
 
+            {/* Entry Fee & Status */}
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="entryFee">Entry Fee (ETB)</Label>
@@ -515,10 +528,7 @@ export default function DashboardAttractionsPage() {
                 <Select
                   value={form.status}
                   onValueChange={(value) =>
-                    setForm((prev) => ({
-                      ...prev,
-                      status: /** @type {AttractionStatus} */ (value),
-                    }))
+                    setForm((prev) => ({ ...prev, status: value }))
                   }
                   disabled={readOnly}
                 >
@@ -536,6 +546,7 @@ export default function DashboardAttractionsPage() {
               </div>
             </div>
 
+            {/* Footer Buttons */}
             <DialogFooter className="gap-2 sm:gap-0">
               <Button type="button" variant="outline" onClick={resetDialog}>
                 {readOnly ? "Close" : "Cancel"}
