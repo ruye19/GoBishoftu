@@ -1,173 +1,133 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Search, MapPin, Hotel, Route } from "lucide-react";
 
-export function DiscoverySearch({ className = "", data = {} }) {
-  const { hotels = [], attractions = [], agencies = [] } = data;
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-  const [query, setQuery] = useState("");
-  const [filtered, setFiltered] = useState({
-    hotels,
-    attractions,
-    agencies,
-  });
+const SUGGESTIONS = [
+  { label: "Lakes in Bishoftu", route: "/explore?category=lake" },
+  { label: "Luxury resorts & spas", route: "/accommodations?type=resort" },
+  {
+    label: "Guest houses with lake views",
+    route: "/accommodations?type=guest-house",
+  },
+  {
+    label: "Cultural experiences & markets",
+    route: "/explore?category=culture",
+  },
+  { label: "Hot springs & wellness", route: "/explore?category=wellness" },
+];
 
+const QUICK_CHIPS = [
+  { icon: MapPin, label: "Lakes", route: "/explore?category=lake" },
+  { icon: Hotel, label: "Hotels & Resorts", route: "/accommodations" },
+  { icon: Route, label: "Experiences", route: "/explore" },
+];
+
+export function DiscoverySearch({ className }) {
   const router = useRouter();
+  const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    if (!query.trim()) {
-      setFiltered({ hotels, attractions, agencies });
+  const filteredSuggestions =
+    query.trim().length < 2
+      ? []
+      : SUGGESTIONS.filter((item) =>
+          item.label.toLowerCase().includes(query.toLowerCase()),
+        ).slice(0, 4);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const trimmed = query.trim();
+
+    if (!trimmed) {
+      router.push("/explore");
       return;
     }
 
-    const lower = query.toLowerCase();
+    // Simple routing heuristic – exploration first.
+    const lower = trimmed.toLowerCase();
+    if (
+      lower.includes("hotel") ||
+      lower.includes("resort") ||
+      lower.includes("stay")
+    ) {
+      router.push(`/accommodations?q=${encodeURIComponent(trimmed)}`);
+    } else {
+      router.push(`/explore?q=${encodeURIComponent(trimmed)}`);
+    }
+  }
 
-    const safeIncludes = (value) => value?.toLowerCase().includes(lower);
+  function handleSuggestionClick(item) {
+    router.push(item.route);
+  }
 
-    setFiltered({
-      hotels: hotels.filter(
-        (h) => safeIncludes(h.name) || safeIncludes(h.type),
-      ),
-      attractions: attractions.filter(
-        (a) =>
-          safeIncludes(a.name) ||
-          safeIncludes(a.category) ||
-          safeIncludes(a.location),
-      ),
-      agencies: agencies.filter(
-        (ag) => safeIncludes(ag.name) || safeIncludes(ag.category),
-      ),
-    });
-  }, [query, hotels, attractions, agencies]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!query.trim()) return;
-    router.push(`/search?query=${encodeURIComponent(query)}`);
-  };
-
-  const Card = ({ item, type }) => (
-    <div className="bg-card rounded-xl shadow-card overflow-hidden hover:shadow-lg transition min-w-[260px] sm:min-w-[280px]">
-      {item.image && (
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-40 object-cover"
-        />
-      )}
-
-      <div className="p-4">
-        {type !== "agency" && (
-          <div className="text-sm text-primary font-semibold mb-1">
-            {item.type || item.category}
-          </div>
-        )}
-        <div className="font-bold text-lg">{item.name}</div>
-      </div>
-    </div>
-  );
-
-  const Section = ({ title, items, type }) => {
-    if (!items.length) return null;
-
-    return (
-      <div className="mb-6">
-        <h4 className="font-semibold mb-2">{title}</h4>
-
-        {/* Mobile Horizontal Scroll */}
-        <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-2 -ml-2">
-          {items.map((item) => (
-            <div
-              key={`${type}-${item.id}`}
-              className="flex-shrink-0 snap-start"
-            >
-              <Card item={item} type={type} />
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {items.map((item) => (
-            <Card key={`${type}-${item.id}`} item={item} type={type} />
-          ))}
-        </div>
-      </div>
-    );
-  };
+  function handleChipClick(chip) {
+    router.push(chip.route);
+  }
 
   return (
-    <div className={`w-full ${className}`}>
-      {/* Search Form */}
-      <form onSubmit={handleSubmit} className="flex w-full gap-2">
-        <input
-          type="text"
-          placeholder="Search hotels, attractions, agencies..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="
-            flex-1
-            px-5
-            py-3
-            rounded-full
-            border
-            border-muted-foreground/30
-            bg-white
-            dark:bg-gray-800
-            dark:text-white
-            shadow-sm
-            placeholder:text-muted-foreground/70
-            focus:outline-none
-            focus:ring-2
-            focus:ring-primary
-            focus:border-primary
-            transition
-          "
-        />
-
-        <button
+    <div className={cn("w-full max-w-2xl mx-auto py-5", className)}>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-3 rounded-full bg-card/95 p-1.5 shadow-card backdrop-blur-sm sm:flex-row sm:items-center"
+      >
+        <div className="flex items-center gap-2 rounded-full bg-background px-3 py-1.5 flex-1">
+          <Search className="h-4 w-4 text-muted-foreground" />
+          <Input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search places, hotels, transport, attractions…"
+            className="border-none bg-transparent px-0 shadow-none focus-visible:ring-0"
+          />
+        </div>
+        <Button
           type="submit"
-          className="
-            px-5
-            py-3
-            rounded-full
-            bg-primary
-            text-primary-foreground
-            font-semibold
-            shadow-sm
-            hover:bg-primary/90
-            transition
-          "
+          size="lg"
+          className="w-full rounded-full sm:w-auto"
         >
-          Search
-        </button>
+          Explore Bishoftu
+        </Button>
       </form>
 
-      {/* Results */}
-      {query && (
-        <div className="mt-4 space-y-6 max-h-[60vh] overflow-y-auto px-2 sm:px-0">
-          <Section
-            title="Hotels & Resorts"
-            items={filtered.hotels}
-            type="hotel"
-          />
-          <Section
-            title="Attractions"
-            items={filtered.attractions}
-            type="attraction"
-          />
-          <Section title="Agencies" items={filtered.agencies} type="agency" />
-
-          {!filtered.hotels.length &&
-            !filtered.attractions.length &&
-            !filtered.agencies.length && (
-              <div className="text-center text-muted-foreground py-4">
-                No results found
-              </div>
-            )}
+      {filteredSuggestions.length > 0 && (
+        <div className="mt-2 rounded-2xl bg-card/95 p-2 shadow-card backdrop-blur-sm">
+          <p className="px-2 pb-1 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            Suggestions
+          </p>
+          <ul className="space-y-1">
+            {filteredSuggestions.map((item) => (
+              <li key={item.label}>
+                <button
+                  type="button"
+                  onClick={() => handleSuggestionClick(item)}
+                  className="w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-muted/80"
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
+
+      {/* <div className="mt-3 flex flex-wrap justify-center gap-2">
+        {QUICK_CHIPS.map(({ icon: Icon, label, route }) => (
+          <button
+            key={label}
+            type="button"
+            onClick={() => handleChipClick({ route })}
+            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+          >
+            <Icon className="h-3.5 w-3.5" />
+            <span>{label}</span>
+          </button>
+        ))}
+      </div> */}
     </div>
   );
 }
