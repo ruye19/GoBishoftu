@@ -423,6 +423,7 @@ export default function Home() {
         </section>
 
         {/* top tour and travel agencies card */}
+        {/* Agencies Section */}
         <section className="py-8 md:py-12 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -434,8 +435,34 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {filteredAgencies.map((agency) => (
+            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
+              {featuredAgencies.map((agency) => (
+                <div
+                  key={agency.id}
+                  className="flex-shrink-0 min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift"
+                >
+                  <img
+                    src={agency.image || "/placeholder.svg"}
+                    alt={agency.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      {agency.name}
+                    </h3>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      {agency.category}
+                    </div>
+                    <div className="text-accent font-semibold mb-4">
+                      ★ {agency.rating}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden md:grid md:grid-cols-3 gap-8">
+              {featuredAgencies.map((agency) => (
                 <div
                   key={agency.id}
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
@@ -446,26 +473,15 @@ export default function Home() {
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <div className="text-sm font-semibold text-accent">
-                        {agency.category}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-accent">★</span>
-                        <span className="text-sm font-semibold text-foreground">
-                          {agency.rating}
-                        </span>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-2">
                       {agency.name}
                     </h3>
-                    <Link
-                      href={agency.link}
-                      className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
-                    >
-                      Visit Agency
-                    </Link>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      {agency.category}
+                    </div>
+                    <div className="text-accent font-semibold mb-4">
+                      ★ {agency.rating}
+                    </div>
                   </div>
                 </div>
               ))}
