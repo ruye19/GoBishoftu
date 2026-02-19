@@ -9,14 +9,11 @@
         "or": "Mucaa Uumamaa"
       }
     },
-    "rating": 4.9,
-    "pricePerNight": 0,
-    "image": "/lake bishoftu.jpg",
+    "image": "/lakkk.jpg",
     "location": "Central Bishoftu",
     "status": "Published",
-    "updatedAtISO": "2026-01-01T00:00:00.000Z",
-    "bookingUrl": "",
     "amenities": ["Scenic Views", "Cultural Events", "Photography Spot"],
+    "contact": null,
     "translations": {
       "en": {
         "name": "Lake Hora",
@@ -45,142 +42,191 @@
         "or": "Mucaa Uumamaa"
       }
     },
-    "rating": 4.8,
-    "pricePerNight": 0,
     "image": "/lake babogaya.jpg",
     "location": "North Bishoftu",
     "status": "Published",
-    "updatedAtISO": "2026-01-01T00:00:00.000Z",
-    "bookingUrl": "",
-    "amenities": ["Peaceful", "Birdwatching", "Sunset Views"],
+    "amenities": [],
+    "contact": null,
     "translations": {
       "en": {
         "name": "Lake Babogaya",
-        "description": "Peaceful freshwater lake ideal for relaxation, birdwatching, and enjoying scenic sunsets.",
-        "details": "Known for tranquility and migratory bird sightings."
+        "description": "Peaceful freshwater lake ideal for relaxation.",
+        "details": "Lake Babogaya is a scenic freshwater lake north of Bishoftu. Known for birdwatching and sunset views, it’s perfect for nature lovers."
       },
       "am": {
         "name": "ሐይቁ ባቦጋያ",
-        "description": "የሰላም ውኃ ሐይቅ ለማረፊያ፣ የወፎች መመልከት እና ውብ መሸዋዎች የተሻለ።",
-        "details": "በጸጥታ እና የወለላ ወፎች ማየት የታወቀ።"
+        "description": "የሰላም ውኃ ሐይቅ ለማረፊያ።",
+        "details": "ሐይቁ ባቦጋያ በቢሾፍቱ ሰሜን የሚገኝ ትልቅ የውኃ ሐይቅ ነው። የወፎች መመልከትና የማታ ምስሎች ዕይታ ለፍቅር የተሻለ ቦታ ነው።"
       },
       "or": {
         "name": "Lake Babogaya",
-        "description": "Laga bishaan qulqulluu tasgabbii qabu, ilaalcha simbirroo fi galgala aduu bareedaa ilaaluf mijataa.",
-        "details": "Beekamtii tasgabbii fi simbirroota imalaa ti."
+        "description": "Laga bishaan qulqulluu tasgabbii qabu.",
+        "details": "Laga Babogaya Bishoftu kaabaa jira. Laga bishaan qulqulluu fi bakka simbirroota ilaaluuf beekamaa dha. Namoota uumama jaalattan biratti mijataa dha."
       }
     }
   },
   {
     "id": "3",
-    "slug": "lake-kuriftu",
+    "slug": "lake-arsedi",
     "type": {
       "translations": {
-        "en": "Resort",
-        "am": "ሪዞርት",
-        "or": "Tajaajila Ciisichaa"
+        "en": "Natural Wonder",
+        "am": "ተፈጥሮ ምርጥ ቦታ",
+        "or": "Mucaa Uumamaa"
       }
     },
-    "rating": 4.7,
-    "pricePerNight": 180,
-    "image": "/kuriftu-resort.jpg",
-    "location": "East Bishoftu",
+    "image": "/arsedi.jpg",
+    "location": "South Bishoftu",
     "status": "Published",
-    "updatedAtISO": "2026-01-01T00:00:00.000Z",
-    "bookingUrl": "https://www.kurifturesort.com",
-    "amenities": ["Resort Facilities", "Spa", "Luxury Stay", "Restaurant"],
+    "amenities": [],
+    "contact": null,
     "translations": {
       "en": {
-        "name": "Kuriftu Resort & Spa",
-        "description": "Luxury lakeside destination blending natural beauty with leisure and resort facilities.",
-        "details": "Offers spa, fine dining, and leisure activities."
+        "name": "Lake Arsedi",
+        "description": "Historic crater lake with steep surroundings.",
+        "details": "Lake Arsedi is a crater lake in southern Bishoftu with steep slopes around it. Ideal for hiking, photography, and enjoying scenic views."
       },
       "am": {
-        "name": "ኩሪፍቱ ሪዞርት እና ስፓ",
-        "description": "ለውብነት እና ምቹነት በተለያዩ አገልግሎቶች የተዋቀረ የሐይቅ አጠገብ ሪዞርት።",
-        "details": "ስፓ፣ የግል ምግብ እና መዝናኛ እንቅስቃሴዎች ይሰጣሉ።"
+        "name": "ሐይቁ አርሴዲ",
+        "description": "ታሪካዊ ክረትር ሐይቅ ከፍተኛ ቦታዎች ጋር።",
+        "details": "ሐይቁ አርሴዲ በቢሾፍቱ ደቡብ ያለ ትልቅ ክረትር ሐይቅ ነው። ለመራመድ፣ ለፎቶግራፊ እና ለእይታዎች ተስማሚ ቦታ ነው።"
       },
       "or": {
-        "name": "Kuriftu Resort & Spa",
-        "description": "Bakki ciisichaa naannoo laga kan tajaajila fi bareedina uumamaa waliin qindaa’e.",
-        "details": "Spa, nyaata gaarii fi sochii bashannanaa ni kenna."
+        "name": "Lake Arsedi",
+        "description": "Laga crater seenaa qabu, daandii fiigichaa fi suura kaasuuf mijataa.",
+        "details": "Laga Arsedi Bishoftu kibbaatti argama, daandii fiigichaa fi suura kaasuuf mijataa dha. Naannoo isaa cimaan jiru."
       }
     }
   },
   {
     "id": "4",
-    "slug": "local-market-cultural-tour",
+    "slug": "lake-chelekleka",
     "type": {
       "translations": {
-        "en": "Cultural Site",
-        "am": "ባህላዊ ቦታ",
-        "or": "Bakka Aadaa"
+        "en": "Natural Wonder",
+        "am": "ተፈጥሮ ምርጥ ቦታ",
+        "or": "Mucaa Uumamaa"
       }
     },
-    "rating": 4.7,
-    "pricePerNight": 0,
-    "image": "/local-market-cultural-tour.jpg",
-    "location": "Bishoftu Town Center",
+    "image": "/chelaleka.jpg",
+    "location": "West Bishoftu",
     "status": "Published",
-    "updatedAtISO": "2026-01-01T00:00:00.000Z",
-    "bookingUrl": "",
-    "amenities": ["Local Crafts", "Guided Tour", "Shopping"],
+    "amenities": [],
+    "contact": null,
     "translations": {
       "en": {
-        "name": "Local Market Cultural Tour",
-        "description": "Explore traditional crafts, local products, and authentic Ethiopian culture.",
-        "details": "Guided tours available for cultural immersion."
+        "name": "Lake Chelekleka",
+        "description": "Shallow seasonal wetland famous for migratory birds.",
+        "details": "Lake Chelekleka is a shallow seasonal lake west of Bishoftu, known for flamingos, pelicans, and other migratory birds."
       },
       "am": {
-        "name": "የአካባቢ ገበያ ባህላዊ ጉብኝት",
-        "description": "ባህላዊ እና የኢትዮጵያ ምርቶችን ያሳዩ እና ባህላዊ ባህል ያማከሩ።",
-        "details": "ለባህላዊ ተሞክሮ መሪ ጉብኝት ይሰጣል።"
+        "name": "ሐይቁ ቼሌክሌካ",
+        "description": "የወለላ ወፎችን የሚያሳይ ዝቅተኛ የወቅታዊ ሐይቅ።",
+        "details": "ሐይቁ ቼሌክሌካ በቢሾፍቱ ምዕራብ ያለ ዝቅተኛ የወቅታዊ ሐይቅ ነው። ፍላሚንጎ ፣ ፔሊካንና ሌሎች ወፎች እዚህ ላይ ይገኛሉ።"
       },
       "or": {
-        "name": "Local Market Cultural Tour",
-        "description": "Aadaa fi oomisha naannoo beekamaa, akkasumas aadaa dhugaa Itoophiyaa baradhu.",
-        "details": "Daawwannaa qajeeltoo aadaa fi aadaa dhugaa irratti ni kennama."
+        "name": "Lake Chelekleka",
+        "description": "Laga shalloo yeroo muraasaa kan simbirroo imaluuf beekamu.",
+        "details": "Laga Chelekleka Bishoftu dhiyaa jiru, flamingoo, pelikaan fi simbirroota imaluuf beekamaa dha."
       }
     }
   },
   {
     "id": "5",
+    "slug": "local-market-cultural-tour",
+    "type": {
+      "translations": {
+        "en": "Cultural Site",
+        "am": "ባህላዊ ቦታ",
+        "or": "Bakkee Aadaa"
+      }
+    },
+    "image": "/local-market-cultural-tour.jpg",
+    "location": "Bishoftu Town Center",
+    "status": "Published",
+    "amenities": [],
+    "contact": null,
+    "translations": {
+      "en": {
+        "name": "Local Market Cultural Tour",
+        "description": "Authentic Ethiopian market experience with local goods.",
+        "details": "Explore traditional crafts, local products, and authentic Ethiopian culture. Interact with local artisans and learn about traditional practices."
+      },
+      "am": {
+        "name": "የአካባቢ ገበያ ባህላዊ ጉብኝት",
+        "description": "ባህላዊ እና የኢትዮጵያ ምርቶች የተሞላ ተሞክሮ።",
+        "details": "ባህላዊ እና የኢትዮጵያ ምርቶችን ያሳዩ እና ከአካባቢ አርቲስቶች ጋር ይገናኙ።"
+      },
+      "or": {
+        "name": "Local Market Cultural Tour",
+        "description": "Aadaa fi oomisha naannoo beekamaa baradhu.",
+        "details": "Aadaa fi oomisha naannoo beekamaa baradhu, akkasumas aadaa dhugaa Itoophiyaa baradhu."
+      }
+    }
+  },
+  {
+    "id": "6",
     "slug": "bishoftu-tour-guides",
     "type": {
       "translations": {
         "en": "Travel Agent",
-        "am": "የጉዞ ወኪል",
-        "or": "Waliigala Imalaa"
+        "am": "Ogeessa Imalaa",
+        "or": "Ogeeyyii Imalaa"
       }
     },
-    "rating": 5.0,
-    "pricePerNight": 0,
     "image": "/bishoftu-adventures.jpg",
     "location": "Bishoftu",
-    "contact": "guides@gobisoftu.local",
     "status": "Published",
-    "updatedAtISO": "2026-01-01T00:00:00.000Z",
-    "bookingUrl": "",
-    "amenities": [
-      "Guided Tours",
-      "Local Experiences",
-      "Customized Itineraries"
-    ],
+    "amenities": [],
+    "contact": "guides@gobisoftu.local",
     "translations": {
       "en": {
         "name": "Bishoftu Tour Guides Association",
-        "description": "Professional local guides for authentic Bishoftu experiences.",
-        "details": "Experienced guides offering personalized tours including cultural immersion and adventure hikes."
+        "description": "Professional local guides for authentic experiences.",
+        "details": "Experienced guides offering personalized tours including cultural immersion, adventure hikes, and historical site visits."
       },
       "am": {
         "name": "የቢሾፍቱ መሪዎች ማህበር",
-        "description": "ለቢሾፍቱ እውነተኛ ልምዶች የተሰሩ ባለሙያ መሪዎች።",
-        "details": "ባለሙያ መሪዎች ባህላዊ እና ግል ልምዶች የተሟላ ጉዞ ይሰጣሉ።"
+        "description": "ባለሙያ መሪዎች ለባህላዊ ተግባር።",
+        "details": "ባለሙያ መሪዎች የግል ጉዞዎችን እና ባህላዊ ስራዎችን ያቀርባሉ።"
       },
       "or": {
         "name": "Bishoftu Tour Guides Association",
-        "description": "Tajaajila gosa Bishoftu dhugaa kennuuf qajeeltoota biyya keessaa.",
-        "details": "Qajeeltoonni muuxannoo qabu daawwannaa namoomaa, aadaa fi daandii seenaa ni kennu."
+        "description": "Ogeeyyii naannoo beekamaa hojii dhugaa waliin qindeessu.",
+        "details": "Ogeeyyii tajaajila dhuunfaa, bashannana fi bakka seenaa waliin qindeessu."
+      }
+    }
+  },
+  {
+    "id": "7",
+    "slug": "ethiopia-adventure-travel-co",
+    "type": {
+      "translations": {
+        "en": "Travel Agent",
+        "am": "Ogeessa Imalaa",
+        "or": "Ogeeyyii Imalaa"
+      }
+    },
+    "image": "/EthiopiaAdventureTravelCo.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "amenities": [],
+    "contact": "info@ethiopiaadventure.com",
+    "translations": {
+      "en": {
+        "name": "Ethiopia Adventure Travel Co.",
+        "description": "Specialized adventure tour operator.",
+        "details": "Offering customized packages including mountain expeditions, cultural tours, and luxury experiences."
+      },
+      "am": {
+        "name": "የኢትዮጵያ የጉዞ አገልግሎት ኩባንያ",
+        "description": "ባህላዊ ጉዞ እና ተስማሚ አገልግሎት።",
+        "details": "በተለያዩ ጉዞ ጥቅሎች የተሞላ ፕላን ያቀርባል።"
+      },
+      "or": {
+        "name": "Ethiopia Adventure Travel Co.",
+        "description": "Ogeeyyii bashannanaa fi imalaa adda addaa.",
+        "details": "Bakka fiigichaa, aadaa fi bashannanaa adda addaa qopheessu."
       }
     }
   }

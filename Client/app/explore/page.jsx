@@ -102,8 +102,12 @@ export default function ExplorePage() {
                   className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
                 >
                   <img
-                    src={item.image || "/placeholder.svg"}
+                    src={encodeURI(item.image || "/placeholder.svg")}
                     alt={item.translations[lang].name}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/placeholder.jpg";
+                    }}
                     className="w-full h-48 object-cover"
                   />
                   <div className="p-6">
@@ -175,8 +179,12 @@ export default function ExplorePage() {
                     className="bg-card rounded-xl p-6 shadow-card hover-lift"
                   >
                     <img
-                      src={agent.image || "/placeholder.svg"}
+                      src={encodeURI(agent.image || "/placeholder.svg")}
                       alt={agent.translations[lang].name}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "/placeholder.jpg";
+                      }}
                       className="w-full h-40 object-cover rounded-lg mb-4"
                     />
                     <h3 className="text-lg font-bold text-foreground mb-2">
