@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { LanguageProvider } from "@/app/context/LanguageContext";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -34,11 +35,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${_geist.className} font-sans antialiased overflow-x-hidden`}>
-        <Navigation />
-        <main className="pb-20 lg:pb-0">{children}</main>
-        <Footer />
-        <Analytics />
+      <body
+        className={`${_geist.className} font-sans antialiased overflow-x-hidden`}
+      >
+        <LanguageProvider>
+          <Navigation />
+          <main className="pb-20 lg:pb-0">{children}</main>
+          <Footer />
+          <Analytics />
+        </LanguageProvider>
       </body>
     </html>
   );

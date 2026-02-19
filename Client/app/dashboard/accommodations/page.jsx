@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Eye, Pencil, Plus, Trash2 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import initialData from "@/data/accommodations.json";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -69,53 +70,7 @@ const STATUS_OPTIONS = /** @type {const} */ (["Published", "Draft"]);
 
 export default function DashboardAccommodationsPage() {
   /** @type {[Accommodation[], Function]} */
-  const [accommodations, setAccommodations] = useState(() => [
-    {
-      id: createId(),
-      name: "Bishoftu Luxury Resort",
-      type: "Resort",
-      rating: 4.8,
-      pricePerNight: 250,
-      image: "/lake bishoftu.jpg",
-      description:
-        "Premium resort with world-class amenities and stunning views of the Rift Valley.",
-      amenities: ["Pool", "Spa", "WiFi", "Restaurant", "Gym"],
-      bookingUrl: "https://www.booking.com",
-      location: "Bishoftu",
-      status: "Published",
-      updatedAtISO: new Date().toISOString(),
-    },
-    {
-      id: createId(),
-      name: "Bishoftu Luxury Hotel",
-      type: "Hotel",
-      rating: 4.4,
-      pricePerNight: 80,
-      image: "/ivy.jpg",
-      description:
-        "Welcoming guest house with local charm and warm hospitality.",
-      amenities: ["WiFi", "Breakfast", "Parking", "Garden"],
-      bookingUrl: "https://www.booking.com",
-      location: "Bishoftu",
-      status: "Published",
-      updatedAtISO: new Date().toISOString(),
-    },
-    {
-      id: createId(),
-      name: "Kuriftu Resort & Spa",
-      type: "Resort",
-      rating: 4.6,
-      pricePerNight: 180,
-      image: "/kuriftu resort.jpg",
-      description:
-        "Eco-friendly lodge perfect for explorers seeking authentic experiences.",
-      amenities: ["WiFi", "Restaurant", "Tour Desk", "Garden", "Parking"],
-      bookingUrl: "https://www.booking.com",
-      location: "Bishoftu",
-      status: "Published",
-      updatedAtISO: new Date().toISOString(),
-    },
-  ]);
+  const [accommodations, setAccommodations] = useState(() => initialData);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [mode, setMode] = useState(
@@ -124,29 +79,39 @@ export default function DashboardAccommodationsPage() {
   const [activeId, setActiveId] = useState(/** @type {string | null} */ (null));
 
   const [form, setForm] = useState({
-    name: "",
+    name_en: "",
+    description_en: "",
+    name_am: "",
+    description_am: "",
+    name_or: "",
+    description_or: "",
     type: "Hotel",
     location: "",
     rating: 0,
     pricePerNight: 0,
     image: "",
-    description: "",
+    imageFile: null,
     amenitiesText: "",
     bookingUrl: "",
-    status: /** @type {AccommodationStatus} */ ("Draft"),
+    status: "Draft",
   });
 
   function openAdd() {
     setMode("add");
     setActiveId(null);
     setForm({
-      name: "",
+      name_en: "",
+      description_en: "",
+      name_am: "",
+      description_am: "",
+      name_or: "",
+      description_or: "",
       type: "Hotel",
       location: "",
       rating: 0,
       pricePerNight: 0,
       image: "",
-      description: "",
+      imageFile: null,
       amenitiesText: "",
       bookingUrl: "",
       status: "Draft",
@@ -159,36 +124,45 @@ export default function DashboardAccommodationsPage() {
     setMode("edit");
     setActiveId(accommodation.id);
     setForm({
-      name: accommodation.name,
-      type: accommodation.type,
-      location: accommodation.location,
-      rating: accommodation.rating,
-      pricePerNight: accommodation.pricePerNight,
-      image: accommodation.image,
-      description: accommodation.description,
-      amenitiesText: accommodation.amenities.join(", "),
-      bookingUrl: accommodation.bookingUrl,
-      status: accommodation.status,
+      name_en: accommodation.translations.en?.name ?? "",
+      description_en: accommodation.translations.en?.description ?? "",
+      name_am: accommodation.translations.am?.name ?? "",
+      description_am: accommodation.translations.am?.description ?? "",
+      name_om: accommodation.translations.or?.name ?? "", // or: .or?
+      description_om: accommodation.translations.or?.description ?? "",
+      type: accommodation.type ?? "Hotel",
+      location: accommodation.location ?? "",
+      rating: accommodation.rating ?? 0,
+      pricePerNight: accommodation.pricePerNight ?? 0,
+      image: accommodation.image ?? "",
+      amenitiesText: accommodation.amenities?.join(", ") ?? "",
+      bookingUrl: accommodation.bookingUrl ?? "",
+      status: accommodation.status ?? "Draft",
     });
+
     setDialogOpen(true);
   }
 
-  /** @param {Accommodation} accommodation */
   function openView(accommodation) {
     setMode("view");
     setActiveId(accommodation.id);
     setForm({
-      name: accommodation.name,
-      location: accommodation.location,
-      type: accommodation.type,
-      rating: accommodation.rating,
-      pricePerNight: accommodation.pricePerNight,
-      image: accommodation.image,
-      description: accommodation.description,
-      amenitiesText: accommodation.amenities.join(", "),
-      bookingUrl: accommodation.bookingUrl,
-      status: accommodation.status,
+      name_en: accommodation.translations.en?.name ?? "",
+      description_en: accommodation.translations.en?.description ?? "",
+      name_am: accommodation.translations.am?.name ?? "",
+      description_am: accommodation.translations.am?.description ?? "",
+      name_om: accommodation.translations.or?.name ?? "", // or: .or?
+      description_om: accommodation.translations.or?.description ?? "",
+      type: accommodation.type ?? "Hotel",
+      location: accommodation.location ?? "",
+      rating: accommodation.rating ?? 0,
+      pricePerNight: accommodation.pricePerNight ?? 0,
+      image: accommodation.image ?? "",
+      amenitiesText: accommodation.amenities?.join(", ") ?? "",
+      bookingUrl: accommodation.bookingUrl ?? "",
+      status: accommodation.status ?? "Draft",
     });
+
     setDialogOpen(true);
   }
 
@@ -224,17 +198,29 @@ export default function DashboardAccommodationsPage() {
     setAccommodations((prev) => [
       {
         id: createId(),
-        name: next.name.trim(),
         type: next.type,
         location: next.location.trim(),
         rating: next.rating,
         pricePerNight: next.pricePerNight,
-        image: next.image,
-        description: next.description.trim(),
-        amenities,
-        bookingUrl: next.bookingUrl.trim(),
+        image: next.image.trim(),
         status: next.status,
+        bookingUrl: next.bookingUrl.trim(),
+        amenities,
         updatedAtISO: new Date().toISOString(),
+        translations: {
+          en: {
+            name: next.name_en.trim(),
+            description: next.description_en.trim(),
+          },
+          am: {
+            name: next.name_am.trim(),
+            description: next.description_am.trim(),
+          },
+          or: {
+            name: next.name_or.trim(),
+            description: next.description_or.trim(),
+          },
+        },
       },
       ...prev,
     ]);
@@ -252,17 +238,29 @@ export default function DashboardAccommodationsPage() {
         item.id === id
           ? {
               ...item,
-              name: next.name.trim(),
               type: next.type,
               location: next.location.trim(),
               rating: next.rating,
               pricePerNight: next.pricePerNight,
-              image: next.image,
-              description: next.description.trim(),
-              amenities,
-              bookingUrl: next.bookingUrl.trim(),
+              image: next.image.trim(),
               status: next.status,
+              bookingUrl: next.bookingUrl.trim(),
+              amenities,
               updatedAtISO: new Date().toISOString(),
+              translations: {
+                en: {
+                  name: next.name_en.trim(),
+                  description: next.description_en.trim(),
+                },
+                am: {
+                  name: next.name_am.trim(),
+                  description: next.description_am.trim(),
+                },
+                or: {
+                  name: next.name_or.trim(),
+                  description: next.description_or.trim(),
+                },
+              },
             }
           : item,
       ),
@@ -365,7 +363,7 @@ export default function DashboardAccommodationsPage() {
               {accommodations.map((item) => (
                 <tr key={item.id}>
                   <td className="py-4 font-medium text-foreground">
-                    {item.name}
+                    {item.translations.en.name}
                   </td>
                   <td className="py-4 text-sm text-muted-foreground">
                     {item.type}
@@ -394,7 +392,7 @@ export default function DashboardAccommodationsPage() {
                         variant="ghost"
                         size="icon"
                         onClick={() => openView(item)}
-                        aria-label={`View ${item.name}`}
+                        aria-label={`View ${item.translations.en.name}`}
                       >
                         <Eye className="w-4 h-4 text-muted-foreground" />
                       </Button>
@@ -404,7 +402,7 @@ export default function DashboardAccommodationsPage() {
                         variant="ghost"
                         size="icon"
                         onClick={() => openEdit(item)}
-                        aria-label={`Edit ${item.name}`}
+                        aria-label={`Edit ${item.translations.en.name}`}
                       >
                         <Pencil className="w-4 h-4 text-muted-foreground" />
                       </Button>
@@ -415,7 +413,7 @@ export default function DashboardAccommodationsPage() {
                             type="button"
                             variant="ghost"
                             size="icon"
-                            aria-label={`Delete ${item.name}`}
+                            aria-label={`Delete ${item.translations.en.name}`}
                           >
                             <Trash2 className="w-4 h-4 text-destructive" />
                           </Button>
@@ -426,7 +424,8 @@ export default function DashboardAccommodationsPage() {
                               Delete accommodation?
                             </AlertDialogTitle>
                             <AlertDialogDescription>
-                              This will remove <b>{item.name}</b> from the list.
+                              This will remove{" "}
+                              <b>{item.translations.en.name}</b> from the list.
                               This is a mock UI action (local state only).
                             </AlertDialogDescription>
                           </AlertDialogHeader>
@@ -470,7 +469,9 @@ export default function DashboardAccommodationsPage() {
             className="border border-border rounded-xl p-4 shadow-sm"
           >
             <div className="flex justify-between items-center mb-2">
-              <h3 className="font-medium text-foreground">{item.name}</h3>
+              <h3 className="font-medium text-foreground">
+                {item.translations.en.name}
+              </h3>
               <span
                 className={cn(
                   "text-xs px-2 py-1 rounded-full",
@@ -514,8 +515,8 @@ export default function DashboardAccommodationsPage() {
                   <AlertDialogHeader>
                     <AlertDialogTitle>Delete accommodation?</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This will remove <b>{item.name}</b> from the list. This is
-                      a mock UI action (local state only).
+                      This will remove <b>{item.translations.en.name}</b> from
+                      the list. This is a mock UI action (local state only).
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
@@ -549,147 +550,234 @@ export default function DashboardAccommodationsPage() {
             <DialogDescription>{dialogDescription}</DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Basic info */}
-            <div className="grid gap-4 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* ===== General Info ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">General Info</h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="type">Type</Label>
+                  <Select
+                    value={form.type}
+                    onValueChange={(value) =>
+                      setForm((prev) => ({ ...prev, type: value }))
+                    }
+                    disabled={readOnly}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {["Hotel", "Guest House", "Resort", "Lodge"].map((t) => (
+                        <SelectItem key={t} value={t}>
+                          {t}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="status">Status</Label>
+                  <Select
+                    value={form.status}
+                    onValueChange={(value) =>
+                      setForm((prev) => ({ ...prev, status: value }))
+                    }
+                    disabled={readOnly}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {STATUS_OPTIONS.map((s) => (
+                        <SelectItem key={s} value={s}>
+                          {s}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </section>
+
+            {/* ===== Price & Rating ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">Price & Rating</h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="price">Price per Night (USD)</Label>
+                  <Input
+                    id="price"
+                    type="number"
+                    min={0}
+                    value={form.pricePerNight}
+                    onChange={(e) =>
+                      setForm((prev) => ({
+                        ...prev,
+                        pricePerNight: Number(e.target.value) || 0,
+                      }))
+                    }
+                    disabled={readOnly}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="rating">Rating</Label>
+                  <Input
+                    id="rating"
+                    type="number"
+                    min={0}
+                    max={5}
+                    step={0.1}
+                    value={form.rating}
+                    onChange={(e) =>
+                      setForm((prev) => ({
+                        ...prev,
+                        rating: Number(e.target.value) || 0,
+                      }))
+                    }
+                    disabled={readOnly}
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* ===== Images ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">Images</h2>
               <div className="space-y-2">
-                <Label htmlFor="name">Accommodation Name</Label>
+                <Label htmlFor="image">Upload Image</Label>
                 <Input
-                  id="name"
-                  value={form.name}
+                  id="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) setForm((prev) => ({ ...prev, imageFile: file }));
+                  }}
+                  disabled={readOnly}
+                />
+                {form.imageFile && (
+                  <img
+                    src={URL.createObjectURL(form.imageFile)}
+                    alt="Preview"
+                    className="mt-2 h-32 w-full object-cover rounded-md"
+                  />
+                )}
+              </div>
+            </section>
+
+            {/* ===== Location ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">Location</h2>
+              <Input
+                id="location"
+                value={form.location}
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, location: e.target.value }))
+                }
+                placeholder="Bishoftu / Lake Bishoftu"
+                disabled={readOnly}
+              />
+            </section>
+
+            {/* ===== English Content ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">English Content</h2>
+              <div className="space-y-2">
+                <Label htmlFor="name_en">Title</Label>
+                <Input
+                  id="name_en"
+                  value={form.name_en}
                   onChange={(e) =>
-                    setForm((prev) => ({ ...prev, name: e.target.value }))
+                    setForm((prev) => ({ ...prev, name_en: e.target.value }))
                   }
-                  placeholder="Kuriftu Resort & Spa"
-                  autoFocus={!readOnly}
+                  placeholder="Bishoftu Luxury Resort"
                   disabled={readOnly}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="location">Location</Label>
-                <Input
-                  id="location"
-                  value={form.location}
-                  onChange={(e) =>
-                    setForm((prev) => ({ ...prev, location: e.target.value }))
-                  }
-                  placeholder="Bishoftu / Lake Bishoftu"
-                  disabled={readOnly}
-                />
-              </div>
-            </div>
-
-            {/* Type, Price, Rating */}
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="space-y-2">
-                <Label>Type</Label>
-                <Select
-                  value={form.type}
-                  onValueChange={(value) =>
-                    setForm((prev) => ({ ...prev, type: value }))
-                  }
-                  disabled={readOnly}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {["Hotel", "Guest House", "Resort", "Lodge"].map((t) => (
-                      <SelectItem key={t} value={t}>
-                        {t}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="price">Price per Night (USD)</Label>
-                <Input
-                  id="price"
-                  type="number"
-                  min={0}
-                  value={form.pricePerNight}
+                <Label htmlFor="description_en">Description</Label>
+                <Textarea
+                  id="description_en"
+                  value={form.description_en}
                   onChange={(e) =>
                     setForm((prev) => ({
                       ...prev,
-                      pricePerNight: Number(e.target.value) || 0,
+                      description_en: e.target.value,
                     }))
                   }
+                  placeholder="Premium resort with world-class amenities..."
                   disabled={readOnly}
                 />
               </div>
+            </section>
 
+            {/* ===== Amharic Content ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">Amharic Content</h2>
               <div className="space-y-2">
-                <Label htmlFor="rating">Rating</Label>
+                <Label htmlFor="name_am">Title</Label>
                 <Input
-                  id="rating"
-                  type="number"
-                  min={0}
-                  max={5}
-                  step={0.1}
-                  value={form.rating}
+                  id="name_am"
+                  value={form.name_am}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, name_am: e.target.value }))
+                  }
+                  placeholder="ቢሾፍቱ የቅንጦት ሪዞርት"
+                  disabled={readOnly}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="description_am">Description</Label>
+                <Textarea
+                  id="description_am"
+                  value={form.description_am}
                   onChange={(e) =>
                     setForm((prev) => ({
                       ...prev,
-                      rating: Number(e.target.value) || 0,
+                      description_am: e.target.value,
                     }))
                   }
+                  placeholder="የዓለም ደረጃ አገልግሎቶች..."
                   disabled={readOnly}
                 />
               </div>
-            </div>
+            </section>
 
-            {/* Media & links */}
-            <div className="space-y-2">
-              <Label htmlFor="image">Upload Image</Label>
-              <Input
-                id="image"
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) setForm((prev) => ({ ...prev, imageFile: file }));
-                }}
-                disabled={readOnly}
-              />
-              {form.imageFile && (
-                <img
-                  src={URL.createObjectURL(form.imageFile)}
-                  alt="Preview"
-                  className="mt-2 h-32 w-full object-cover rounded-md"
+            {/* ===== Oromo Content ===== */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">Oromo Content</h2>
+              <div className="space-y-2">
+                <Label htmlFor="name_om">Title</Label>
+                <Input
+                  id="name_om"
+                  value={form.name_om}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, name_om: e.target.value }))
+                  }
+                  placeholder="Bishooftuu Luxury Resort"
+                  disabled={readOnly}
                 />
-              )}
-            </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="description_om">Description</Label>
+                <Textarea
+                  id="description_om"
+                  value={form.description_om}
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      description_om: e.target.value,
+                    }))
+                  }
+                  placeholder="Resortii sadarkaa addunyaa kan tajaajila gaarii..."
+                  disabled={readOnly}
+                />
+              </div>
+            </section>
 
-            <div className="space-y-2">
-              <Label htmlFor="bookingUrl">Booking Link</Label>
-              <Input
-                id="bookingUrl"
-                value={form.bookingUrl}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, bookingUrl: e.target.value }))
-                }
-                placeholder="https://www.booking.com/..."
-                disabled={readOnly}
-              />
-            </div>
-
-            {/* Description */}
-            <div className="space-y-2">
-              <Label htmlFor="description">Description</Label>
-              <Textarea
-                id="description"
-                value={form.description}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, description: e.target.value }))
-                }
-                placeholder="Short description visitors will see."
-                disabled={readOnly}
-              />
-            </div>
-
-            {/* Footer Buttons */}
+            {/* ===== Footer Buttons ===== */}
             <div className="flex justify-end gap-3 mt-4">
               <Button type="button" variant="outline" onClick={resetDialog}>
                 {readOnly ? "Close" : "Cancel"}

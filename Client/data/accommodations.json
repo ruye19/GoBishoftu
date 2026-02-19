@@ -1,0 +1,218 @@
+[
+  {
+    "id": "1",
+    "slug": "bishoftu-luxury-resort",
+    "type": "Resort",
+    "rating": 4.8,
+    "pricePerNight": 250,
+    "image": "/lake bishoftu.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["Pool", "Spa", "WiFi", "Restaurant", "Gym"],
+    "translations": {
+      "en": {
+        "name": "Bishoftu Luxury Resort",
+        "description": "Premium resort with world-class amenities and stunning views of the Rift Valley."
+      },
+      "am": {
+        "name": "ቢሾፍቱ የቅንጦት ሪዞርት",
+        "description": "የዓለም ደረጃ አገልግሎቶች ያሉት የቅንጦት ሪዞርት።"
+      },
+      "or": {
+        "name": "Bishooftuu Luxury Resort",
+        "description": "Resortii sadarkaa addunyaa kan tajaajila gaarii fi lafa miidhagaa qabu."
+      }
+    }
+  },
+  {
+    "id": "2",
+    "slug": "kuriftu-resort-spa",
+    "type": "Resort",
+    "rating": 4.6,
+    "pricePerNight": 180,
+    "image": "/kuriftu resort.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["WiFi", "Restaurant", "Tour Desk", "Garden", "Parking"],
+    "translations": {
+      "en": {
+        "name": "Kuriftu Resort & Spa",
+        "description": "Eco-friendly lodge perfect for explorers seeking authentic experiences."
+      },
+      "am": {
+        "name": "ኩሪፍቱ ሪዞርት እና ስፓ",
+        "description": "ተፈጥሯዊ እና የኢኮ ሪዞርት ለጀብዱ ፈላጊዎች ተስማሚ።"
+      },
+      "or": {
+        "name": "Kuriftu Resort & Spa",
+        "description": "Mana ciisichaa naannoo tikfamaa fi tajaajila dhugaa barbaadaniif mijataa."
+      }
+    }
+  },
+  {
+    "id": "3",
+    "slug": "ivy-hotel-ethiopia",
+    "type": "Hotel",
+    "rating": 4.4,
+    "pricePerNight": 80,
+    "image": "/ivy.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["WiFi", "Breakfast", "Parking", "Garden"],
+    "translations": {
+      "en": {
+        "name": "IVY Hotel Ethiopia",
+        "description": "Welcoming guest house with local charm and warm hospitality."
+      },
+      "am": {
+        "name": "አይቪ ሆቴል ኢትዮጵያ",
+        "description": "ከአካባቢያዊ ባህላዊ ማህበረሰብ ጋር የተያያዘ እና አስተናጋጅ እንኳን ደህና መጡ የሚል ቤት።"
+      },
+      "or": {
+        "name": "IVY Hotel Ethiopia",
+        "description": "Mana hoteela simannaa, aadaa naannoo fi tajaajila nama gammachiisu qabu."
+      }
+    }
+  },
+  {
+    "id": "4",
+    "slug": "gold-mark-hotel",
+    "type": "Hotel",
+    "rating": 4.5,
+    "pricePerNight": 150,
+    "image": "/hotels one.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["WiFi", "Restaurant", "Bar", "Parking", "Room Service"],
+    "translations": {
+      "en": {
+        "name": "Gold Mark Hotel",
+        "description": "Modern hotel with convenient location and excellent service."
+      },
+      "am": {
+        "name": "ጎልድ ማርክ ሆቴል",
+        "description": "ዘመናዊ ሆቴል በቀላሉ የሚደረስበት እና ከፍተኛ አገልግሎት ያለው።"
+      },
+      "or": {
+        "name": "Gold Mark Hotel",
+        "description": "Hoteela ammayyaa iddoo mijataa fi tajaajila olaanaa qabu."
+      }
+    }
+  },
+  {
+    "id": "5",
+    "slug": "pyramid-hotels-resorts",
+    "type": "Resort",
+    "rating": 4.7,
+    "pricePerNight": 220,
+    "image": "/pyramid.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["Pool", "Lake Access", "Spa", "Restaurant", "WiFi"],
+    "translations": {
+      "en": {
+        "name": "Pyramid Hotels & Resorts",
+        "description": "Serene resort overlooking the scenic lakes of Bishoftu."
+      },
+      "am": {
+        "name": "ፒራሚድ ሆቴሎች እና ሪዞርቶች",
+        "description": "የቢሾፍቱ ሐይቆችን የሚመለከት የተረጋጋ ሪዞርት።"
+      },
+      "or": {
+        "name": "Pyramid Hotels & Resorts",
+        "description": "Resortii tasgabbii kan lagaalee Bishooftu bareedoo ilaalu qabu."
+      }
+    }
+  },
+  {
+    "id": "6",
+    "slug": "budget-stay-inn",
+    "type": "Guest House",
+    "rating": 4.2,
+    "pricePerNight": 60,
+    "image": "/budget-friendly-accommodation.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["WiFi", "Breakfast", "Parking"],
+    "translations": {
+      "en": {
+        "name": "Budget Stay Inn",
+        "description": "Affordable and clean accommodation for budget travelers."
+      },
+      "am": {
+        "name": "ባጀት ስቴይ ኢን",
+        "description": "ለተመጣጣኝ ዋጋ የሚጓዙ ተጓዦች ንጹህ እና ዝቅተኛ ዋጋ ያለው መኖሪያ።"
+      },
+      "or": {
+        "name": "Budget Stay Inn",
+        "description": "Mana ciisichaa qulqulluu fi gatii xiqqoo kan imaltoota bajataa qofaaf."
+      }
+    }
+  },
+  {
+    "id": "7",
+    "slug": "heritage-hotel",
+    "type": "Hotel",
+    "rating": 4.6,
+    "pricePerNight": 170,
+    "image": "/heritage-hotel-traditional.jpg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["Restaurant", "WiFi", "Parking", "Business Center"],
+    "translations": {
+      "en": {
+        "name": "Heritage Hotel",
+        "description": "Hotel blending modern comfort with traditional Ethiopian style."
+      },
+      "am": {
+        "name": "ሄሪቴጅ ሆቴል",
+        "description": "ዘመናዊ ምቹነትን ከባህላዊ የኢትዮጵያ ዘይቤ ጋር የሚያቀላቅል ሆቴል።"
+      },
+      "or": {
+        "name": "Heritage Hotel",
+        "description": "Hoteela tasgabbii ammayyaa fi aadaa Itoophiyaa walitti maku."
+      }
+    }
+  },
+  {
+    "id": "8",
+    "slug": "mountain-view-lodge",
+    "type": "Lodge",
+    "rating": 4.5,
+    "pricePerNight": 140,
+    "image": "/placeholder.svg?height=250&width=350",
+    "location": "Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["Restaurant", "Tour Desk", "Parking", "WiFi"],
+    "translations": {
+      "en": {
+        "name": "Mountain View Lodge",
+        "description": "Cozy lodge with breathtaking mountain views and hiking access."
+      },
+      "am": {
+        "name": "ማውንቴን ቪው ሎጅ",
+        "description": "ከተራራ እይታ ጋር የሚገኝ ምቹ ሎጅ እና ለመራመድ ተስማሚ አካባቢ።"
+      },
+      "or": {
+        "name": "Mountain View Lodge",
+        "description": "Lojji tasgabbii fi lafa daawwannaa fi daandii fiigichaa qabu."
+      }
+    }
+  }
+]

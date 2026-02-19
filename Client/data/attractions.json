@@ -1,0 +1,187 @@
+[
+  {
+    "id": "1",
+    "slug": "lake-hora",
+    "type": {
+      "translations": {
+        "en": "Natural Wonder",
+        "am": "ተፈጥሮ ምርጥ ቦታ",
+        "or": "Mucaa Uumamaa"
+      }
+    },
+    "rating": 4.9,
+    "pricePerNight": 0,
+    "image": "/lake bishoftu.jpg",
+    "location": "Central Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "",
+    "amenities": ["Scenic Views", "Cultural Events", "Photography Spot"],
+    "translations": {
+      "en": {
+        "name": "Lake Hora",
+        "description": "Crater lake surrounded by resorts and cultural sites, famous for hosting annual cultural and religious events (Irreecha).",
+        "details": "Lake Hora is one of the most famous lakes in Bishoftu, hosting traditional and cultural festivals."
+      },
+      "am": {
+        "name": "ሐይቁ ሆራ",
+        "description": "ባህላዊ ቦታዎችና ሪዞርቶች የተሸፈነ ክረትር ሐይቅ፣ እንዲሁም አመታዊ ባህላዊ እና ሃይማኖታዊ ክስተቶችን የሚያካትት።",
+        "details": "ሐይቁ ሆራ በቢሾፍቱ ውስጥ ከፍተኛ ታዋቂ ሐይቅ ነው። ባህላዊ እና ባህላዊ ክስተቶችን ይያዛል።"
+      },
+      "or": {
+        "name": "Lake Hora",
+        "description": "Laga crater kan naannoo resort fi bakka aadaa waliin qabdu, ayyaana aadaa fi amantii waggaa tokko tokkoof beekamtu.",
+        "details": "Laga Hora Bishoftu keessatti beekamtuudha, ayyaana aadaa fi aadaa biyya keessa ni qabdi."
+      }
+    }
+  },
+  {
+    "id": "2",
+    "slug": "lake-babogaya",
+    "type": {
+      "translations": {
+        "en": "Natural Wonder",
+        "am": "ተፈጥሮ ምርጥ ቦታ",
+        "or": "Mucaa Uumamaa"
+      }
+    },
+    "rating": 4.8,
+    "pricePerNight": 0,
+    "image": "/lake babogaya.jpg",
+    "location": "North Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "",
+    "amenities": ["Peaceful", "Birdwatching", "Sunset Views"],
+    "translations": {
+      "en": {
+        "name": "Lake Babogaya",
+        "description": "Peaceful freshwater lake ideal for relaxation, birdwatching, and enjoying scenic sunsets.",
+        "details": "Known for tranquility and migratory bird sightings."
+      },
+      "am": {
+        "name": "ሐይቁ ባቦጋያ",
+        "description": "የሰላም ውኃ ሐይቅ ለማረፊያ፣ የወፎች መመልከት እና ውብ መሸዋዎች የተሻለ።",
+        "details": "በጸጥታ እና የወለላ ወፎች ማየት የታወቀ።"
+      },
+      "or": {
+        "name": "Lake Babogaya",
+        "description": "Laga bishaan qulqulluu tasgabbii qabu, ilaalcha simbirroo fi galgala aduu bareedaa ilaaluf mijataa.",
+        "details": "Beekamtii tasgabbii fi simbirroota imalaa ti."
+      }
+    }
+  },
+  {
+    "id": "3",
+    "slug": "lake-kuriftu",
+    "type": {
+      "translations": {
+        "en": "Resort",
+        "am": "ሪዞርት",
+        "or": "Tajaajila Ciisichaa"
+      }
+    },
+    "rating": 4.7,
+    "pricePerNight": 180,
+    "image": "/kuriftu-resort.jpg",
+    "location": "East Bishoftu",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.kurifturesort.com",
+    "amenities": ["Resort Facilities", "Spa", "Luxury Stay", "Restaurant"],
+    "translations": {
+      "en": {
+        "name": "Kuriftu Resort & Spa",
+        "description": "Luxury lakeside destination blending natural beauty with leisure and resort facilities.",
+        "details": "Offers spa, fine dining, and leisure activities."
+      },
+      "am": {
+        "name": "ኩሪፍቱ ሪዞርት እና ስፓ",
+        "description": "ለውብነት እና ምቹነት በተለያዩ አገልግሎቶች የተዋቀረ የሐይቅ አጠገብ ሪዞርት።",
+        "details": "ስፓ፣ የግል ምግብ እና መዝናኛ እንቅስቃሴዎች ይሰጣሉ።"
+      },
+      "or": {
+        "name": "Kuriftu Resort & Spa",
+        "description": "Bakki ciisichaa naannoo laga kan tajaajila fi bareedina uumamaa waliin qindaa’e.",
+        "details": "Spa, nyaata gaarii fi sochii bashannanaa ni kenna."
+      }
+    }
+  },
+  {
+    "id": "4",
+    "slug": "local-market-cultural-tour",
+    "type": {
+      "translations": {
+        "en": "Cultural Site",
+        "am": "ባህላዊ ቦታ",
+        "or": "Bakka Aadaa"
+      }
+    },
+    "rating": 4.7,
+    "pricePerNight": 0,
+    "image": "/local-market-cultural-tour.jpg",
+    "location": "Bishoftu Town Center",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "",
+    "amenities": ["Local Crafts", "Guided Tour", "Shopping"],
+    "translations": {
+      "en": {
+        "name": "Local Market Cultural Tour",
+        "description": "Explore traditional crafts, local products, and authentic Ethiopian culture.",
+        "details": "Guided tours available for cultural immersion."
+      },
+      "am": {
+        "name": "የአካባቢ ገበያ ባህላዊ ጉብኝት",
+        "description": "ባህላዊ እና የኢትዮጵያ ምርቶችን ያሳዩ እና ባህላዊ ባህል ያማከሩ።",
+        "details": "ለባህላዊ ተሞክሮ መሪ ጉብኝት ይሰጣል።"
+      },
+      "or": {
+        "name": "Local Market Cultural Tour",
+        "description": "Aadaa fi oomisha naannoo beekamaa, akkasumas aadaa dhugaa Itoophiyaa baradhu.",
+        "details": "Daawwannaa qajeeltoo aadaa fi aadaa dhugaa irratti ni kennama."
+      }
+    }
+  },
+  {
+    "id": "5",
+    "slug": "bishoftu-tour-guides",
+    "type": {
+      "translations": {
+        "en": "Travel Agent",
+        "am": "የጉዞ ወኪል",
+        "or": "Waliigala Imalaa"
+      }
+    },
+    "rating": 5.0,
+    "pricePerNight": 0,
+    "image": "/bishoftu-adventures.jpg",
+    "location": "Bishoftu",
+    "contact": "guides@gobisoftu.local",
+    "status": "Published",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "",
+    "amenities": [
+      "Guided Tours",
+      "Local Experiences",
+      "Customized Itineraries"
+    ],
+    "translations": {
+      "en": {
+        "name": "Bishoftu Tour Guides Association",
+        "description": "Professional local guides for authentic Bishoftu experiences.",
+        "details": "Experienced guides offering personalized tours including cultural immersion and adventure hikes."
+      },
+      "am": {
+        "name": "የቢሾፍቱ መሪዎች ማህበር",
+        "description": "ለቢሾፍቱ እውነተኛ ልምዶች የተሰሩ ባለሙያ መሪዎች።",
+        "details": "ባለሙያ መሪዎች ባህላዊ እና ግል ልምዶች የተሟላ ጉዞ ይሰጣሉ።"
+      },
+      "or": {
+        "name": "Bishoftu Tour Guides Association",
+        "description": "Tajaajila gosa Bishoftu dhugaa kennuuf qajeeltoota biyya keessaa.",
+        "details": "Qajeeltoonni muuxannoo qabu daawwannaa namoomaa, aadaa fi daandii seenaa ni kennu."
+      }
+    }
+  }
+]
