@@ -27,6 +27,7 @@ export default function AccommodationsClient() {
     else if (normalized.includes("lodge")) setSelectedType("Lodge");
     else if (normalized.includes("guest")) setSelectedType("Guest House");
     else if (normalized.includes("resort")) setSelectedType("Resort");
+    else if (normalized.includes("guesthouse")) setSelectedType("Guest House");
   }, [searchParams]);
 
   const filteredAccommodations = useMemo(() => {

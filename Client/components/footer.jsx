@@ -1,12 +1,30 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export function Footer() {
   const pathname = usePathname();
+  const [currentLang, setCurrentLang] = useState("en");
+
+  // Get current language from URL or localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Try to get language from URL first
+      const pathLang = pathname?.split('/')[1];
+      if (pathLang && ['en', 'am', 'or'].includes(pathLang)) {
+        setCurrentLang(pathLang);
+      } else {
+        // Fallback to localStorage
+        const savedLang = localStorage.getItem('lang') || 'en';
+        setCurrentLang(savedLang);
+      }
+    }
+  }, [pathname]);
 
   // Hide footer on admin-related routes
-  if (pathname?.startsWith("/admin") || pathname === "/admin-login") {
+  if (pathname?.startsWith("/admin") || pathname === "/admin-login" || pathname?.startsWith("/dashboard")) {
     return null;
   }
 
@@ -30,48 +48,48 @@ export function Footer() {
             <h4 className="font-display font-semibold text-secondary-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-secondary-foreground/80">
               <li>
-                <a href="/" className="hover:text-accent transition-colors">
+                <Link href={`/${currentLang}`} className="hover:text-accent transition-colors">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/accommodations"
+                <Link
+                  href={`/${currentLang}/accommodations`}
                   className="hover:text-accent transition-colors"
                 >
                   Accommodations
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/explore"
+                <Link
+                  href={`/${currentLang}/explore`}
                   className="hover:text-accent transition-colors"
                 >
                   Explore
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/investment"
+                <Link
+                  href={`/${currentLang}/investment`}
                   className="hover:text-accent transition-colors"
                 >
                   Investment
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/about"
+                <Link
+                  href={`/${currentLang}/about`}
                   className="hover:text-accent transition-colors"
                 >
                   About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-secondary-foreground mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-secondary-foreground/80">
-              <li>Email: info@gobisoftu.com</li>
+              <li>Email: info@gobishoftu.com</li>
               <li>Phone: +251 (0) 114 300 100</li>
               <li>Bishoftu, Ethiopia</li>
             </ul>
@@ -80,17 +98,17 @@ export function Footer() {
             <h4 className="font-semibold text-secondary-foreground mb-4">Follow Us</h4>
             <ul className="space-y-2 text-sm text-secondary-foreground/80">
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a href="https://facebook.com/gobishoftu" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a href="https://instagram.com/gobishoftu" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a href="https://twitter.com/gobishoftu" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                   Twitter
                 </a>
               </li>

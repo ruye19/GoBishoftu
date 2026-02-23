@@ -55,9 +55,9 @@ export default function HomeClient() {
   const attractions = attractionsData.slice(0, 6);
 
   const accommodationTypes = [
-    { name: t('accommodationType.hotel', lang), value: "hotel" },
-    { name: t('accommodationType.resort', lang), value: "resort" },
-    { name: t('accommodationType.guesthouse', lang), value: "guesthouse" },
+    { name: t("accommodationType.hotel", lang), value: "hotel" },
+    { name: t("accommodationType.resort", lang), value: "resort" },
+    { name: t("accommodationType.guesthouse", lang), value: "guesthouse" },
   ];
 
   return (
@@ -78,7 +78,7 @@ export default function HomeClient() {
           <div className="relative z-10 px-4">
             <div className="mx-auto flex max-w-3xl flex-col items-center text-center gap-6">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
-                {t('heroTitle', lang)}
+                {t("heroTitle", lang)}
               </h1>
               {/* <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl">
                 Experience the breathtaking beauty of volcanic crater lakes,
@@ -97,10 +97,10 @@ export default function HomeClient() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                {t('hotelsTitle', lang)}
+                {t("hotelsTitle", lang)}
               </h2>
               <p className="font-body text-lg text-foreground/70">
-                {t('hotelsSubtitle', lang)}
+                {t("hotelsSubtitle", lang)}
               </p>
             </div>
 
@@ -112,7 +112,7 @@ export default function HomeClient() {
                     {accommodationTypes.map((type) => (
                       <Link
                         key={type.value}
-                        href={`/accommodations?type=${type.value}`}
+                        href={`/${lang}/accommodations?type=${type.value}`}
                         className="md:flex-1"
                       >
                         <div
@@ -207,7 +207,7 @@ export default function HomeClient() {
             href={`/${lang}/accommodations`}
             className="btn-cta my-3 inline-block"
           >
-            {t('exploreAll', lang)} Accommodations
+            {t("exploreAll", lang)} Accommodations
           </Link>
         </div>
 
@@ -216,47 +216,45 @@ export default function HomeClient() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-                {t('attractionsTitle', lang)}
+                {t("attractionsTitle", lang)}
               </h2>
               <p className="font-body text-foreground/70">
-                {t('attractionsSubtitle', lang)}
+                {t("attractionsSubtitle", lang)}
               </p>
             </div>
 
             {/* Mobile: horizontal scrollable list */}
             <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
               {attractions.map((item) => (
-                  <div
-                    key={item.id}
-                    tabIndex={0}
-                    className="min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
-                  >
-                    <Image
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.translations?.[lang]?.name || item.name}
-                      width={260}
-                      height={192}
-                      className="w-full h-48 object-cover"
-                    />
+                <div
+                  key={item.id}
+                  tabIndex={0}
+                  className="min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+                >
+                  <Image
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.translations?.[lang]?.name || item.name}
+                    width={260}
+                    height={192}
+                    className="w-full h-48 object-cover"
+                  />
 
-                    <div className="p-4">
-                      <div className="flex justify-between text-sm text-muted-foreground mb-1">
-                        <span>{item.location}</span>
-                        <span className="text-accent">★ {item.rating}</span>
-                      </div>
-                      <h3 className="font-bold text-lg mb-2">
-                        {item.translations?.[lang]?.name || item.name}
-                      </h3>
-                      <p className="text-sm text-foreground/70 mb-3">
-                        {item.translations?.[lang]?.description ||
-                          item.description}
-                      </p>
+                  <div className="p-4">
+                    <div className="flex justify-between text-sm text-muted-foreground mb-1">
+                      <span>{item.location}</span>
+                      <span className="text-accent">★ {item.rating}</span>
                     </div>
+                    <h3 className="font-bold text-lg mb-2">
+                      {item.translations?.[lang]?.name || item.name}
+                    </h3>
+                    <p className="text-sm text-foreground/70 mb-3">
+                      {item.translations?.[lang]?.description ||
+                        item.description}
+                    </p>
                   </div>
-                ))}
-              </div>
-
-          
+                </div>
+              ))}
+            </div>
 
             {/* Desktop: grid */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -300,7 +298,7 @@ export default function HomeClient() {
 
             <div className="text-center mt-10">
               <Link href={`/${lang}/explore`} className="btn-cta inline-block">
-                {t('viewAll', lang)} Attractions
+                {t("viewAll", lang)} Attractions
               </Link>
             </div>
           </div>
@@ -312,10 +310,10 @@ export default function HomeClient() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-                {t('agenciesTitle', lang)}
+                {t("agenciesTitle", lang)}
               </h2>
               <p className="font-body text-foreground/70">
-                {t('agenciesSubtitle', lang)}
+                {t("agenciesSubtitle", lang)}
               </p>
             </div>
 
@@ -382,10 +380,10 @@ export default function HomeClient() {
         <section className="py-8 flex items-center justify-center bg-background/">
           <div className="max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {t('aboutTitle', lang)}
+              {t("aboutTitle", lang)}
             </h2>
             <p className="font-body text-lg text-foreground/70 leading-relaxed">
-              {t('aboutSubtitle', lang)}
+              {t("aboutSubtitle", lang)}
             </p>
             <div className="mt-6">
               <Link

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -28,6 +29,16 @@ export default function AdminSidebar({
   setSidebarOpen,
   pathname,
 }) {
+  const [preferredLang, setPreferredLang] = useState("en"); // Default to prevent hydration mismatch
+
+  useEffect(() => {
+    // Get preferred language from localStorage only on client side
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setPreferredLang(savedLang);
+    }
+  }, []);
+
   return (
     <aside
       className={cn(
@@ -70,7 +81,7 @@ export default function AdminSidebar({
       {/* Sidebar Footer */}
       <div className="p-4 border-t border-border">
         <Link
-          href="/"
+          href={`/${preferredLang}`}
           className={cn(
             "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors",
             !sidebarOpen && "justify-center",
