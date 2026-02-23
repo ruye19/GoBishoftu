@@ -4,38 +4,35 @@ import attractions from "@/data/attractions"; // your JSON with travel agents in
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Compass, Users, Shield, Clock } from "lucide-react";
 import { useState } from "react";
-
-// Benefits data
-const benefits = [
-  {
-    icon: Compass,
-    title: "Expert Guidance",
-    description:
-      "Our curated guides help you discover hidden gems and local favorites.",
-  },
-  {
-    icon: Users,
-    title: "Local Connections",
-    description:
-      "Connect with verified local guides and authentic experiences.",
-  },
-  {
-    icon: Shield,
-    title: "Trusted Reviews",
-    description:
-      "Read genuine reviews from real visitors to make informed decisions.",
-  },
-  {
-    icon: Clock,
-    title: "Save Time",
-    description:
-      "Find exactly what you're looking for with our smart categorization.",
-  },
-];
+import { t } from "@/locales";
 
 export default function ExplorePage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const { lang } = useLanguage();
+
+  // Benefits data - using translations
+  const benefits = [
+    {
+      icon: Compass,
+      title: t('benefits.expertGuidance.title', lang),
+      description: t('benefits.expertGuidance.description', lang),
+    },
+    {
+      icon: Users,
+      title: t('benefits.localConnections.title', lang),
+      description: t('benefits.localConnections.description', lang),
+    },
+    {
+      icon: Shield,
+      title: t('benefits.trustedReviews.title', lang),
+      description: t('benefits.trustedReviews.description', lang),
+    },
+    {
+      icon: Clock,
+      title: t('benefits.saveTime.title', lang),
+      description: t('benefits.saveTime.description', lang),
+    },
+  ];
 
   // Categories from JSON, including Travel Agents
   const categories = [
@@ -65,11 +62,10 @@ export default function ExplorePage() {
         <section className="bg-gradient-to-br from-secondary/10 to-accent/5 py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Explore Bishoftu
+              {t('exploreBishoftu', lang)}
             </h1>
             <p className="font-body text-lg text-foreground/70">
-              Discover cultural heritage, natural wonders, and connect with
-              experienced travel professionals.
+              {t('exploreBishoftuText', lang)}
             </p>
           </div>
         </section>
@@ -158,17 +154,16 @@ export default function ExplorePage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto">
                 <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                  Need Help Planning Your Visit?
+                  {t('needHelp', lang)}
                 </h2>
                 <p className="text-lg text-primary-foreground/80 mb-8">
-                  Our local guides can help you create the perfect itinerary to
-                  experience the best of Bishoftu's attractions.
+                  {t('needHelpText', lang)}
                 </p>
                 <Button
                   size="lg"
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 >
-                  Contact a Local Guide
+                  {t('contactGuide', lang)}
                 </Button>
               </div>
 
@@ -216,11 +211,10 @@ export default function ExplorePage() {
           <div className="container-custom px-4">
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                Why Explore With Us?
+                {t('whyExplore', lang)}
               </h2>
               <p className="text-primary-foreground/80 max-w-2xl mx-auto">
-                Go Bishoftu is your trusted companion for discovering the best
-                of this beautiful region.
+                {t('whyExploreText', lang)}
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -1,22 +1,13 @@
+"use client";
+
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Building2,
-  Hotel,
-  Home,
-  Store,
-  TrendingUp,
-  Shield,
-  Users,
-  Briefcase,
-  ArrowRight,
-  CheckCircle2,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { Building2, Hotel, Home, Store, TrendingUp, Shield, Users, Briefcase, ArrowRight, CheckCircle2, Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "@/app/context/LanguageContext";
+import { t } from "@/locales";
+import investments from "@/data/investments.json";
 
 const sectors = [
   {
@@ -66,39 +57,38 @@ const sectors = [
   },
 ];
 
-const benefits = [
-  {
-    icon: TrendingUp,
-    title: "Growing Tourism Market",
-    description: "100,000+ annual visitors with steady year-over-year growth.",
-  },
-  {
-    icon: MapPin,
-    title: "Prime Location",
-    description: "Just 47km from Addis Ababa with excellent infrastructure.",
-  },
-  {
-    icon: Shield,
-    title: "Investment Security",
-    description:
-      "Stable environment with government support for tourism development.",
-  },
-  {
-    icon: Users,
-    title: "Skilled Workforce",
-    description:
-      "Access to trained hospitality and service industry professionals.",
-  },
-];
-
-const stats = [
-  { value: "12%", label: "Annual Tourism Growth" },
-  { value: "47km", label: "From Addis Ababa" },
-  { value: "7", label: "Crater Lakes" },
-  { value: "100k+", label: "Annual Visitors" },
-];
-
 export default function InvestmentPage() {
+  const { lang } = useLanguage();
+  
+  const investmentStats = [
+    { value: "12%", label: t('investmentStats.tourismGrowth', lang) },
+    { value: "47km", label: t('investmentStats.fromAddis', lang) },
+    { value: "7", label: t('investmentStats.craterLakes', lang) },
+    { value: "100k+", label: t('investmentStats.annualVisitors', lang) },
+  ];
+
+  const investmentBenefits = [
+    {
+      icon: TrendingUp,
+      title: t('investmentBenefits.growingMarket.title', lang),
+      description: t('investmentBenefits.growingMarket.description', lang),
+    },
+    {
+      icon: MapPin,
+      title: t('investmentBenefits.primeLocation.title', lang),
+      description: t('investmentBenefits.primeLocation.description', lang),
+    },
+    {
+      icon: Shield,
+      title: t('investmentBenefits.investmentSecurity.title', lang),
+      description: t('investmentBenefits.investmentSecurity.description', lang),
+    },
+    {
+      icon: Users,
+      title: t('investmentBenefits.skilledWorkforce.title', lang),
+      description: t('investmentBenefits.skilledWorkforce.description', lang),
+    },
+  ];
   return (
     <main>
       <section className="relative min-h-[60vh] flex items-center justify-center pt-20">
@@ -112,22 +102,20 @@ export default function InvestmentPage() {
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <span className="inline-block text-gold-light text-sm font-medium tracking-widest uppercase mb-4">
-            Invest
+            {t('investmentTitle', lang)}
           </span>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
-            Invest in <span className="text-gold-warm">Bishoftu</span>
+            {t('investInBishoftu', lang)} <span className="text-gold-warm">Bishoftu</span>
           </h1>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-            Discover lucrative opportunities in Ethiopia's fastest-growing
-            tourism destination. Your gateway to East African hospitality
-            investment.
+            {t('investmentSubtitle', lang)}
           </p>
           <Button
             size="lg"
             className="bg-secondary text-secondary-foreground hover:bg-secondary/90 gap-2"
           >
             <Briefcase className="w-4 h-4" />
-            Download Investment Guide
+            {t('downloadGuide', lang)}
           </Button>
         </div>
       </section>
@@ -135,7 +123,7 @@ export default function InvestmentPage() {
       {/* Stats Bar */}
       <Section className="bg-primary text-primary-foreground py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat) => (
+          {investmentStats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-display text-4xl md:text-5xl font-bold text-gold-warm mb-2">
                 {stat.value}
@@ -151,10 +139,10 @@ export default function InvestmentPage() {
         <SectionHeader
           subtitle="Opportunity"
           title="Why Invest in Bishoftu?"
-          description="Strategic advantages that make Bishoftu an attractive investment destination."
+          description={t('whyInvest', lang)}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((benefit) => (
+          {investmentBenefits.map((benefit) => (
             <div
               key={benefit.title}
               className="bg-card rounded-2xl p-6 shadow-card hover-lift"
@@ -173,41 +161,47 @@ export default function InvestmentPage() {
         </div>
       </Section>
 
-      {/* Investment Sectors */}
+      {/* Investment Opportunities */}
       <Section className="bg-muted/50">
         <SectionHeader
-          subtitle="Sectors"
+          subtitle="Opportunities"
           title="Investment Opportunities"
-          description="Explore the diverse sectors offering attractive returns in Bishoftu."
+          description={t('opportunityTitle', lang)}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {sectors.map((sector) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {investments.filter(inv => inv.featured).map((investment) => (
             <div
-              key={sector.title}
-              className="bg-card rounded-2xl p-8 shadow-card hover-lift"
+              key={investment.id}
+              className="bg-card rounded-2xl p-6 shadow-card hover-lift"
             >
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
-                  <sector.icon className="w-7 h-7 text-secondary-foreground" />
+                  <Briefcase className="w-7 h-7 text-secondary-foreground" />
                 </div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold mb-2">
-                    {sector.title}
+                <div className="flex-1">
+                  <h3 className="font-display text-lg font-semibold mb-2">
+                    {investment.translations[lang]?.title || investment.translations.en.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {sector.description}
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {investment.translations[lang]?.description || investment.translations.en.description}
                   </p>
-                  <ul className="space-y-2">
-                    {sector.opportunities.map((opportunity) => (
-                      <li
-                        key={opportunity}
-                        className="flex items-center gap-2 text-sm"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                        <span>{opportunity}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Investment:</span>
+                      <span className="font-semibold">{investment.translations[lang]?.investment || investment.translations.en.investment}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">ROI:</span>
+                      <span className="font-semibold text-green-600">{investment.translations[lang]?.roi || investment.translations.en.roi}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Timeline:</span>
+                      <span className="font-semibold">{investment.translations[lang]?.timeline || investment.translations.en.timeline}</span>
+                    </div>
+                  </div>
+                  <Button size="sm" className="w-full mt-4">
+                    {t('getStarted', lang)}
+                  </Button>
                 </div>
               </div>
             </div>
@@ -264,14 +258,14 @@ export default function InvestmentPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <span className="text-sm font-medium text-gold-light tracking-wider uppercase">
-              Get Started
+              {t('getStarted', lang)}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-2 mb-6">
-              Connect With Our Investment Team
+              {t('contactTeam', lang)}
             </h2>
             <p className="text-primary-foreground/80 text-lg mb-8">
               Ready to explore investment opportunities in Bishoftu? Our
-              dedicated investment team is here to guide you through the
+              {t('opportunitySubtitle', lang)}rough the
               process.
             </p>
             <div className="space-y-4">

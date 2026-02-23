@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "category": "hospitality",
+    "translations": {
+      "en": {
+        "title": "Lakeview Resort Development",
+        "description": "Prime lakefront property perfect for a 5-star resort with stunning views of Lake Bishoftu.",
+        "investment": "$2.5M",
+        "roi": "18-22% annually",
+        "timeline": "18-24 months"
+      },
+      "am": {
+        "title": "የሀዳሪው የሪዞርት ልማት",
+        "description": "የቢሾፉቱ ሀዳር ውስጥ ያለ የእስር የሚሆን ንብረት ለ5-ኮከብ ሪዞርት በጣም የሚልክ እይታዎች ጋር።",
+        "investment": "$2.5M",
+        "roi": "በዓመት 18-22%",
+        "timeline": "18-24 ወራት"
+      },
+      "or": {
+        "title": "Harina Rizoortii Dhaabbii",
+        "description": "Bakka harina Bishoftu addunyaa guutuuf kan 5-koqii rizoortii hojjechuu danda'u addunyaa guutuuf.",
+        "investment": "$2.5M",
+        "roi": "waggaa 18-22%",
+        "timeline": "18-24 ji'a"
+      }
+    },
+    "image": "/placeholder.svg",
+    "featured": true,
+    "status": "available"
+  },
+  {
+    "id": 2,
+    "category": "real-estate",
+    "translations": {
+      "en": {
+        "title": "Commercial Complex",
+        "description": "Mixed-use development in the heart of Bishoftu with retail, office, and residential spaces.",
+        "investment": "$1.8M",
+        "roi": "12-15% annually",
+        "timeline": "24-30 months"
+      },
+      "am": {
+        "title": "የንግድ ውስጥ ኮምፕሌክስ",
+        "description": "በቢሾፉቱ ማእከል ውስጥ የሚገኘ የተለያዩ አገልግሎቶች ኮምፕሌክስ ከማሸጫ፣ ቢሮ እና የመኖሪያ ቦታዎች ጋር።",
+        "investment": "$1.8M",
+        "roi": "በዓመት 12-15%",
+        "timeline": "24-30 ወራት"
+      },
+      "or": {
+        "title": "Kompileeksii Biyyoo Hojii",
+        "description": "Biyyee Bishoftu keessatti hojiiwwan adda addaatiin kan maqaan, ofiifi mana jiraataa waliin.",
+        "investment": "$1.8M",
+        "roi": "waggaa 12-15%",
+        "timeline": "24-30 ji'a"
+      }
+    },
+    "image": "/placeholder.svg",
+    "featured": true,
+    "status": "available"
+  },
+  {
+    "id": 3,
+    "category": "hospitality",
+    "translations": {
+      "en": {
+        "title": "Business Hotel Chain",
+        "description": "Modern business hotel targeting corporate clients and conference tourism in Bishoftu.",
+        "investment": "$3.2M",
+        "roi": "20-25% annually",
+        "timeline": "30-36 months"
+      },
+      "am": {
+        "title": "የንግድ ሆቴል ቼይን",
+        "description": "ዘመናዊ የንግድ ሆቴል የኩባንያ ደምዳሞችን እና የኮንፈረንስ ቱሪዝምን በቢሾፉቱ ይሲ።",
+        "investment": "$3.2M",
+        "roi": "በዓመት 20-25%",
+        "timeline": "30-36 ወራት"
+      },
+      "or": {
+        "title": "Hooteelii Hojiiwwan",
+        "description": "Hooteelii hojiiwwan ammaa kan qophii hojiiwwan fi konferenseen tuurizimii Bishoftu keessatti.",
+        "investment": "$3.2M",
+        "roi": "waggaa 20-25%",
+        "timeline": "30-36 ji'a"
+      }
+    },
+    "image": "/placeholder.svg",
+    "featured": true,
+    "status": "available"
+  },
+  {
+    "id": 4,
+    "category": "agriculture",
+    "translations": {
+      "en": {
+        "title": "Flower Farm Estate",
+        "description": "Large-scale flower farm with export potential and sustainable agricultural practices.",
+        "investment": "$1.5M",
+        "roi": "15-18% annually",
+        "timeline": "12-18 months"
+      },
+      "am": {
+        "title": "የአበባ እርሻ እምድር",
+        "description": "ትልቅ የአበባ እርሻ የማውጣት እና የማስተላለፍ እድል ከዘለወት የእርሻ ተግባራት ጋር።",
+        "investment": "$1.5M",
+        "roi": "በዓመት 15-18%",
+        "timeline": "12-18 ወራት"
+      },
+      "or": {
+        "title": "Bakka Ulaagaa Fagaatee",
+        "description": "Fagaatee adda addaatiin kan baay'ee fayyadamuuf kan exoprtiin danda'u fi hojiiwwan qonnaa walitti qabamu.",
+        "investment": "$1.5M",
+        "roi": "waggaa 15-18%",
+        "timeline": "12-18 ji'a"
+      }
+    },
+    "image": "/placeholder.svg",
+    "featured": false,
+    "status": "available"
+  },
+  {
+    "id": 5,
+    "category": "real-estate",
+    "translations": {
+      "en": {
+        "title": "Residential Apartments",
+        "description": "Modern apartment complex targeting professionals and expatriates in Bishoftu.",
+        "investment": "$2.8M",
+        "roi": "10-12% annually",
+        "timeline": "24-30 months"
+      },
+      "am": {
+        "title": "የመኖሪያ አፓርታማዎች",
+        "description": "ዘመናዊ የአፓርታማ ኮምፕሌክስ ለፕሮፌሽናሎች እና ለውጭ ዜጋዎች በቢሾፉቱ ይሲ።",
+        "investment": "$2.8M",
+        "roi": "በዓመት 10-12%",
+        "timeline": "24-30 ወራት"
+      },
+      "or": {
+        "title": "Apaartameentiiwwan Mana Jiraataa",
+        "description": "Kompileeksii apaartameentii ammaa kan pirofeeshinaaloonota fi aadda biyyootii Bishoftu keessatti.",
+        "investment": "$2.8M",
+        "roi": "waggaa 10-12%",
+        "timeline": "24-30 ji'a"
+      }
+    },
+    "image": "/placeholder.svg",
+    "featured": false,
+    "status": "available"
+  },
+  {
+    "id": 6,
+    "category": "tourism",
+    "translations": {
+      "en": {
+        "title": "Eco-Lodge Development",
+        "description": "Sustainable eco-tourism lodge near Lake Hora with traditional Oromo architecture.",
+        "investment": "$1.2M",
+        "roi": "14-16% annually",
+        "timeline": "18-24 months"
+      },
+      "am": {
+        "title": "የኢኮ-ሎጅ ልማት",
+        "description": "የሚዘልቅ የኢኮ-ቱሪዝም ሎጅ ከሆራ ሀዳር ጎን በባህላዊ ኦሮሞ አርክቴክቸር ጋር።",
+        "investment": "$1.2M",
+        "roi": "በዓመት 14-16%",
+        "timeline": "18-24 ወራት"
+      },
+      "or": {
+        "title": "Eco-Lodge Dhaabbii",
+        "description": "Eco-tuurizimii lodge Harina Hora gaggabaabii kan aadaa Oromoo arkiiteekturii waliin.",
+        "investment": "$1.2M",
+        "roi": "waggaa 14-16%",
+        "timeline": "18-24 ji'a"
+      }
+    },
+    "image": "/placeholder.svg",
+    "featured": true,
+    "status": "available"
+  }
+]

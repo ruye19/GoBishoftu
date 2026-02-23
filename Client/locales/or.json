@@ -1,0 +1,198 @@
+{
+  "heroTitle": "Addunyaa Biyyoo Ethiopia/Bishoftu",
+  "hotelsTitle": "Hoteliin & Resortiin",
+  "hotelsSubtitle": "Bishoftu dhaabbii keessan fayyadamuu keessatti",
+  "attractionsTitle": "Istaaddiiwwan Hojiiwwan",
+  "attractionsSubtitle": "Bishoftu harina, aadaa fi uumamaa addunyaa guutuu",
+  "agenciesTitle": "Tour & Travel Agenciiwwan",
+  "agenciesSubtitle": "Bishoftu keessan fayyadamuuf agenciiwwan",
+  "noResults": "Hojiiwwan hin argamne",
+  "loading": "Barreessuu...",
+  "exploreAll": "Hundaa kaasuu",
+  "viewAll": "Hundaa beeksisuu",
+  "seeMore": "Ibsi akkaan →",
+  "contactAgent": "Agenciiwwan gaadii",
+  "searchPlaceholder": "Barreessa, hotela, transport, hojiiwwan…",
+  "exploreBishoftu": "Bishoftu baraduu",
+  "needHelp": "Gargaarsa gargaarsuu?",
+  "needHelpText": "Warra kanaan hojiiwwanii Bishoftu beekkamuuuf kan gaggabaabii Oromoo duubbee fiwwinaa hamileeessaa.",
+  "contactGuide": "Warra gargaarsa",
+  "whyExplore": "Bishoftu baradessuu akkamitti?",
+  "whyExploreText": "Bishoftu keessan fayyadamuuf kan gaggabaabii Oromoo duubbee fiwwinaa hamileeessaa.",
+  "benefits": {
+    "expertGuidance": {
+      "title": "Gargaarsa Qulqulluu",
+      "description": "Gargaarsan hojiiwwanii qulqulluuwwan Bishoftu beekkamuuf kan gaggabaabii."
+    },
+    "localConnections": {
+      "title": "Jira Ulaagaa",
+      "description": "Qulqulluuwwan Bishoftu gaggabaabii Oromoo duubbee fiwwinaa hamileeessaa waliin."
+    },
+    "trustedReviews": {
+      "title": "Miira Ibsa",
+      "description": "Miira geessan dhukaasaatti deebii'a deebii'a Bishoftu beekkamuuf."
+    },
+    "saveTime": {
+      "title": "Yeroo Saaluu",
+      "description": "Barreessa qulqulluuwwan Bishoftu beekkamuuf."
+    }
+  },
+  "investmentTitle": "invastimantii",
+  "investmentSubtitle": "Carraa hojii bu'aa qabeessa ta'e biyya Itiyoophiyaa keessatti bakka tuurizimii saffisaan guddachaa jiru keessaa keessaa argadhu. Karra invastimantii keessan gara hospitaalii Afrikaa Bahaa.",
+  "whyInvest": "Faayidaawwan istiraateejii kan Bishoftu invastimantii irratti hawwataa taasisan.",
+  "opportunityTitle": "Seektaroota garaagaraa hospitaalii irraa hanga riil-isteetitti, kanneen guddinaaf qophaa'an ilaali.",
+  "getStarted": "Jalqabi",
+  "contactTeam": "Hojjettoota invastimantii keenya waliin qunnami",
+  "downloadGuide": "Gaaffii invastimantii buusuuf",
+  "investInBishoftu": "Bishoftu keessatti invastimantii",
+  "featuredOpportunity": "Carraa Filatamaa",
+  "requestProjectDetails": "Deebii pirojektii barbaadi",
+  "requestInformation": "Odeeffannoo barbaadi",
+  "submitInquiry": "Gaaffii ergaa",
+  "firstName": "Maqaan Jalqabaa",
+  "lastName": "Maqaan Aabbaa",
+  "emailAddress": "Adeemsa Iimeelii",
+  "companyName": "Maqaan Waajjiraa",
+  "investmentInterest": "Filannoo invastimantii (fkn., hospitaalii, riil-isteetii)",
+  "investmentGoals": "Ulaagaa invastimantii keessan ibsu...",
+  "phone": "Bilbila",
+  "email": "Iimeelii",
+  "office": "Waajjira",
+  "investmentCenter": "Makaa Invastimantii Bishoftu",
+  "investmentPhone": "+251 11 433 0000",
+  "investmentEmail": "invest@gobishoftu.com",
+  "investmentStats": {
+    "tourismGrowth": "Guddina Tuurizimii Waggaa",
+    "fromAddis": "Addis Ababaa irraa",
+    "craterLakes": "Lakiiwwan Qaroo",
+    "annualVisitors": "Bu'aawwan Waggaa"
+  },
+  "investmentBenefits": {
+    "growingMarket": {
+      "title": "Guddina Tuurizimii",
+      "description": "100,000+ bu'aawwan waggaa kan guddina waggaa irraa waliin."
+    },
+    "primeLocation": {
+      "title": "Bakka Addaa",
+      "description": "Addis Ababaa irraa fagaatee 47km qofa kan infrastrukchara guddaadhaan."
+    },
+    "investmentSecurity": {
+      "title": "Naga Invastimantii",
+      "description": "Naannoo danda'amaa kan dargaggeessiin tuurizimii dhiyeessaa."
+    },
+    "skilledWorkforce": {
+      "title": "Hojiiwwan Qulqullina Qabu",
+      "description": "Hospitaalii fi hojiiwwan seeraa qulqullinaan baratamoo argachuuf."
+    }
+  },
+  "investmentSectors": {
+    "hospitality": {
+      "title": "Hospitaalii & Tuurizimii",
+      "description": "Hoteliiwwan, rizoortiiwwan, hojiiwwan fi tuurizimii sochiin.",
+      "opportunities": ["Rizoortiiwwan harina", "Hoteliiwwan xiqqaa", "Eco-lodgewwan", "Waajjirawwan tuurizimii"]
+    },
+    "realEstate": {
+      "title": "Istaatii Riil Dhaabbii",
+      "description": "Mana jiraataa fi biyyoo hojiiwwan naannoo guddachaa jiran keessatti.",
+      "opportunities": ["Kompileeksiiwwan mana jiraataa", "Makaa hojiiwwan", "Hojiiwwan walitti qabaman"]
+    },
+    "retail": {
+      "title": "Riilii & Seeraa",
+      "description": "Dukaanwwan, restoraantiiwwan fi hojiiwwan seeraa tuuristootaafi namootaatiif.",
+      "opportunities": ["Restoraantiiwwan & kaafewwan", "Dukaanwwan gurguddoo", "Makaa fayyaa", "Madda walitti qabamuuf"]
+    },
+    "agriculture": {
+      "title": "Qonnaa & Agro-tuurizimii",
+      "description": "Mana qonnaa, qonnaa orgaanikii fi tuurizimii qonnaa.",
+      "opportunities": ["Tuurizimii qonnaa", "Farmaawwan orgaanikii", "Buna farmaawwan", "Qonnaa annan"]
+    }
+  },
+  "featuredProject": {
+    "title": "Dhaabbii Rizoortii Harina",
+    "description": "Waliigaltee invastimantii dorgommii rizoortii lafaa haaraa Harina Babogayaa irratti barbaadna. Pirojektii kun ofii keessatti 60 mana, spa addunyaa, restoraantiiwwan baay'ee fi faacilityiiwwan tuurizimii ofii keessatti qaba.",
+    "features": [
+      "Bakka harina addaa",
+      "15% guddina waggaa eegame",
+      "Waggaa 3 dhaabbii uumamaa",
+      "Zone tuurizimii dargaggeessan"
+    ]
+  },
+  "aboutTitle": "Waa'ee Keessan",
+  "aboutSubtitle": "Hubadha biyya Itoophiyaa magaalaa harinaa, aannan voolaanikii fi herreekeen Oromoo gaggeeffamee fi carraawwan walumaagalatti.",
+  "aboutHeroTitle": "Waa'ee GoBishoftu",
+  "aboutHeroSubtitle": "Bakka buufachuu gochaawwan Bishoftuu fi carraawwan invastimantii Itoophiyaa magaalaa harinaa jalqabaa.",
+  "ourMission": "Mishinii Keessan",
+  "ourMissionText": "Harinaawwan Bishoftuu adda addaa, aadaa bal'aa fi carraawwan invastimantii addunyaa irratti agarsiisuun tuurizimii guutuu fi guddina akka danda'u godha.",
+  "ourVision": "Akkuma Keessan",
+  "ourVisionText": "Magaalawwan harinaa Itoophiyaa ilaaluuf dorgommii dijiitaalaa jalqabaa, Bishoftu akka bakka jalqabaatti fayyadamuun.",
+  "ourValues": "Gatii Keessan",
+  "aboutStats": {
+    "lakes": "Lakiiwwan Qaroo",
+    "visitors": "Bu'aawwan Waggaa",
+    "hotels": "Hoteliiwwan & Rizoortiiwwan",
+    "investments": "Carraawwan Invastimantii"
+  },
+  "aboutBenefits": {
+    "authentic": {
+      "title": "Yaadannoo Dhugaatii",
+      "description": "Aadaa Oromoo dhaabbataa fi adda addaa irratti xiyyeeffachuun wal morkii."
+    },
+    "sustainable": {
+      "title": "Tuurizimii Guutuu",
+      "description": "Harinaawwan Bishoftuu ofii keessaa qabu kan biyya gaggabaaboo fayyadamuun eeyyamama."
+    },
+    "local": {
+      "title": "Wal morkii Walqixaa",
+      "description": "Hojiiwwan fi gamtoowwan walqixaadhaan tuurizimii dhugaatii fi fayyadamaa uumuuf."
+    },
+    "accessible": {
+      "title": "Odeeffannoo Danda'amaa",
+      "description": "Bishaan Bishoftuu hunda argachuuf, qophii godhuuf fi raawwachuuf salphaa taasisu."
+    }
+  },
+  "teamSection": "Xiyyeeffattoota Keessan",
+  "teamDescription": "Professinaaloonni gochaawwan Bishoftuu fi carraawwan addunyaa agarsiisuuf dhiheessa.",
+  "contactInfo": {
+    "address": "Bishoftu, Itoophiyaa",
+    "phone": "+251 11 433 0000",
+    "email": "info@gobishoftu.com"
+  },
+  "ourStory": "Waa'ee keenya",
+  "whereNatureMeetsCulture": "Uumamaafi Aadaa Walitti Qabamu",
+  "bishoftuDescription1": "Bishoftu, kan Debre Zeit jedhamee beekamu, Itoophiyaa Oromiyaa Kudhaaleessa Shawaa Godinaa kessa argama. Addis Ababaa kibbaa-dhihaa 47 km fagaattee, magaalichi gariirraa 1,920 m ol ka'a.",
+  "bishoftuDescription2": "Magaalichi torban harinaawwan adda addaa qabuuf beekkama. Harinaawwan kun—Hora, Bishoftu, Babogayaa fi Kuriftu—kan uumaman yoo ta'u, Oromootiif mana qadhaa ta'an.",
+  "bishoftuDescription3": "Har'a, Bishoftu Itoophiyaa tuurizimii carraa agarsiisa, qofa osoo hin taane, uumamaa addaa, aadaa bal'aa fi meeshaalee wangeeldaa qofa osoo hin taane, tuurizimii Itoophiyaa dhugaatii Addis Ababaa irraa gargar bahe agarsiisa.",
+  "cultureHeritage": "Aadaa fi Duubaa",
+  "richOromoTraditions": "Aadaawwan Oromoo Bal'aa",
+  "oromoDescription1": "Oromoon yeroo baay'ee mana isaa kessa ture, aadaawwanis ni danda'ama. Harina Hora Irreecha bahaaf mana qadhaadha, miliyoonaan Waaqaa gaariif galmaa'uu fi rooba xumuruuf walitti dhufa.",
+  "oromoDescription2": "Aadaa buna 'Buna' qopheessuu, Itoophiyaa gargaarsaa guddaa. Gama Bishoftu deemanii aadaa kana qofa osoo hin taane, buna cimaa, pop corn fi incense waliin qopheessuuf ni danda'amu, kunis dhugaatii fi jaalala agarsiisa.",
+  "oromoDescription3": "Aadaa muuzikaa fi daansii irraa kaasee hanga hojiiwwan gurguddoo fi nyaataatti, Bishoftu Afrikaa keessatti aadaa adda addaa agarsiisa.",
+  "history": "Taariikha",
+  "journeyThroughTime": "Yeroo Darbee Daawwadhu",
+  "historyDescription": "Yeroo duubaa uumamaa irraa kaasee hanga tuurizimii guututti",
+  "volcanicOrigins": "Uumaawwan Qaroo",
+  "volcanicOriginsDesc": "Harinaawwan qaroo yeroo baay'ee duraana uumaman.",
+  "debreZeitFounded": "Debre Zeit Uumame",
+  "debreZeitFoundedDesc": "Magaalaa haaraa uumame, kan jalqabaafi aeroplane base ta'e.",
+  "tourismGrowth": "Guddina Tuurizimii",
+  "tourismGrowthDesc": "Godinnichi tuurizimii guutuu akka ta'e beekama.",
+  "bishoftuRising": "Bishoftu Guddissa",
+  "bishoftuRisingDesc": "Bishoftu jedhamee waama, magaalichi tuurizimii fi invastimantii center ta'e.",
+  "aboutGoBishoftu": "Waa'ee Go Bishoftu",
+  "digitalGateway": "Bakka Dijitaalaa Bishoftu",
+  "digitalGatewayDesc": "Tuurizimii, aadaa fi carraawwan teknooloojiiin walitti qabamu",
+  "goBishoftuDesc1": "Go Bishoftu dhihaa uumame dijiitaal tuurizimii platform, Bishoftuu gochaawwan, aadaa fi carraawwan addunyaa agarsiisuuf. Gama dhihaa hubannoo fi teknooloojii haaraatiin, platformiin deemaataa, gamtoowwan, tuurizimii business fi invastiroota gidduutti jira.",
+  "goBishoftuDesc2": "Furtuu keenya tuurizimii qofa osoo hin taane, guddina guutuu fi gamtoowwan dhiyeessuu, Bishoftu addunyaa waliin walitti fufa akka ta'e agarsiisuuf dijiitaal yaadannoo uumu.",
+  "visionExtended": "Bishoftu addunyaa tuurizimii kessatti ol ka'uu, online presence qabu, aadaa isaa agarsiisuun addunyaa gochaawwan isaa ilaaluuf.",
+  "missionExtended": "Dhihaa qofa osoo hin taane, teknooloojii fi aadaa hubannoo keenya fayyadamuun, naannoo keenya guddisuun, dhihaa fi addunyaa waliin walitti dhufa.",
+  "gatewayToOromia": "Bakka Oromiyaa",
+  "culturalHub": "Aadaa fi daldala Oromoo",
+  "ancient": "Duubaa",
+  "debreZeit": "1940s",
+  "today": "Har'a",
+  "accommodationType": {
+    "hotel": "Hotelii",
+    "resort": "Rizoortii",
+    "guesthouse": "Mana Keessummaa"
+  }
+}

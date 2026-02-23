@@ -2,12 +2,15 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useRouter, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 
 export default function LanguageSwitcher({ className = "" }) {
-  const { lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { lang, setLang } = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const languages = [
     { code: "en", label: "EN" },
@@ -29,6 +32,18 @@ export default function LanguageSwitcher({ className = "" }) {
     };
   }, []);
 
+  // Update URL when language changes
+  const handleLanguageChange = (newLang) => {
+    setLang(newLang);
+
+    // Get current path without language prefix
+    const pathParts = pathname.split("/").slice(2); // skip empty + current lang
+    const newPath = `/${newLang}/${pathParts.join("/")}`;
+
+    // Use router.replace to stay in same position
+    router.replace(newPath);
+  };
+
   return (
     <div className={`relative ${className}`} ref={dropdownRef}>
       {/* Desktop Buttons */}
@@ -36,7 +51,7 @@ export default function LanguageSwitcher({ className = "" }) {
         {languages.map((l) => (
           <button
             key={l.code}
-            onClick={() => setLang(l.code)}
+            onClick={() => handleLanguageChange(l.code)}
             className={`px-3 py-1 rounded-md font-semibold text-sm transition ${
               lang === l.code
                 ? "bg-primary text-primary-foreground"
@@ -66,7 +81,7 @@ export default function LanguageSwitcher({ className = "" }) {
               <button
                 key={l.code}
                 onClick={() => {
-                  setLang(l.code);
+                  handleLanguageChange(l.code);
                   setOpen(false);
                 }}
                 className={`block w-full text-left px-3 py-1 text-sm rounded-md font-semibold transition ${

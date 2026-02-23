@@ -15,6 +15,18 @@ export function LanguageProvider({ children }) {
     }
   }, []);
 
+  // Sync language with URL
+  useEffect(() => {
+    // Get language from URL path
+    if (typeof window !== 'undefined') {
+      const pathLang = window.location.pathname.split('/')[1];
+      if (pathLang && pathLang !== lang) {
+        setLang(pathLang);
+        localStorage.setItem("lang", pathLang);
+      }
+    }
+  }, []);
+
   // save language
   useEffect(() => {
     localStorage.setItem("lang", lang);

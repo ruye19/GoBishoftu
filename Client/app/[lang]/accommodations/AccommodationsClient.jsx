@@ -2,18 +2,18 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { Navigation } from "@/components/navigation";
-import { Button } from "../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import { PhoneCall } from "lucide-react";
 import accommodations from "@/data/accommodations.json";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { t } from "@/locales";
 
 export default function AccommodationsClient() {
   const [selectedType, setSelectedType] = useState("All");
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [minRating, setMinRating] = useState(0);
   const [showFilters, setShowFilters] = useState(false);
-  const { lang, setLang } = useLanguage(); // language state
+  const { lang } = useLanguage(); // language state
 
   const types = ["All", "Hotel", "Guest House", "Resort", "Lodge"];
 

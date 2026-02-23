@@ -1,66 +1,64 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import horaLake from "@/public/arsedi.jpg"; //replace with real pic later
+import horaLake from "@/public/arsedi.jpg";
 import cultureCoffee from "@/public/culture-coffee.jpg";
 import { MapPin, Users, Leaf, History, Target, Heart } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
-
-const stats = [
-  { value: "7", label: "Crater Lakes" },
-  { value: "47km", label: "From Addis Ababa" },
-  { value: "2,000m", label: "Elevation" },
-  { value: "100k+", label: "Annual Visitors" },
-];
-
-const values = [
-  {
-    icon: Leaf,
-    title: "Sustainable Tourism",
-    description:
-      "We are committed to preserving our natural lakes and ecosystems for future generations.",
-  },
-  {
-    icon: Users,
-    title: "Community First",
-    description:
-      "Tourism that benefits local communities, creates jobs, and celebrates our heritage.",
-  },
-  {
-    icon: Heart,
-    title: "Authentic Experiences",
-    description:
-      "We offer genuine connections with Oromo culture, traditions, and warm hospitality.",
-  },
-];
-
-const timeline = [
-  {
-    year: "Ancient",
-    title: "Volcanic Origins",
-    description:
-      "The crater lakes were formed by volcanic activity thousands of years ago.",
-  },
-  {
-    year: "1940s",
-    title: "Debre Zeit Founded",
-    description:
-      "The modern city was established, initially as an air force base.",
-  },
-  {
-    year: "2000s",
-    title: "Tourism Growth",
-    description:
-      "The region gained recognition as a prime tourism destination.",
-  },
-  {
-    year: "Today",
-    title: "Bishoftu Rising",
-    description:
-      "Renamed to Bishoftu, the city is now a hub for tourism and investment.",
-  },
-];
+import { useLanguage } from "@/app/context/LanguageContext";
+import { t } from "@/locales";
 
 export default function AboutPage() {
+  const { lang } = useLanguage();
+  
+  const timeline = [
+    {
+      year: t('ancient', lang),
+      title: t('volcanicOrigins', lang),
+      description: t('volcanicOriginsDesc', lang),
+    },
+    {
+      year: t('debreZeit', lang),
+      title: t('debreZeitFounded', lang),
+      description: t('debreZeitFoundedDesc', lang),
+    },
+    {
+      year: "2000s",
+      title: t('tourismGrowth', lang),
+      description: t('tourismGrowthDesc', lang),
+    },
+    {
+      year: t('today', lang),
+      title: t('bishoftuRising', lang),
+      description: t('bishoftuRisingDesc', lang),
+    },
+  ];
+  
+  const aboutStats = [
+    { value: "7", label: t('aboutStats.lakes', lang) },
+    { value: "47km", label: "From Addis Ababa" },
+    { value: "2,000m", label: "Elevation" },
+    { value: "100k+", label: t('aboutStats.visitors', lang) },
+  ];
+
+  const aboutValues = [
+    {
+      icon: Leaf,
+      title: t('aboutBenefits.sustainable.title', lang),
+      description: t('aboutBenefits.sustainable.description', lang),
+    },
+    {
+      icon: Users,
+      title: t('aboutBenefits.local.title', lang),
+      description: t('aboutBenefits.local.description', lang),
+    },
+    {
+      icon: Heart,
+      title: t('aboutBenefits.authentic.title', lang),
+      description: t('aboutBenefits.authentic.description', lang),
+    },
+  ];
   return (
     <>
       <main>
@@ -75,14 +73,13 @@ export default function AboutPage() {
           </div>
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <span className="inline-block text-gold-light text-sm font-medium tracking-widest uppercase mb-4">
-              About Us
+              {t('aboutTitle', lang)}
             </span>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
-              The Story of <span className="text-gold-warm">Bishoftu</span>
+              {t('aboutHeroTitle', lang)} <span className="text-gold-warm">Bishoftu</span>
             </h1>
             <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
-              Discover the heart of Ethiopia's lake city, where volcanic wonders
-              meet rich Oromo heritage and boundless opportunities.
+              {t('aboutHeroSubtitle', lang)}
             </p>
           </div>
         </section>
@@ -90,7 +87,7 @@ export default function AboutPage() {
         <section className="bg-primary text-primary-foreground py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat) => (
+              {aboutStats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="font-display text-4xl md:text-5xl font-bold text-gold-warm mb-2">
                     {stat.value}
@@ -107,32 +104,20 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <SectionHeader
-                subtitle="Our Story"
-                title="Where Nature Meets Culture"
+                subtitle={t('ourStory', lang)}
+                title={t('whereNatureMeetsCulture', lang)}
                 align="left"
                 className="mb-8"
               />
               <div className="space-y-6 text-muted-foreground">
                 <p className="text-lg leading-relaxed">
-                  Bishoftu, formerly known as Debre Zeit, sits majestically in
-                  the East Shewa Zone of Ethiopia's Oromia Region. Located just
-                  47 kilometers southeast of Addis Ababa, this highland city
-                  rises to an elevation of nearly 1,920 meters above sea level.
+                  {t('bishoftuDescription1', lang)}
                 </p>
                 <p className="leading-relaxed">
-                  The city is renowned for its seven stunning crater lakes, each
-                  with its own unique character and beauty. These volcanic
-                  lakes—including the famous Hora, Bishoftu, Babogaya, and
-                  Kuriftu—were formed by volcanic activity and have become
-                  sacred sites for the Oromo people.
+                  {t('bishoftuDescription2', lang)}
                 </p>
                 <p className="leading-relaxed">
-                  Today, Bishoftu stands as a testament to Ethiopia's tourism
-                  potential, offering visitors a unique blend of natural beauty,
-                  cultural richness, and modern amenities. From luxury lakeside
-                  resorts to traditional coffee ceremonies, the city provides an
-                  authentic Ethiopian experience just a short drive from the
-                  capital.
+                  {t('bishoftuDescription3', lang)}
                 </p>
               </div>
             </div>
@@ -147,10 +132,10 @@ export default function AboutPage() {
               <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-6 shadow-card max-w-[280px]">
                 <MapPin className="w-8 h-8 text-primary mb-2" />
                 <h4 className="font-display text-lg font-semibold mb-1">
-                  Gateway to Oromia
+                  {t('gatewayToOromia', lang)}
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  A cultural and economic hub of the Oromo people
+                  {t('culturalHub', lang)}
                 </p>
               </div>
             </div>
@@ -170,30 +155,20 @@ export default function AboutPage() {
             </div>
             <div className="order-1 lg:order-2">
               <SectionHeader
-                subtitle="Culture & Heritage"
-                title="Rich Oromo Traditions"
+                subtitle={t('cultureHeritage', lang)}
+                title={t('richOromoTraditions', lang)}
                 align="left"
                 className="mb-8"
               />
               <div className="space-y-6 text-muted-foreground">
                 <p className="text-lg leading-relaxed">
-                  The Oromo people have called this region home for centuries,
-                  and their traditions remain vibrant and alive. Lake Hora
-                  serves as the sacred site for the annual Irreecha festival,
-                  where millions gather to give thanks to Waaqa (God) and
-                  celebrate the end of the rainy season.
+                  {t('oromoDescription1', lang)}
                 </p>
                 <p className="leading-relaxed">
-                  The traditional coffee ceremony, or "Buna," is a cornerstone
-                  of Ethiopian hospitality. Visitors to Bishoftu can experience
-                  this beautiful ritual, where freshly roasted coffee is
-                  prepared and served with popcorn and incense, symbolizing
-                  welcome and friendship.
+                  {t('oromoDescription2', lang)}
                 </p>
                 <p className="leading-relaxed">
-                  From traditional music and dance to artisanal crafts and
-                  cuisine, Bishoftu offers an authentic window into one of
-                  Africa's most fascinating cultures.
+                  {t('oromoDescription3', lang)}
                 </p>
               </div>
             </div>
@@ -203,9 +178,9 @@ export default function AboutPage() {
         {/* Timeline */}
         <Section>
           <SectionHeader
-            subtitle="History"
-            title="Journey Through Time"
-            description="From ancient volcanic origins to modern tourism hub"
+            subtitle={t('history', lang)}
+            title={t('journeyThroughTime', lang)}
+            description={t('historyDescription', lang)}
           />
           <div className="relative">
             <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-border hidden md:block" />
@@ -239,26 +214,18 @@ export default function AboutPage() {
         <Section className="bg-muted/40">
           <div className="max-w-5xl mx-auto">
             <SectionHeader
-              subtitle="About Go Bishoftu"
-              title="A Digital Gateway to Bishoftu"
-              description="Connecting tourism, culture, and opportunity through technology"
+              subtitle={t('aboutGoBishoftu', lang)}
+              title={t('digitalGateway', lang)}
+              description={t('digitalGatewayDesc', lang)}
             />
 
             <div className="space-y-8 text-muted-foreground">
               <p className="text-lg leading-relaxed">
-                Go Bishoftu is a locally developed digital tourism platform
-                created to showcase the beauty, culture, and investment
-                potential of Bishoftu to the world. Built with deep local
-                knowledge and modern technology, the platform serves as a bridge
-                between visitors, local communities, tourism businesses, and
-                investors.
+                {t('goBishoftuDesc1', lang)}
               </p>
 
               <p className="leading-relaxed">
-                Our goal is not only to promote tourism, but to create
-                meaningful digital experiences that support sustainable
-                development, empower local businesses, and present Bishoftu as a
-                city ready for global engagement.
+                {t('goBishoftuDesc2', lang)}
               </p>
             </div>
           </div>
@@ -272,26 +239,20 @@ export default function AboutPage() {
               <div className="flex items-center gap-3 mb-4">
                 <Target className="w-8 h-8 text-gold-warm" />
                 <span className="text-sm font-medium tracking-wider uppercase text-gold-light">
-                  Our Vision
+                  {t('ourVision', lang)}
                 </span>
               </div>
 
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Bishoftu on the Global Tourism Map
+                {t('ourVision', lang)}
               </h2>
 
               <p className="text-primary-foreground/80 text-lg leading-relaxed">
-                Our vision is to empower Oromia’s tourism sector by leveraging
-                digital platforms that celebrate the region’s natural beauty,
-                cultural heritage, and economic potential—starting with
-                Bishoftu.
+                {t('ourVisionText', lang)}
               </p>
 
               <p className="text-primary-foreground/80 leading-relaxed mt-4">
-                We envision a future where Bishoftu stands proudly on the global
-                tourism map, supported by a vibrant online presence that
-                reflects its unique identity and invites the world to explore
-                its wonders.
+                {t('visionExtended', lang)}
               </p>
             </div>
 
@@ -300,25 +261,20 @@ export default function AboutPage() {
               <div className="flex items-center gap-3 mb-4">
                 <History className="w-8 h-8 text-gold-warm" />
                 <span className="text-sm font-medium tracking-wider uppercase text-gold-light">
-                  Our Mission
+                  {t('ourMission', lang)}
                 </span>
               </div>
 
               <h3 className="font-display text-2xl font-bold mb-6">
-                Building Digital Experiences with Purpose
+                {t('ourMission', lang)}
               </h3>
 
               <p className="text-primary-foreground/80 leading-relaxed mb-4">
-                Our mission is to design and develop a dynamic, user-centered
-                platform that showcases Bishoftu’s attractions while serving as
-                a gateway for tourism, investment, and community engagement.
+                {t('ourMissionText', lang)}
               </p>
 
               <p className="text-primary-foreground/80 leading-relaxed">
-                As a locally owned and operated initiative, we use our technical
-                expertise and cultural insight to build digital solutions that
-                uplift our region and resonate with both local and international
-                audiences.
+                {t('missionExtended', lang)}
               </p>
             </div>
           </div>
