@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Circular:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -94,7 +95,7 @@
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
+  --font-sans: "Circular", "Inter", system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --radius: 0.625rem;
   --color-background: var(--background);
@@ -141,7 +142,8 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Circular", "Inter", system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   h1,
   h2,
@@ -149,7 +151,8 @@
   h4,
   h5,
   h6 {
-    font-family: "playfair display", Georgia, serif;
+    font-family: "Circular", "Playfair Display", Georgia, serif;
+    font-weight: 600;
     @apply tracking-tight;
   }
 }
@@ -199,11 +202,12 @@
 @layer utilities {
   /* Typography utilities */
   .font-display {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Circular", "Playfair Display", Georgia, serif;
+    font-weight: 600;
   }
 
   .font-body {
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Circular", "Inter", system-ui, sans-serif;
   }
 
   /* Gradient backgrounds */

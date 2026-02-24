@@ -58,7 +58,7 @@ export default function HomeClient() {
     ...new Set(accommodations.map((acc) => acc.type)),
   ].map((type) => ({
     value: type,
-    name: t(`accommodationType.${type}`, lang),
+    name: t(`accommodationType.${type}`, lang) || type.charAt(0).toUpperCase() + type.slice(1).replace('-', ' '),
     // count: accommodations.filter(acc => acc.type === type).length
   }));
 
@@ -106,35 +106,35 @@ export default function HomeClient() {
               </p>
             </div>
 
-            {/* Accommodation Type Nav (single-line, navbar-style) */}
-            <section className="section-padding bg-background">
-              <div className="container-custom px-4 py-4">
-                <div className="overflow-x-auto">
-                  <nav className="flex items-center gap-3 md:gap-4 whitespace-nowrap">
-                    {accommodationTypes.map((type) => (
-                      <Link
-                        key={type.value}
-                        href={`/${lang}/accommodations?type=${type.value}`}
-                        className="group"
+            {/* Accommodation Type Nav (full-width button style) */}
+            <section className="py-4 bg-background">
+              <div className="container-custom px-4 py-3">
+                <div className="flex gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-4 md:overflow-visible">
+                  {accommodationTypes.map((type) => (
+                    <Link
+                      key={type.value}
+                      href={`/${lang}/accommodations?type=${type.value}`}
+                      className="group flex-shrink-0 md:flex-shrink"
+                    >
+                      <button
+                        className={`
+                          w-full px-6 py-4 rounded-xl text-sm font-medium
+                          transition-all duration-200 border cursor-pointer
+                          bg-card text-foreground border-border shadow-sm
+                          hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-lg hover:-translate-y-1
+                          active:scale-95 flex flex-col items-center justify-center gap-2
+                          min-h-[50px] min-w-[110px] md:min-w-0
+                        `}
                       >
-                        <div
-                          className={`
-                            px-5 py-2.5 rounded-full text-sm font-medium
-                            transition-all duration-200 border cursor-pointer
-                            bg-background text-foreground border-border
-                            hover:bg-muted/50 hover:border-muted-foreground/30
-                            hover:shadow-sm hover:-translate-y-0.5
-                            active:scale-95 flex items-center gap-2
-                          `}
-                        >
-                          <span>{type.name}</span>
-                          {/* <span className="px-2 py-0.5 bg-muted/70 text-muted-foreground text-xs rounded-full">
-                            { {type.count} }
-                          </span> */}
-                        </div>
-                      </Link>
-                    ))}
-                  </nav>
+                        <span className="text-base font-semibold">
+                          {type.name}
+                        </span>
+                        {/* <span className="px-3 py-1 bg-muted/70 text-muted-foreground text-xs rounded-full font-medium"> */}
+                        {/* {type.count} */}
+                        {/* </span> */}
+                      </button>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </section>
