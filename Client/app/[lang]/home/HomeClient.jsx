@@ -128,9 +128,9 @@ export default function HomeClient() {
                           `}
                         >
                           <span>{type.name}</span>
-                          <span className="px-2 py-0.5 bg-muted/70 text-muted-foreground text-xs rounded-full">
-                            {/* {type.count} */}
-                          </span>
+                          {/* <span className="px-2 py-0.5 bg-muted/70 text-muted-foreground text-xs rounded-full">
+                            { {type.count} }
+                          </span> */}
                         </div>
                       </Link>
                     ))}
