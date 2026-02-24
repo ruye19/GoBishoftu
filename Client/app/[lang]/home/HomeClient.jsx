@@ -55,10 +55,12 @@ export default function HomeClient() {
   const attractions = attractionsData.slice(0, 6);
 
   const accommodationTypes = [
-    { name: t("accommodationType.hotel", lang), value: "hotel" },
-    { name: t("accommodationType.resort", lang), value: "resort" },
-    { name: t("accommodationType.guesthouse", lang), value: "guesthouse" },
-  ];
+    ...new Set(accommodations.map((acc) => acc.type)),
+  ].map((type) => ({
+    value: type,
+    name: t(`accommodationType.${type}`, lang),
+    // count: accommodations.filter(acc => acc.type === type).length
+  }));
 
   return (
     <>
@@ -108,26 +110,27 @@ export default function HomeClient() {
             <section className="section-padding bg-background">
               <div className="container-custom px-4 py-4">
                 <div className="overflow-x-auto">
-                  <nav className="flex items-center gap-3 md:gap-6 whitespace-nowrap">
+                  <nav className="flex items-center gap-3 md:gap-4 whitespace-nowrap">
                     {accommodationTypes.map((type) => (
                       <Link
                         key={type.value}
                         href={`/${lang}/accommodations?type=${type.value}`}
-                        className="md:flex-1"
+                        className="group"
                       >
                         <div
-                          className="
-          px-5 py-3
-          rounded-full
-          text-center
-          bg-card
-          hover:bg-primary/5
-          transition
-          font-medium
-          text-foreground
-        "
+                          className={`
+                            px-5 py-2.5 rounded-full text-sm font-medium
+                            transition-all duration-200 border cursor-pointer
+                            bg-background text-foreground border-border
+                            hover:bg-muted/50 hover:border-muted-foreground/30
+                            hover:shadow-sm hover:-translate-y-0.5
+                            active:scale-95 flex items-center gap-2
+                          `}
                         >
-                          {type.name}
+                          <span>{type.name}</span>
+                          <span className="px-2 py-0.5 bg-muted/70 text-muted-foreground text-xs rounded-full">
+                            {/* {type.count} */}
+                          </span>
                         </div>
                       </Link>
                     ))}
@@ -154,7 +157,7 @@ export default function HomeClient() {
                       />
                       <div className="p-6">
                         <div className="text-sm font-semibold text-primary mb-2">
-                          {hotel.type}
+                          {t(`accommodationType.${hotel.type}`, lang)}{" "}
                         </div>
                         <h3 className="text-xl font-bold text-foreground mb-2">
                           {hotel.translations[lang]?.name || hotel.name}
@@ -186,7 +189,7 @@ export default function HomeClient() {
                   />
                   <div className="p-6">
                     <div className="text-sm font-semibold text-primary mb-2">
-                      {hotel.type}
+                      {t(`accommodationType.${hotel.type}`, lang)}
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-2">
                       {hotel.translations[lang]?.name || hotel.name}
@@ -387,7 +390,7 @@ export default function HomeClient() {
             </p>
             <div className="mt-6">
               <Link
-                href="/about"
+                href={`/${lang}/about`}
                 className="text-primary font-semibold hover:underline"
               >
                 See more →

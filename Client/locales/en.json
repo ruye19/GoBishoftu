@@ -193,6 +193,8 @@
   "accommodationType": {
     "hotel": "Hotel",
     "resort": "Resort", 
-    "guesthouse": "Guesthouse"
+    "guest-house": "Guest House",
+    "guesthouse": "Guesthouse",
+    "lodge": "Lodge"
   }
 }

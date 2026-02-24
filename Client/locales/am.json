@@ -79,11 +79,6 @@
   "ancient": "ጥንታዊ",
   "debreZeit": "1940ዎቹ",
   "today": "ዛሬ",
-  "accommodationType": {
-    "hotel": "ሆቴል",
-    "resort": "ሪዞርት",
-    "guesthouse": "እንግዳ ቤት"
-  },
   "noResults": "ውጤታዎች አልተተዋልም",
   "loading": "በመስራት ላይ...",
   "exploreAll": "ሁሉንን ይቃንሉ",
@@ -194,5 +189,12 @@
       "3-ዓመታዊ የልማት የሚፈጸም ጊዜ",
       "በመንግስት የተደገፈ የቱሪዝም ዞን"
     ]
+  },
+  "accommodationType": {
+    "hotel": "ሆቴል",
+    "resort": "ሪዞርት", 
+    "guest-house": "እንግዳ ቤት",
+    "guesthouse": "እንግዳ ቤት",
+    "lodge": "ሎጅ"
   }
 }

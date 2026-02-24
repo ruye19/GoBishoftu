@@ -15,7 +15,8 @@ export default function AccommodationsClient() {
   const [showFilters, setShowFilters] = useState(false);
   const { lang } = useLanguage(); // language state
 
-  const types = ["All", "Hotel", "Guest House", "Resort", "Lodge"];
+  // Get unique types from data dynamically
+  const types = ["All", ...new Set(accommodations.map((acc) => acc.type))];
 
   const searchParams = useSearchParams();
 
@@ -23,11 +24,12 @@ export default function AccommodationsClient() {
     const q = searchParams?.get("type");
     if (!q) return;
     const normalized = q.toLowerCase();
-    if (normalized.includes("hotel")) setSelectedType("Hotel");
-    else if (normalized.includes("lodge")) setSelectedType("Lodge");
-    else if (normalized.includes("guest")) setSelectedType("Guest House");
-    else if (normalized.includes("resort")) setSelectedType("Resort");
-    else if (normalized.includes("guesthouse")) setSelectedType("Guest House");
+    
+    // Direct match with data values
+    if (normalized === "hotel") setSelectedType("hotel");
+    else if (normalized === "lodge") setSelectedType("lodge");
+    else if (normalized === "guest-house" || normalized === "guesthouse") setSelectedType("guest-house");
+    else if (normalized === "resort") setSelectedType("resort");
   }, [searchParams]);
 
   const filteredAccommodations = useMemo(() => {
@@ -45,20 +47,25 @@ export default function AccommodationsClient() {
     <div className="space-y-6">
       {/* Type */}
       <div>
-        <h4 className="font-semibold mb-2">Type</h4>
-        {types.map((type) => (
-          <button
-            key={type}
-            onClick={() => setSelectedType(type)}
-            className={`block w-full text-left px-3 py-2 rounded-lg ${
-              selectedType === type
-                ? "bg-primary text-primary-foreground font-semibold"
-                : "bg-muted hover:bg-muted/70"
-            }`}
-          >
-            {type}
-          </button>
-        ))}
+        <h4 className="font-semibold mb-3">Type</h4>
+        <div className="flex flex-wrap gap-2">
+          {types.map((type) => (
+            <button
+              key={type}
+              onClick={() => setSelectedType(type)}
+              className={`
+                px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+                border cursor-pointer
+                ${selectedType === type
+                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                  : "bg-background text-foreground border-border hover:bg-muted/50 hover:border-muted-foreground/30"
+                }
+              `}
+            >
+              {type === "All" ? "All" : t(`accommodationType.${type}`, lang)}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Price */}

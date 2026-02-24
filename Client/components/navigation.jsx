@@ -30,7 +30,13 @@ export function Navigation() {
 
   const isActive = (path) => {
     const fullPath = `/${lang}${path === "/" ? "" : path}`;
-    return pathname === fullPath || pathname.startsWith(fullPath);
+
+    // Special case for Home
+    if (path === "/") {
+      return pathname === `/${lang}`;
+    }
+
+    return pathname === fullPath || pathname.startsWith(fullPath + "/");
   };
 
   const getHref = (path) => `/${lang}${path === "/" ? "" : path}`;

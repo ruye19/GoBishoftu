@@ -193,6 +193,8 @@
   "accommodationType": {
     "hotel": "Hotelii",
     "resort": "Rizoortii",
-    "guesthouse": "Mana Keessummaa"
+    "guest-house": "Mana Keessummaa",
+    "guesthouse": "Mana Keessummaa",
+    "lodge": "Loojii"
   }
 }

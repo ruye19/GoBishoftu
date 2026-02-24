@@ -2,7 +2,7 @@
   {
     "id": "1",
     "slug": "bishoftu-luxury-resort",
-    "type": "Resort",
+    "type": "resort",
     "rating": 4.8,
     "pricePerNight": 250,
     "image": "/lake bishoftu.jpg",
@@ -29,7 +29,7 @@
   {
     "id": "2",
     "slug": "kuriftu-resort-spa",
-    "type": "Resort",
+    "type": "resort",
     "rating": 4.6,
     "pricePerNight": 180,
     "image": "/kuriftu resort.jpg",
@@ -56,7 +56,7 @@
   {
     "id": "3",
     "slug": "ivy-hotel-ethiopia",
-    "type": "Hotel",
+    "type": "hotel",
     "rating": 4.4,
     "pricePerNight": 80,
     "image": "/ivy.jpg",
@@ -83,7 +83,7 @@
   {
     "id": "4",
     "slug": "gold-mark-hotel",
-    "type": "Hotel",
+    "type": "hotel",
     "rating": 4.5,
     "pricePerNight": 150,
     "image": "/hotels one.jpg",
@@ -110,7 +110,7 @@
   {
     "id": "5",
     "slug": "pyramid-hotels-resorts",
-    "type": "Resort",
+    "type": "resort",
     "rating": 4.7,
     "pricePerNight": 220,
     "image": "/pyramid.jpg",
@@ -137,7 +137,7 @@
   {
     "id": "6",
     "slug": "budget-stay-inn",
-    "type": "Guest House",
+    "type": "guest-house",
     "rating": 4.2,
     "pricePerNight": 60,
     "image": "/budget-friendly-accommodation.jpg",
@@ -164,7 +164,7 @@
   {
     "id": "7",
     "slug": "heritage-hotel",
-    "type": "Hotel",
+    "type": "hotel",
     "rating": 4.6,
     "pricePerNight": 170,
     "image": "/heritage-hotel-traditional.jpg",
@@ -191,7 +191,7 @@
   {
     "id": "8",
     "slug": "mountain-view-lodge",
-    "type": "Lodge",
+    "type": "lodge",
     "rating": 4.5,
     "pricePerNight": 140,
     "image": "/placeholder.svg?height=250&width=350",
