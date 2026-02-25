@@ -22,6 +22,14 @@ export default function ExplorePage() {
   const [isLoading, setIsLoading] = useState(true);
   const { lang } = useLanguage();
 
+  const labelToKey = (s) =>
+    (s || "")
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-_]/g, "");
+
   // Simulate loading completion
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,25 +63,33 @@ export default function ExplorePage() {
     },
   ];
 
-  // Categories from JSON, including Travel Agents
-  const categories = [
-    "All",
-    ...Array.from(
-      new Set(attractions.map((item) => item.type.translations[lang])),
-    ),
-  ];
+  // Build stable type keys and localized labels map
+  const typeLabels = {};
+  attractions.forEach((item) => {
+    const key = item.type?.key || labelToKey(item.type?.translations?.en);
+    if (!typeLabels[key]) {
+      typeLabels[key] =
+        item.type?.translations?.[lang] || item.type?.translations?.en || key;
+    }
+  });
+
+  const categories = ["All", ...Object.keys(typeLabels)];
 
   // Filter items by selected category
   const filteredItems =
     selectedCategory === "All"
       ? attractions
       : attractions.filter(
-          (item) => item.type.translations[lang] === selectedCategory,
+          (item) =>
+            (item.type?.key || labelToKey(item.type?.translations?.en)) ===
+            selectedCategory,
         );
 
   // Separate Travel Agents for the CTA section
   const travelAgents = attractions.filter(
-    (item) => item.type.translations[lang] === "Travel Agent",
+    (item) =>
+      (item.type?.key || labelToKey(item.type?.translations?.en)) ===
+      "travel-agent",
   );
 
   return (
@@ -95,10 +111,11 @@ export default function ExplorePage() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span>
                   {
-                    filteredItems.filter(
-                      (item) => item.type.translations[lang] !== "Travel Agent",
-                    ).length
-                  }{" "}
+                      filteredItems.filter(
+                        (item) =>
+                          (item.type?.key || labelToKey(item.type?.translations?.en)) !== "travel-agent",
+                      ).length
+                    }{" "}
                   {t("attractions", lang) || "attractions"}
                 </span>
               </div>
@@ -122,7 +139,9 @@ export default function ExplorePage() {
                     : "bg-card text-foreground border-border shadow-sm hover:border-primary hover:bg-muted/50"
                 }`}
               >
-                {category === "All" ? t("all", lang) || "All" : category}
+                {category === "All"
+                  ? t("all", lang) || "All"
+                  : typeLabels[category] || category}
               </button>
             ))}
           </div>
@@ -143,7 +162,10 @@ export default function ExplorePage() {
               // Actual content
               filteredItems
                 .filter(
-                  (item) => item.type.translations[lang] !== "Travel Agent",
+                  (item) =>
+                    (item.type?.key ||
+                      labelToKey(item.type?.translations?.en)) !==
+                    "travel-agent",
                 ) // show only attractions here
                 .map((item, index) => (
                   <div
@@ -154,7 +176,11 @@ export default function ExplorePage() {
                     <div className="relative overflow-hidden group">
                       <img
                         src={encodeURI(item.image || "/placeholder.svg")}
-                        alt={item.translations[lang].name}
+                        alt={
+                          item.translations?.[lang]?.name ||
+                          item.translations?.en?.name ||
+                          ""
+                        }
                         onError={(e) => {
                           e.currentTarget.onerror = null;
                           e.currentTarget.src = "/placeholder.jpg";
@@ -184,18 +210,24 @@ export default function ExplorePage() {
                         <div className="flex-1">
                           <div
                             className={`text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block ${
-                              item.type.translations[lang] === "Cultural Site"
+                              (item.type?.key ||
+                                labelToKey(item.type?.translations?.en)) ===
+                              "cultural-site"
                                 ? "bg-accent/20 text-accent"
-                                : item.type.translations[lang] ===
-                                    "Natural Wonder"
+                                : (item.type?.key ||
+                                      labelToKey(
+                                        item.type?.translations?.en,
+                                      )) === "natural-wonder"
                                   ? "bg-secondary/20 text-secondary"
                                   : "bg-primary/20 text-primary"
                             }`}
                           >
-                            {item.type.translations[lang]}
+                            {item.type?.translations?.[lang] ||
+                              item.type?.translations?.en}
                           </div>
                           <h3 className="text-xl font-bold text-foreground mb-2 leading-tight">
-                            {item.translations[lang].name}
+                            {item.translations?.[lang]?.name ||
+                              item.translations?.en?.name}
                           </h3>
                           {item.location && (
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
@@ -225,12 +257,15 @@ export default function ExplorePage() {
                       </div>
 
                       <p className="text-sm text-foreground/60 mb-4 leading-relaxed line-clamp-3">
-                        {item.translations[lang].description}
+                        {item.translations?.[lang]?.description ||
+                          item.translations?.en?.description}
                       </p>
 
-                      {item.translations[lang].details && (
+                      {(item.translations?.[lang]?.details ||
+                        item.translations?.en?.details) && (
                         <p className="text-sm text-foreground/50 mb-4 leading-relaxed line-clamp-2">
-                          {item.translations[lang].details}
+                          {item.translations?.[lang]?.details ||
+                            item.translations?.en?.details}
                         </p>
                       )}
 
@@ -240,7 +275,7 @@ export default function ExplorePage() {
                         </div>
                       )}
 
-                      {/* Removed 'Must Visit' label and 'Explore' CTA as requested */}
+                      {/* per-card CTA removed */}
                     </div>
                   </div>
                 ))
@@ -250,7 +285,7 @@ export default function ExplorePage() {
 
         {/* Travel Agents CTA Section */}
         {(selectedCategory === "All" ||
-          selectedCategory === "Travel Agent") && (
+          selectedCategory === "travel-agent") && (
           <section className="bg-primary/10 py-12 md:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-3xl mx-auto">
@@ -276,7 +311,11 @@ export default function ExplorePage() {
                   >
                     <img
                       src={encodeURI(agent.image || "/placeholder.svg")}
-                      alt={agent.translations[lang].name}
+                      alt={
+                        agent.translations?.[lang]?.name ||
+                        agent.translations?.en?.name ||
+                        ""
+                      }
                       onError={(e) => {
                         e.currentTarget.onerror = null;
                         e.currentTarget.src = "/placeholder.jpg";
@@ -284,11 +323,14 @@ export default function ExplorePage() {
                       className="w-full h-40 object-cover rounded-lg mb-4"
                     />
                     <h3 className="text-lg font-bold text-foreground mb-2">
-                      {agent.translations[lang].name}
+                      {agent.translations?.[lang]?.name ||
+                        agent.translations?.en?.name}
                     </h3>
-                    {agent.translations[lang].details && (
+                    {(agent.translations?.[lang]?.details ||
+                      agent.translations?.en?.details) && (
                       <p className="text-sm text-foreground/70 mb-4">
-                        {agent.translations[lang].details}
+                        {agent.translations?.[lang]?.details ||
+                          agent.translations?.en?.details}
                       </p>
                     )}
                     {agent.contact && (

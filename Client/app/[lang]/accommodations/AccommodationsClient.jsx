@@ -166,7 +166,61 @@ export default function AccommodationsClient() {
 
             {/* Accommodations Grid */}
             <div className="lg:col-span-3">
-              <div className="mb-6 flex justify-between items-center animate-fade-up" style={{ animationDelay: '0.4s' }}>
+              {/* Premium Featured Properties - Top 2 from data */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {filteredAccommodations.filter(acc => acc.isPremium).slice(0, 2).map((acc, index) => {
+                  const translation = acc.translations?.[lang] || acc.translations?.en;
+                  
+                  return (
+                    <div key={acc.id} className="bg-card rounded-xl overflow-hidden shadow-card hover-lift border-2 border-gold/20 animate-fade-up" style={{ animationDelay: `${0.5 + index * 0.1}s` }}>
+                      <div className="relative">
+                        <div className="absolute top-3 left-3 z-10">
+                          <div className="bg-gold text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            {t("featured", lang) || "FEATURED"}
+                          </div>
+                        </div>
+                        <div className="absolute top-3 right-3 z-10">
+                          <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            {t(acc.trustBadge, lang) || acc.trustBadge}
+                          </div>
+                        </div>
+                        <img
+                          src={acc.image || "/placeholder.svg"}
+                          alt={translation.name}
+                          className="w-full h-48 object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="text-sm font-semibold text-primary mb-2 tracking-wide uppercase text-xs">
+                          {t(`accommodationType.${acc.type}`, lang)}
+                        </div>
+                        <h3 className="text-xl font-bold text-foreground mb-2">
+                          {translation.name}
+                        </h3>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                          <MapPin className="w-3 h-3" />
+                          <span>{t("bishoftuEthiopia", lang) || "Bishoftu, Ethiopia"}</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {translation.description}
+                        </p>
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <span className="text-2xl font-bold text-primary">${acc.pricePerNight}</span>
+                            <span className="text-sm text-muted-foreground ml-1">/{t("night", lang) || "night"}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 text-gold fill-gold" />
+                            <span className="font-semibold">{acc.rating}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="mb-6 flex justify-between items-center animate-fade-up" style={{ animationDelay: '0.7s' }}>
                 <div>
                   <p className="text-foreground/70 text-sm">
                     {t("showing", lang) || "Showing"} <span className="font-semibold text-foreground">{filteredAccommodations.length}</span> {t("accommodations", lang) || "accommodations"}

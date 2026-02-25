@@ -3,6 +3,7 @@
     "id": "1",
     "slug": "lake-hora",
     "type": {
+      "key": "natural-wonder",
       "translations": {
         "en": "Natural Wonder",
         "am": "ተፈጥሮ ምርጥ ቦታ",
@@ -36,6 +37,7 @@
     "id": "2",
     "slug": "lake-babogaya",
     "type": {
+      "key": "natural-wonder",
       "translations": {
         "en": "Natural Wonder",
         "am": "ተፈጥሮ ምርጥ ቦታ",
@@ -69,6 +71,7 @@
     "id": "3",
     "slug": "lake-arsedi",
     "type": {
+      "key": "natural-wonder",
       "translations": {
         "en": "Natural Wonder",
         "am": "ተፈጥሮ ምርጥ ቦታ",
@@ -102,6 +105,7 @@
     "id": "4",
     "slug": "lake-chelekleka",
     "type": {
+      "key": "natural-wonder",
       "translations": {
         "en": "Natural Wonder",
         "am": "ተፈጥሮ ምርጥ ቦታ",
@@ -135,6 +139,7 @@
     "id": "5",
     "slug": "local-market-cultural-tour",
     "type": {
+      "key": "cultural-site",
       "translations": {
         "en": "Cultural Site",
         "am": "ባህላዊ ቦታ",
@@ -168,6 +173,7 @@
     "id": "6",
     "slug": "bishoftu-tour-guides",
     "type": {
+      "key": "travel-agent",
       "translations": {
         "en": "Travel Agent",
         "am": "የጉዞ ወኪል",
@@ -201,6 +207,7 @@
     "id": "7",
     "slug": "ethiopia-adventure-travel-co",
     "type": {
+      "key": "travel-agent",
       "translations": {
         "en": "Travel Agent",
         "am": "የጉዞ ወኪል",

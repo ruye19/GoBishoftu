@@ -102,11 +102,12 @@ const ATTRACTION_TYPES = /** @type {const} */ ([
 async function fetchAttractions() {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 500));
-  return [
+    return [
     {
       id: createId(),
       slug: "lake-hora",
       type: {
+        key: "natural-wonder",
         translations: {
           en: "Natural Wonder",
           am: "ተፈጥሮ ምርጥ ቦታ",
@@ -141,6 +142,7 @@ async function fetchAttractions() {
       id: createId(),
       slug: "lake-babogaya",
       type: {
+        key: "natural-wonder",
         translations: {
           en: "Natural Wonder",
           am: "ተፈጥሮ ምርጥ ቦታ",
@@ -175,6 +177,7 @@ async function fetchAttractions() {
       id: createId(),
       slug: "cultural-tour",
       type: {
+        key: "cultural-site",
         translations: {
           en: "Cultural Site",
           am: "የባህል ቦታ",
@@ -242,6 +245,13 @@ async function deleteAttractionApi(id) {
 }
 
 export default function DashboardAttractionsPage() {
+  const labelToKey = (s) =>
+    (s || "")
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-_]/g, "");
   /** @type {[Attraction[], Function]} */
   const [attractions, setAttractions] = useState([]);
   const [filteredAttractions, setFilteredAttractions] = useState([]);
@@ -313,9 +323,11 @@ export default function DashboardAttractionsPage() {
       );
     }
 
-    // Filter by type
+    // Filter by type (use stable type.key when available)
     if (filterType !== "All") {
-      filtered = filtered.filter(item => item.type.translations.en === filterType);
+      filtered = filtered.filter(
+        item => (item.type?.key || labelToKey(item.type?.translations?.en)) === filterType
+      );
     }
 
     // Filter by status
@@ -331,9 +343,9 @@ export default function DashboardAttractionsPage() {
     total: attractions.length,
     published: attractions.filter(a => a.status === "Published").length,
     draft: attractions.filter(a => a.status === "Draft").length,
-    naturalWonders: attractions.filter(a => a.type.translations.en === "Natural Wonder").length,
-    culturalSites: attractions.filter(a => a.type.translations.en === "Cultural Site").length,
-    travelAgents: attractions.filter(a => a.type.translations.en === "Travel Agent").length,
+    naturalWonders: attractions.filter(a => (a.type?.key || labelToKey(a.type?.translations?.en)) === labelToKey("Natural Wonder")).length,
+    culturalSites: attractions.filter(a => (a.type?.key || labelToKey(a.type?.translations?.en)) === labelToKey("Cultural Site")).length,
+    travelAgents: attractions.filter(a => (a.type?.key || labelToKey(a.type?.translations?.en)) === labelToKey("Travel Agent")).length,
   };
 
   function openAdd() {
@@ -491,6 +503,7 @@ export default function DashboardAttractionsPage() {
     const payload = {
       slug: form.slug.trim() || form.name_en.toLowerCase().replace(/\s+/g, '-'),
       type: {
+        key: labelToKey(form.type_en),
         translations: {
           en: form.type_en,
           am: form.type_am,
@@ -644,7 +657,7 @@ export default function DashboardAttractionsPage() {
             <SelectContent>
               <SelectItem value="All">All Types</SelectItem>
               {ATTRACTION_TYPES.map(type => (
-                <SelectItem key={type} value={type}>{type}</SelectItem>
+                <SelectItem key={type} value={labelToKey(type)}>{type}</SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -703,9 +716,9 @@ export default function DashboardAttractionsPage() {
                     <td className="py-4 text-sm text-muted-foreground">
                       <span className={cn(
                         "px-2 py-1 rounded-full text-xs",
-                        item.type.translations.en === "Natural Wonder" ? "bg-secondary/20 text-secondary" :
-                        item.type.translations.en === "Cultural Site" ? "bg-accent/20 text-accent" :
-                        item.type.translations.en === "Travel Agent" ? "bg-blue-100 text-blue-700" :
+                        (item.type?.key || labelToKey(item.type?.translations?.en)) === labelToKey("Natural Wonder") ? "bg-secondary/20 text-secondary" :
+                        (item.type?.key || labelToKey(item.type?.translations?.en)) === labelToKey("Cultural Site") ? "bg-accent/20 text-accent" :
+                        (item.type?.key || labelToKey(item.type?.translations?.en)) === labelToKey("Travel Agent") ? "bg-blue-100 text-blue-700" :
                         "bg-primary/20 text-primary"
                       )}>
                         {item.type.translations.en}

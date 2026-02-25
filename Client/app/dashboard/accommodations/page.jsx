@@ -266,6 +266,9 @@ export default function DashboardAccommodationsPage() {
     amenitiesText: "",
     bookingUrl: "",
     status: "Draft",
+    isPremium: false,
+    premiumType: "featured",
+    trustBadge: "verifiedPartner",
   });
 
   // Load accommodations on component mount
@@ -922,6 +925,70 @@ export default function DashboardAccommodationsPage() {
                     </SelectContent>
                   </Select>
                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="isPremium">Premium Status</Label>
+                  <Select
+                    value={form.isPremium ? "true" : "false"}
+                    onValueChange={(value) =>
+                      setForm((prev) => ({ ...prev, isPremium: value === "true" }))
+                    }
+                    disabled={readOnly}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select premium status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="false">Regular</SelectItem>
+                      <SelectItem value="true">Premium</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {form.isPremium && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="premiumType">Premium Type</Label>
+                      <Select
+                        value={form.premiumType || "featured"}
+                        onValueChange={(value) =>
+                          setForm((prev) => ({ ...prev, premiumType: value }))
+                        }
+                        disabled={readOnly}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select premium type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="featured">Featured</SelectItem>
+                          <SelectItem value="sponsored">Sponsored</SelectItem>
+                          <SelectItem value="recommended">Recommended</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="trustBadge">Trust Badge</Label>
+                      <Select
+                        value={form.trustBadge || "verifiedPartner"}
+                        onValueChange={(value) =>
+                          setForm((prev) => ({ ...prev, trustBadge: value }))
+                        }
+                        disabled={readOnly}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select trust badge" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="verifiedPartner">Verified Partner</SelectItem>
+                          <SelectItem value="topRated">Top Rated</SelectItem>
+                          <SelectItem value="guestFavorite">Guest Favorite</SelectItem>
+                          <SelectItem value="premiumPlus">Premium Plus</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </>
+                )}
               </div>
             </section>
 

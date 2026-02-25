@@ -1,6 +1,96 @@
 [
   {
     "id": "1",
+    "slug": "bishoftu-paradise-resort",
+    "type": "resort",
+    "rating": 4.9,
+    "pricePerNight": 280,
+    "image": "/placeholder.svg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "isPremium": true,
+    "premiumType": "featured",
+    "trustBadge": "verifiedPartner",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["Pool", "Spa", "WiFi", "Restaurant", "Gym", "Lake View", "Concierge", "Bar"],
+    "translations": {
+      "en": {
+        "name": "Bishoftu Paradise Resort",
+        "description": "Luxury lakeside resort with stunning views and world-class amenities"
+      },
+      "am": {
+        "name": "ቢሾፉቱ ፓራዲዝ ሪዞርት",
+        "description": "ልዩ የሀይቅ እይታዎች እና የዓለም ክፍል አማራጮች ያለው የላጅነት ሀይቅ ዳርቻ ሪዞርት"
+      },
+      "or": {
+        "name": "Bishoftu Paradise Rizoortii",
+        "description": "Mana keessaa lafa qulqullinaa kan haroo gaggeessaa fi wantoota adda addaa"
+      }
+    }
+  },
+  {
+    "id": "2",
+    "slug": "lakeview-boutique-hotel",
+    "type": "hotel",
+    "rating": 4.8,
+    "pricePerNight": 195,
+    "image": "/placeholder.svg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "isPremium": true,
+    "premiumType": "featured",
+    "trustBadge": "topRated",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["WiFi", "Restaurant", "Lake View", "Bar", "Room Service", "Spa"],
+    "translations": {
+      "en": {
+        "name": "Lakeview Boutique Hotel",
+        "description": "Intimate luxury hotel with personalized service and lake views"
+      },
+      "am": {
+        "name": "ሀይቅ ተመልካች ቡቲክ ሆቴል",
+        "description": "የግል አገልግሎት እና የሀይቅ እይታዎች ያለው ትንሹ የላጅነት ሆቴል"
+      },
+      "or": {
+        "name": "Haroo Agarsiisuuti Hotelii Boutique",
+        "description": "Hotelii boutique xiqqaa kan gargaarsa addaa fi agarsiisa haroo"
+      }
+    }
+  },
+  {
+    "id": "3",
+    "slug": "ethiopian-heritage-guest-house",
+    "type": "guesthouse",
+    "rating": 4.7,
+    "pricePerNight": 120,
+    "image": "/placeholder.svg",
+    "location": "Bishoftu",
+    "status": "Published",
+    "isPremium": true,
+    "premiumType": "featured",
+    "trustBadge": "guestFavorite",
+    "updatedAtISO": "2026-01-01T00:00:00.000Z",
+    "bookingUrl": "https://www.booking.com",
+    "amenities": ["WiFi", "Traditional Breakfast", "Garden", "Cultural Experience", "Parking"],
+    "translations": {
+      "en": {
+        "name": "Ethiopian Heritage Guest House",
+        "description": "Authentic Ethiopian hospitality with modern comforts"
+      },
+      "am": {
+        "name": "የኢትዮጵያ ህንፃስ እንግዳ ቤት",
+        "description": "ከዘመነኛው ኢትዮጵያ እንቅስቃሴ ጋር የተዋሃደ ዘመናዊ መደበኛ"
+      },
+      "or": {
+        "name": "Mana Keessummaa Aadaa Oromoo",
+        "description": "Gargaarsa aadaa Oromoo fi mijataa haaraa walqixa"
+      }
+    }
+  },
+  {
+    "id": "4",
     "slug": "bishoftu-luxury-resort",
     "type": "resort",
     "rating": 4.8,
@@ -8,6 +98,7 @@
     "image": "/lake bishoftu.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["Pool", "Spa", "WiFi", "Restaurant", "Gym"],
@@ -27,7 +118,7 @@
     }
   },
   {
-    "id": "2",
+    "id": "5",
     "slug": "kuriftu-resort-spa",
     "type": "resort",
     "rating": 4.6,
@@ -35,6 +126,7 @@
     "image": "/kuriftu resort.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["WiFi", "Restaurant", "Tour Desk", "Garden", "Parking"],
@@ -54,17 +146,18 @@
     }
   },
   {
-    "id": "3",
+    "id": "6",
     "slug": "ivy-hotel-ethiopia",
     "type": "hotel",
-    "rating": 4.4,
-    "pricePerNight": 80,
-    "image": "/ivy.jpg",
+    "rating": 4.5,
+    "pricePerNight": 120,
+    "image": "/ivy hotel.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
-    "amenities": ["WiFi", "Breakfast", "Parking", "Garden"],
+    "amenities": ["WiFi", "Restaurant", "Bar", "Gym", "Business Center"],
     "translations": {
       "en": {
         "name": "IVY Hotel Ethiopia",
@@ -81,7 +174,7 @@
     }
   },
   {
-    "id": "4",
+    "id": "7",
     "slug": "gold-mark-hotel",
     "type": "hotel",
     "rating": 4.5,
@@ -89,6 +182,7 @@
     "image": "/hotels one.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["WiFi", "Restaurant", "Bar", "Parking", "Room Service"],
@@ -108,7 +202,7 @@
     }
   },
   {
-    "id": "5",
+    "id": "8",
     "slug": "pyramid-hotels-resorts",
     "type": "resort",
     "rating": 4.7,
@@ -116,6 +210,7 @@
     "image": "/pyramid.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["Pool", "Lake Access", "Spa", "Restaurant", "WiFi"],
@@ -135,7 +230,7 @@
     }
   },
   {
-    "id": "6",
+    "id": "9",
     "slug": "budget-stay-inn",
     "type": "guest-house",
     "rating": 4.2,
@@ -143,6 +238,7 @@
     "image": "/budget-friendly-accommodation.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["WiFi", "Breakfast", "Parking"],
@@ -162,7 +258,7 @@
     }
   },
   {
-    "id": "7",
+    "id": "10",
     "slug": "heritage-hotel",
     "type": "hotel",
     "rating": 4.6,
@@ -170,6 +266,7 @@
     "image": "/heritage-hotel-traditional.jpg",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["Restaurant", "WiFi", "Parking", "Business Center"],
@@ -189,7 +286,7 @@
     }
   },
   {
-    "id": "8",
+    "id": "11",
     "slug": "mountain-view-lodge",
     "type": "lodge",
     "rating": 4.5,
@@ -197,6 +294,7 @@
     "image": "/placeholder.svg?height=250&width=350",
     "location": "Bishoftu",
     "status": "Published",
+    "isPremium": false,
     "updatedAtISO": "2026-01-01T00:00:00.000Z",
     "bookingUrl": "https://www.booking.com",
     "amenities": ["Restaurant", "Tour Desk", "Parking", "WiFi"],
