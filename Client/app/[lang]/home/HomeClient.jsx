@@ -106,23 +106,23 @@ export default function HomeClient() {
               </p>
             </div>
 
-            {/* Accommodation Type Nav (Telegram-style compact buttons) */}
+            {/* Accommodation Type Nav (Full width buttons) */}
             <section className="py-3 bg-background">
-              <div className="container-custom px-4">
-                <div className="flex justify-center gap-1.5 flex-wrap md:justify-between md:flex-nowrap">
+              <div className="w-full px-4">
+                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide md:justify-between md:overflow-visible md:flex-nowrap">
                   {accommodationTypes.map((type) => (
                     <Link
                       key={type.value}
                       href={`/${lang}/accommodations?type=${type.value}`}
-                      className="group flex-1 md:flex-none"
+                      className="group flex-shrink-0 min-w-[120px] md:flex-1"
                     >
                       <button
                         className={`
-                          w-full px-4 py-2 rounded-lg text-sm font-medium
+                          w-full px-6 py-2.5 rounded-xl text-sm font-medium
                           transition-all duration-200 border cursor-pointer
-                          bg-card text-foreground border-border
-                          hover:bg-primary hover:text-primary-foreground hover:border-primary
-                          active:scale-95
+                          bg-card text-foreground border-border shadow-sm
+                          hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md
+                          active:scale-95 whitespace-nowrap
                         `}
                       >
                         <span className="text-sm font-medium">

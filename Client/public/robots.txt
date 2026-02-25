@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://gobishoftu.com/sitemap.xml
+
+# Allow search engines to crawl all languages
+Allow: /en/
+Allow: /am/
+Allow: /or/
+
+# Block admin areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+
+# Allow images and assets
+Allow: /images/
+Allow: /_next/static/
+Allow: /favicon.ico
+
+# Crawl delay (optional, be nice to servers)
+Crawl-delay: 1
