@@ -46,17 +46,17 @@
   --sidebar-border: #2d5a75;
   --sidebar-ring: #F4C430;
 
-  /* Gradients using palette - Softer transitions */
+  /* Gradients using palette - Softer premium gold */
   --gradient-hero: linear-gradient(135deg, #1F4E6C 0%, #163a52 100%);
-  --gradient-gold: linear-gradient(135deg, #F4C430 0%, #e8c041 100%);
-  --gradient-sunset: linear-gradient(135deg, #F6F4F1 0%, #F0EDE8 50%, #F4C430 100%);
+  --gradient-gold: linear-gradient(135deg, #E6B325 0%, #D4A017 100%);
+  --gradient-sunset: linear-gradient(135deg, #F6F4F1 0%, #F0EDE8 50%, #E6B325 100%);
   --gradient-nature: linear-gradient(180deg, #F6F4F1 0%, #F0EDE8 100%);
 
-  /* Shadows — softer for premium feel */
+  /* Shadows — premium layered depth */
   --shadow-soft: 0 2px 12px rgba(31, 78, 108, 0.06);
-  --shadow-card: 0 2px 16px rgba(30, 41, 51, 0.04);
-  --shadow-hover: 0 8px 32px rgba(30, 41, 51, 0.08);
-  --shadow-gold: 0 6px 20px rgba(244, 196, 48, 0.15);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.02), 0 4px 6px rgba(0,0,0,0.03), 0 10px 15px rgba(0,0,0,0.04);
+  --shadow-hover: 0 2px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.06), 0 20px 32px rgba(0,0,0,0.08);
+  --shadow-gold: 0 2px 8px rgba(230, 179, 37, 0.12), 0 8px 16px rgba(230, 179, 37, 0.15);
 }
 
 .dark {
@@ -296,10 +296,11 @@
     );
   }
 
-  /* Card styles - inline hover-lift to avoid @apply custom utility */
+  /* Card styles - premium layered shadows */
   .card-tourism {
     @apply bg-card rounded-xl overflow-hidden transition-all duration-300 ease-out;
     box-shadow: var(--shadow-card);
+    border: 1px solid transparent;
   }
 
   .card-tourism:hover {
@@ -318,7 +319,7 @@
   .btn-cta:hover {
     transform: translateY(-1px);
     box-shadow: var(--shadow-gold);
-    background: linear-gradient(135deg, #e8c041 0%, #d9aa30 100%);
+    background: linear-gradient(135deg, #D4A017 0%, #C19A0B 100%);
   }
 
   .btn-cta:active {

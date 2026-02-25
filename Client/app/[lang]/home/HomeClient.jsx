@@ -23,6 +23,9 @@ import {
   Award,
   CheckCircle,
 } from "lucide-react";
+import { SkeletonCard } from "@/components/SkeletonCard";
+import { SkeletonAttraction } from "@/components/SkeletonAttraction";
+import { SkeletonAgency } from "@/components/SkeletonAgency";
 
 // Translation data for static content - REMOVED - now using centralized locales
 const featuredAgencies = [
@@ -51,8 +54,18 @@ const featuredAgencies = [
 
 export default function HomeClient() {
   const { lang } = useLanguage();
+  const [isLoading, setIsLoading] = useState(true);
   const hotels = accommodations.slice(0, 4);
   const attractions = attractionsData.slice(0, 6);
+
+  // Simulate loading completion
+  useState(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // 1.5 seconds loading simulation
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const accommodationTypes = [
     ...new Set(accommodations.map((acc) => acc.type)),
@@ -95,7 +108,7 @@ export default function HomeClient() {
         </section>
 
         {/* Featured Places */}
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-10 md:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -107,7 +120,7 @@ export default function HomeClient() {
             </div>
 
             {/* Accommodation Type Nav (Full width buttons) */}
-            <section className="py-3 bg-background">
+            <section className="py-2 bg-background">
               <div className="w-full px-4">
                 <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide md:justify-between md:overflow-visible md:flex-nowrap">
                   {accommodationTypes.map((type) => (
@@ -141,62 +154,92 @@ export default function HomeClient() {
             {/* Mobile: horizontal scrollable list */}
             <div className="md:hidden -mx-4 py-4 px-4">
               <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
-                {hotels.map((hotel) => (
+                {isLoading ? (
+                  // Skeleton loaders for mobile
+                  <>
+                    <SkeletonCard />
+                    <SkeletonCard />
+                    <SkeletonCard />
+                    <SkeletonCard />
+                  </>
+                ) : (
+                  // Actual content
+                  hotels.map((hotel) => (
                   <div
                     key={hotel.id}
                     className="flex-shrink-0 w-[300px] snap-start"
                   >
-                    <div className="bg-card rounded-xl overflow-hidden shadow-card hover-lift">
-                      <Image
-                        src={hotel.image || "/placeholder.svg"}
-                        alt={hotel.translations[lang]?.name || hotel.name}
-                        width={300}
-                        height={160}
-                        className="w-full h-40 object-cover"
-                      />
+                    <div className="bg-card rounded-xl overflow-hidden shadow-card hover-lift animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                      <div className="relative overflow-hidden group">
+                        <Image
+                          src={hotel.image || "/placeholder.svg"}
+                          alt={hotel.translations[lang]?.name || hotel.name}
+                          width={300}
+                          height={160}
+                          className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Featured Badge */}
+                        <div className="absolute top-3 right-3">
+                          <div className="px-2 py-1 bg-gradient-gold text-white text-xs rounded-full font-medium shadow-gold">
+                            Featured
+                          </div>
+                        </div>
+                      </div>
                       <div className="p-6">
-                        <div className="text-sm font-semibold text-primary mb-2">
+                        <div className="text-sm font-semibold text-primary mb-2 tracking-wide uppercase text-xs">
                           {t(`accommodationType.${hotel.type}`, lang)}{" "}
                         </div>
-                        <h3 className="text-xl font-bold text-foreground mb-2">
+                        <h3 className="text-xl font-bold text-foreground mb-2 leading-tight">
                           {hotel.translations[lang]?.name || hotel.name}
                         </h3>
-                        <p className="text-sm text-foreground/70 leading-relaxed">
+                        <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3">
                           {hotel.translations[lang]?.description ||
                             hotel.description}
                         </p>
                       </div>
                     </div>
                   </div>
-                ))}
+                ))
+                )}
               </div>
             </div>
 
             {/* Desktop: grid layout */}
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
               {hotels.map((hotel) => (
                 <div
                   key={hotel.id}
-                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
                 >
-                  <Image
-                    src={hotel.image || "/placeholder.svg"}
-                    alt={hotel.translations[lang]?.name || hotel.name}
-                    width={300}
-                    height={160}
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="p-6">
-                    <div className="text-sm font-semibold text-primary mb-2">
-                      {t(`accommodationType.${hotel.type}`, lang)}
+                  <div className="bg-card rounded-xl overflow-hidden shadow-card hover-lift animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                    <div className="relative overflow-hidden group">
+                      <Image
+                        src={hotel.image || "/placeholder.svg"}
+                        alt={hotel.translations[lang]?.name || hotel.name}
+                        width={300}
+                        height={160}
+                        className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      {/* Featured Badge */}
+                      <div className="absolute top-3 right-3">
+                        <div className="px-2 py-1 bg-gradient-gold text-white text-xs rounded-full font-medium shadow-gold">
+                          Featured
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">
-                      {hotel.translations[lang]?.name || hotel.name}
-                    </h3>
-                    <p className="text-sm text-foreground/70 leading-relaxed">
-                      {hotel.translations[lang]?.description ||
-                        hotel.description}
-                    </p>
+                    <div className="p-6">
+                      <div className="text-sm font-semibold text-primary mb-2 tracking-wide uppercase text-xs">
+                        {t(`accommodationType.${hotel.type}`, lang)}
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-2 leading-tight">
+                        {hotel.translations[lang]?.name || hotel.name}
+                      </h3>
+                      <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3">
+                        {hotel.translations[lang]?.description ||
+                          hotel.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -207,7 +250,7 @@ export default function HomeClient() {
         <div className="text-center my-2">
           <Link
             href={`/${lang}/accommodations`}
-            className="btn-cta my-3 inline-block"
+            className="btn-cta inline-block"
           >
             {t("exploreAll", lang)} Accommodations
           </Link>
@@ -227,35 +270,54 @@ export default function HomeClient() {
 
             {/* Mobile: horizontal scrollable list */}
             <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-2">
-              {attractions.map((item) => (
+              {isLoading ? (
+                // Skeleton loaders for mobile attractions
+                <>
+                  <SkeletonAttraction />
+                  <SkeletonAttraction />
+                  <SkeletonAttraction />
+                </>
+              ) : (
+                // Actual content
+                attractions.map((item) => (
                 <div
                   key={item.id}
                   tabIndex={0}
-                  className="min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+                  className="min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 animate-fade-up"
+                  style={{ animationDelay: '0.2s' }}
                 >
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.translations?.[lang]?.name || item.name}
-                    width={260}
-                    height={192}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative overflow-hidden group">
+                    <Image
+                      src={item.image || "/placeholder.svg"}
+                      alt={item.translations?.[lang]?.name || item.name}
+                      width={260}
+                      height={192}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
 
                   <div className="p-4">
                     <div className="flex justify-between text-sm text-muted-foreground mb-1">
-                      <span>{item.location}</span>
-                      <span className="text-accent">★ {item.rating}</span>
+                      <span className="flex items-center gap-1 font-medium">
+                        <MapPin className="w-3 h-3" /> {item.location}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-accent font-semibold">★ {item.rating}</span>
+                        {/* Status Indicator */}
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      </div>
                     </div>
-                    <h3 className="font-bold text-lg mb-2">
+                    <h3 className="font-bold text-lg mb-2 leading-tight">
                       {item.translations?.[lang]?.name || item.name}
                     </h3>
-                    <p className="text-sm text-foreground/70 mb-3">
+                    <p className="text-sm text-foreground/60 mb-3 leading-relaxed line-clamp-2">
                       {item.translations?.[lang]?.description ||
                         item.description}
                     </p>
                   </div>
                 </div>
-              ))}
+              )))}
             </div>
 
             {/* Desktop: grid */}
@@ -263,27 +325,31 @@ export default function HomeClient() {
               {attractions.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
+                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift animate-fade-up"
+                  style={{ animationDelay: '0.3s' }}
                 >
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.translations?.[lang]?.name || item.name}
-                    width={400}
-                    height={192}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative overflow-hidden group">
+                    <Image
+                      src={item.image || "/placeholder.svg"}
+                      alt={item.translations?.[lang]?.name || item.name}
+                      width={400}
+                      height={192}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
 
                   <div className="p-6">
                     <div className="flex justify-between text-sm text-muted-foreground mb-2">
-                      <span className="flex items-center gap-1">
+                      <span className="flex items-center gap-1 font-medium">
                         <MapPin className="w-4 h-4" /> {item.location}
                       </span>
-                      <span className="text-accent">★ {item.rating}</span>
+                      <span className="text-accent font-semibold">★ {item.rating}</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">
+                    <h3 className="text-xl font-bold mb-3 leading-tight">
                       {item.translations?.[lang]?.name || item.name}
                     </h3>
-                    <p className="text-sm text-foreground/70 mb-4">
+                    <p className="text-sm text-foreground/60 mb-4 leading-relaxed line-clamp-2">
                       {item.translations?.[lang]?.description ||
                         item.description}
                     </p>
@@ -324,15 +390,19 @@ export default function HomeClient() {
               {featuredAgencies.map((agency) => (
                 <div
                   key={agency.id}
-                  className="flex-shrink-0 min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift"
+                  className="flex-shrink-0 min-w-[260px] snap-start bg-card rounded-xl overflow-hidden shadow-card hover-lift animate-fade-up"
+                  style={{ animationDelay: '0.4s' }}
                 >
-                  <Image
-                    src={agency.image || "/placeholder.svg"}
-                    alt={agency.name}
-                    width={260}
-                    height={192}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative overflow-hidden group">
+                    <Image
+                      src={agency.image || "/placeholder.svg"}
+                      alt={agency.name}
+                      width={260}
+                      height={192}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-foreground mb-2">
                       {agency.name}
@@ -352,15 +422,19 @@ export default function HomeClient() {
               {featuredAgencies.map((agency) => (
                 <div
                   key={agency.id}
-                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift"
+                  className="bg-card rounded-xl overflow-hidden shadow-card hover-lift animate-fade-up"
+                  style={{ animationDelay: '0.5s' }}
                 >
-                  <Image
-                    src={agency.image || "/placeholder.svg"}
-                    alt={agency.name}
-                    width={260}
-                    height={192}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative overflow-hidden group">
+                    <Image
+                      src={agency.image || "/placeholder.svg"}
+                      alt={agency.name}
+                      width={260}
+                      height={192}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-foreground mb-2">
                       {agency.name}
