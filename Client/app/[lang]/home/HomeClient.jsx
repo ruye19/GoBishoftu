@@ -109,16 +109,16 @@ export default function HomeClient() {
             {/* Accommodation Type Nav (Telegram-style compact buttons) */}
             <section className="py-3 bg-background">
               <div className="container-custom px-4">
-                <div className="flex justify-center gap-2 flex-wrap">
+                <div className="flex justify-center gap-1.5 flex-wrap md:justify-between md:flex-nowrap">
                   {accommodationTypes.map((type) => (
                     <Link
                       key={type.value}
                       href={`/${lang}/accommodations?type=${type.value}`}
-                      className="group"
+                      className="group flex-1 md:flex-none"
                     >
                       <button
                         className={`
-                          px-4 py-2 rounded-lg text-sm font-medium
+                          w-full px-4 py-2 rounded-lg text-sm font-medium
                           transition-all duration-200 border cursor-pointer
                           bg-card text-foreground border-border
                           hover:bg-primary hover:text-primary-foreground hover:border-primary
