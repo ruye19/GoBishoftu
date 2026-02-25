@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Page background & large surfaces (Primary ≈60%) */
-  --background: #EAF2F8;
+  /* Page background & large surfaces (Primary ≈60%) - Warmer tone */
+  --background: #F6F4F1;
   /* Primary text */
   --foreground: #1E2933;
   /* Surface / Cards */
@@ -20,43 +20,43 @@
   /* Secondary blue (same as primary for consistency) */
   --secondary: #1F4E6C;
   --secondary-foreground: #FFFFFF;
-  /* Muted backgrounds & secondary text */
-  --muted: #E0E8EE;
+  /* Muted backgrounds & secondary text - Warmer tone */
+  --muted: #F0EDE8;
   --muted-foreground: #5F6C76;
   /* Accent — CTAs and active states only (#F4C430) */
   --accent: #F4C430;
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: #D1D9E0;
+  --border: #E8E4DF;
   --input: #FFFFFF;
   --ring: #1F4E6C;
   --chart-1: #1F4E6C;
   --chart-2: #F4C430;
   --chart-3: #5F6C76;
-  --chart-4: #EAF2F8;
+  --chart-4: #F6F4F1;
   --chart-5: #1E2933;
   --radius: 0.625rem;
   --sidebar: #1F4E6C;
   --sidebar-foreground: #FFFFFF;
   --sidebar-primary: #1F4E6C;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E0E8EE;
+  --sidebar-accent: #F0EDE8;
   --sidebar-accent-foreground: #1E2933;
   --sidebar-border: #2d5a75;
   --sidebar-ring: #F4C430;
 
-  /* Gradients using palette */
+  /* Gradients using palette - Softer transitions */
   --gradient-hero: linear-gradient(135deg, #1F4E6C 0%, #163a52 100%);
-  --gradient-gold: linear-gradient(135deg, #F4C430 0%, #e0b028 100%);
-  --gradient-sunset: linear-gradient(135deg, #EAF2F8 0%, #D1D9E0 50%, #F4C430 100%);
-  --gradient-nature: linear-gradient(180deg, #EAF2F8 0%, #E0E8EE 100%);
+  --gradient-gold: linear-gradient(135deg, #F4C430 0%, #e8c041 100%);
+  --gradient-sunset: linear-gradient(135deg, #F6F4F1 0%, #F0EDE8 50%, #F4C430 100%);
+  --gradient-nature: linear-gradient(180deg, #F6F4F1 0%, #F0EDE8 100%);
 
-  /* Shadows — subtle for cards */
-  --shadow-soft: 0 2px 8px rgba(31, 78, 108, 0.08);
-  --shadow-card: 0 2px 12px rgba(30, 41, 51, 0.06);
-  --shadow-hover: 0 8px 24px rgba(30, 41, 51, 0.1);
-  --shadow-gold: 0 4px 16px rgba(244, 196, 48, 0.25);
+  /* Shadows — softer for premium feel */
+  --shadow-soft: 0 2px 12px rgba(31, 78, 108, 0.06);
+  --shadow-card: 0 2px 16px rgba(30, 41, 51, 0.04);
+  --shadow-hover: 0 8px 32px rgba(30, 41, 51, 0.08);
+  --shadow-gold: 0 6px 20px rgba(244, 196, 48, 0.15);
 }
 
 .dark {
@@ -307,26 +307,36 @@
     box-shadow: var(--shadow-hover);
   }
 
-  /* CTA button — Accent only (#F4C430), text on dark #FFFFFF */
+  /* CTA button — Premium soft gradient with refined styling */
   .btn-cta {
-    @apply px-8 py-3 rounded-lg font-semibold transition-all text-center;
-    background-color: var(--accent);
+    @apply px-8 py-3 rounded-xl font-semibold transition-all text-center border-0;
+    background: var(--gradient-gold);
     color: var(--accent-foreground);
+    box-shadow: var(--shadow-soft);
   }
 
   .btn-cta:hover {
-    @apply opacity-90;
+    transform: translateY(-1px);
     box-shadow: var(--shadow-gold);
+    background: linear-gradient(135deg, #e8c041 0%, #d9aa30 100%);
+  }
+
+  .btn-cta:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-soft);
   }
 
   .btn-cta-outline {
-    @apply px-8 py-3 rounded-lg font-semibold transition-all text-center border-2;
+    @apply px-8 py-3 rounded-xl font-semibold transition-all text-center border-2;
     border-color: var(--primary);
     color: var(--foreground);
+    background: transparent;
   }
 
   .btn-cta-outline:hover {
-    background-color: rgba(31, 78, 108, 0.08);
+    background-color: rgba(31, 78, 108, 0.04);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
   }
 
   /* Gold accent text */
