@@ -275,5 +275,40 @@
   "contactUsForAssistance": "ለእርዳታ ያግኙን",
   "needHelpTitle": "ቦታ ለማስያዝ እርዳታ ይፈልጋሉ?",
   "needHelpSubtitle": "የእኛ የባለሙያዎች ቡድን ለቢሾፍቱ ቆይታዎ የሚስማማዎትን ማረፊያ ለማግኘት ሊረዳዎት ይችላል። ለተሻለ ምክርና መረጃ ያግኙን።",
-  "contactUs": "ለእርዳታ ያግኙን"
+  "contactUs": "ለእርዳታ ያግኙን",
+
+  "filterAttractions": "መስህቦችን ያጣሩ",
+  "noAttractionsFound": "ምንም መስህቦች አልተገኙም",
+  "noAttractionsMessage": "ከመረጧቸው ማጣሪያዎች ጋር የሚዛመድ መስህብ የለም። እባክዎ ማጣሪያዎቹን ይቀይሩ።",
+
+  "attractionType": {
+    "lake": "ሐይቅ",
+    "cultural": "ባህላዊ",
+    "nature": "ተፈጥሯዊ",
+    "recreational": "መዝናኛ"
+  },
+
+  "openNow": "አሁን ክፈት ነው",
+  "entryFee": "የግቢያ ክፍያ",
+  "free": "ነጻ",
+  "learnMore": "ተጨማሪ ይወቁ",
+  "viewDetails": "ዝርዝሮችን ይመልከቱ",
+  "directions": "አቅጣጫዎች",
+
+  "filterAgencies": "ኤጀንሲዎችን ያጣሩ",
+  "noAgenciesFound": "ምንም ኤጀንሲዎች አልተገኙም",
+  "noAgenciesMessage": "ከመረጧቸው ማጣሪያዎች ጋር የሚዛመድ ኤጀንሲ የለም። እባክዎ ማጣሪያዎቹን ይቀይሩ።",
+
+  "agencyType": {
+    "tourOperator": "የጉዞ አስተባባሪ",
+    "travelAgency": "የጉዞ ኤጀንሲ",
+    "guideService": "መምሪያ አገልግሎት",
+    "transport": "ትራንስፖርት"
+  },
+
+  "verified": "ተረጋጋለች",
+  "yearsExperience": "ዓመታት ተሞክሮ",
+  "contactAgency": "ከኤጀንሲው ይገናኙ",
+  "viewServices": "አገልግሎቶችን ይመልከቱ",
+  "getQuote": "የዋጋ ግምገማ ይጠይቁ"
 }

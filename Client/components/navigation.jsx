@@ -14,10 +14,26 @@ export function Navigation() {
   // Translation map for nav labels
   const navLabels = {
     home: { en: "Home", am: "መነሻ", or: "Mana" },
-    accommodations: { en: "Accommodations", am: "መኖሪያዎች", or: "Mana jireenya" },
-    explore: { en: "Explore", am: "አስወግድ", or: "Baruu" },
-    investment: { en: "Investment", am: "ኢንቨስትመንት", or: "Maallaqa" },
-    about: { en: "About", am: "ስለ", or: "Waliigaltee" },
+    accommodations: {
+      en: "Accommodations",
+      am: "ማረፊያዎች",
+      or: "Iddoowwan Bultii",
+    },
+    explore: {
+      en: "Explore",
+      am: "ይጎብኙ",
+      or: "Daawwadhaa",
+    },
+    investment: {
+      en: "Investment",
+      am: "ኢንቨስትመንት",
+      or: "Invaastimantii",
+    },
+    about: {
+      en: "About",
+      am: "ስለ እኛ",
+      or: "Waa'ee Keenya",
+    },
   };
 
   const navItems = [
