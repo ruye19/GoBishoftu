@@ -1,46 +1,55 @@
 {
-  "heroTitle": "Discover the Soul of Ethiopia/Bishoftu",
-  "hotelsTitle": "Hotels & Resorts",
-  "hotelsSubtitle": "Top places to stay for a comfortable Bishoftu experience",
-  "attractionsTitle": "Top Attractions",
-  "attractionsSubtitle": "Explore Bishoftu's lakes, culture, and natural beauty",
-  "agenciesTitle": "Top Tour & Travel Agencies",
-  "agenciesSubtitle": "Reliable agencies to plan your perfect Bishoftu experience",
-  "aboutTitle": "About Us",
-  "aboutSubtitle": "Discover the heart of Ethiopia's lake city, where volcanic wonders meet rich Oromo heritage and boundless opportunities.",
-  "aboutHeroTitle": "About GoBishoftu",
-  "aboutHeroSubtitle": "Your gateway to discovering the beauty and opportunities of Bishoftu, Ethiopia's premier lake city destination.",
+  "heroTitle": "Discover Bishoftu – The City of Seven Lakes",
+
+  "hotelsTitle": "Hotels & Lakeside Resorts",
+  "hotelsSubtitle": "Handpicked stays for a relaxing and unforgettable experience in Bishoftu",
+
+  "attractionsTitle": "Must-See Attractions",
+  "attractionsSubtitle": "Experience breathtaking crater lakes, vibrant culture, and stunning landscapes",
+
+  "agenciesTitle": "Top Tour & Travel Experts",
+  "agenciesSubtitle": "Trusted local agencies to craft your perfect Bishoftu adventure",
+
+  "aboutTitle": "About GoBishoftu",
+  "aboutSubtitle": "Discover the heart of Ethiopia’s lake city—where volcanic beauty meets rich Oromo heritage and endless opportunity.",
+
+  "aboutHeroTitle": "Welcome to GoBishoftu",
+  "aboutHeroSubtitle": "Your trusted gateway to exploring the beauty, culture, and investment potential of Bishoftu.",
+
   "ourMission": "Our Mission",
-  "ourMissionText": "To showcase Bishoftu's stunning lakes, rich culture, and investment opportunities to the world while promoting sustainable tourism and local economic growth.",
-  "ourVision": "Our Vision", 
-  "ourVisionText": "To become the leading digital platform for exploring Ethiopia's lake cities, starting with Bishoftu as our flagship destination.",
+  "ourMissionText": "To showcase Bishoftu’s stunning lakes, vibrant culture, and growing investment opportunities while promoting sustainable tourism and empowering the local economy.",
+
+  "ourVision": "Our Vision",
+  "ourVisionText": "To become the leading digital platform for Ethiopia’s lake destinations—starting with Bishoftu as our flagship city.",
+
   "ourValues": "Our Values",
+
   "aboutStats": {
     "lakes": "Crater Lakes",
-    "visitors": "Annual Visitors", 
+    "visitors": "Annual Visitors",
     "hotels": "Hotels & Resorts",
     "investments": "Investment Opportunities"
   },
   "aboutBenefits": {
     "authentic": {
-      "title": "Authentic Experiences",
-      "description": "Connect with genuine Oromo culture and traditions passed down through generations."
+      "title": "Authentic Cultural Experiences",
+      "description": "Immerse yourself in the rich Oromo heritage and living traditions that have shaped Bishoftu for generations."
     },
     "sustainable": {
-      "title": "Sustainable Tourism", 
-      "description": "Promoting eco-friendly practices that preserve Bishoftu's natural beauty for future generations."
+      "title": "Sustainable & Responsible Tourism",
+      "description": "We promote eco-conscious travel that protects Bishoftu’s breathtaking lakes and landscapes for generations to come."
     },
     "local": {
-      "title": "Local Partnership",
-      "description": "Working directly with local businesses and communities to ensure authentic and beneficial tourism."
+      "title": "Strong Local Partnerships",
+      "description": "We collaborate directly with local businesses and communities to create meaningful and mutually beneficial tourism."
     },
     "accessible": {
-      "title": "Accessible Information",
-      "description": "Making it easy for visitors to discover, plan, and enjoy everything Bishoftu has to offer."
+      "title": "Simple & Accessible Information",
+      "description": "Everything you need to discover, plan, and enjoy Bishoftu—clear, reliable, and easy to access."
     }
   },
-  "teamSection": "Meet Our Team",
-  "teamDescription": "Dedicated professionals passionate about showcasing Bishoftu's beauty and opportunities to the world.",
+  "teamSection": "Meet the Team Behind GoBishoftu",
+  "teamDescription": "A dedicated team driven by passion and pride, committed to sharing Bishoftu’s beauty, culture, and opportunities with the world.",
   "contactInfo": {
     "address": "Bishoftu, Ethiopia",
     "phone": "+251 11 433 0000",
@@ -48,32 +57,37 @@
   },
   "ourStory": "Our Story",
   "whereNatureMeetsCulture": "Where Nature Meets Culture",
-  "bishoftuDescription1": "Bishoftu, formerly known as Debre Zeit, sits majestically in the East Shewa Zone of Ethiopia's Oromia Region. Located just 47 kilometers southeast of Addis Ababa, this highland city rises to an elevation of nearly 1,920 meters above sea level.",
-  "bishoftuDescription2": "The city is renowned for its seven stunning crater lakes, each with its own unique character and beauty. These volcanic lakes—including the famous Hora, Bishoftu, Babogaya, and Kuriftu—were formed by volcanic activity and have become sacred sites for the Oromo people.",
-  "bishoftuDescription3": "Today, Bishoftu stands as a testament to Ethiopia's tourism potential, offering visitors a unique blend of natural beauty, cultural richness, and modern amenities. From luxury lakeside resorts to traditional coffee ceremonies, the city provides an authentic Ethiopian experience just a short drive from the capital.",
+  "bishoftuDescription1": "Bishoftu, formerly Debre Zeit, majestically rests in the East Shewa Zone of Oromia, Ethiopia. Just 47 kilometers southeast of Addis Ababa, this highland city rises nearly 1,920 meters above sea level, offering crisp air and scenic vistas.",
+  "bishoftuDescription2": "Renowned for its seven breathtaking crater lakes—each with its own charm—Bishoftu is a natural wonder. Famous lakes like Hora, Bishoftu, Babogaya, and Kuriftu were formed by volcanic activity and hold deep spiritual significance for the Oromo people.",
+  "bishoftuDescription3": "Today, Bishoftu showcases Ethiopia's tourism potential, blending natural beauty, cultural richness, and modern comforts. From luxurious lakeside resorts to traditional coffee ceremonies, visitors experience the authentic Ethiopian spirit just a short drive from the capital.",
   "cultureHeritage": "Culture & Heritage",
   "richOromoTraditions": "Rich Oromo Traditions",
-  "oromoDescription1": "The Oromo people have called this region home for centuries, and their traditions remain vibrant and alive. Lake Hora serves as the sacred site for the annual Irreecha festival, where millions gather to give thanks to Waaqa (God) and celebrate the end of the rainy season.",
-  "oromoDescription2": "The traditional coffee ceremony, or \"Buna,\" is a cornerstone of Ethiopian hospitality. Visitors to Bishoftu can experience this beautiful ritual, where freshly roasted coffee is prepared and served with popcorn and incense, symbolizing welcome and friendship.",
-  "oromoDescription3": "From traditional music and dance to artisanal crafts and cuisine, Bishoftu offers an authentic window into one of Africa's most fascinating cultures.",
+  "oromoDescription1": "The Oromo people have inhabited this region for centuries, keeping their vibrant traditions alive. Lake Hora is the sacred site for the annual Irreecha festival, where millions gather to honor Waaqa (God) and celebrate the end of the rainy season.",
+  "oromoDescription2": "Buna, the traditional Ethiopian coffee ceremony, is a cornerstone of hospitality. In Bishoftu, visitors can witness and join this beautiful ritual, where freshly roasted coffee is served with popcorn and incense, symbolizing warmth and friendship.",
+  "oromoDescription3": "From traditional music and dance to artisanal crafts and local cuisine, Bishoftu offers an authentic window into one of Africa’s most captivating cultures.",
+
   "history": "History",
   "journeyThroughTime": "Journey Through Time",
-  "historyDescription": "From ancient volcanic origins to modern tourism hub",
+  "historyDescription": "From ancient volcanic beginnings to a modern tourism hub",
   "volcanicOrigins": "Volcanic Origins",
-  "volcanicOriginsDesc": "The crater lakes were formed by volcanic activity thousands of years ago.",
+  "volcanicOriginsDesc": "The crater lakes were formed by powerful volcanic activity thousands of years ago.",
   "debreZeitFounded": "Debre Zeit Founded",
-  "debreZeitFoundedDesc": "The modern city was established, initially as an air force base.",
+  "debreZeitFoundedDesc": "The modern city began as an air force base, laying the foundation for growth.",
+
   "tourismGrowth": "Tourism Growth",
-  "tourismGrowthDesc": "The region gained recognition as a prime tourism destination.",
+  "tourismGrowthDesc": "Bishoftu rose to prominence as a top tourism destination, attracting visitors from near and far.",
   "bishoftuRising": "Bishoftu Rising",
-  "bishoftuRisingDesc": "Renamed to Bishoftu, the city is now a hub for tourism and investment.",
-  "aboutGoBishoftu": "About Go Bishoftu",
+  "bishoftuRisingDesc": "Renamed Bishoftu, the city has become a thriving hub for tourism and investment.",
+  "aboutGoBishoftu": "About GoBishoftu",
   "digitalGateway": "A Digital Gateway to Bishoftu",
-  "digitalGatewayDesc": "Connecting tourism, culture, and opportunity through technology",
-  "goBishoftuDesc1": "Go Bishoftu is a locally developed digital tourism platform created to showcase the beauty, culture, and investment potential of Bishoftu to the world. Built with deep local knowledge and modern technology, the platform serves as a bridge between visitors, local communities, tourism businesses, and investors.",
-  "goBishoftuDesc2": "Our goal is not only to promote tourism, but to create meaningful digital experiences that support sustainable development, empower local businesses, and present Bishoftu as a city ready for global engagement.",
-  "visionExtended": "We envision a future where Bishoftu stands proudly on the global tourism map, supported by a vibrant online presence that reflects its unique identity and invites the world to explore its wonders.",
-  "missionExtended": "As a locally owned and operated initiative, we use our technical expertise and cultural insight to build digital solutions that uplift our region and resonate with both local and international audiences.",
+  "digitalGatewayDesc": "Bringing together tourism, culture, and opportunity through innovative technology.",
+
+  "goBishoftuDesc1": "GoBishoftu is a locally developed digital tourism platform designed to showcase Bishoftu’s natural beauty, rich culture, and investment potential to the world. Built with deep local insight and modern technology, it connects visitors, local communities, tourism businesses, and investors seamlessly.",
+  "goBishoftuDesc2": "Our goal goes beyond promoting tourism — we aim to create meaningful digital experiences that support sustainable development, empower local businesses, and position Bishoftu as a city ready for global engagement.",
+
+  "visionExtended": "We envision a future where Bishoftu proudly shines on the global tourism map, supported by a vibrant online presence that reflects its unique identity and invites the world to explore its wonders.",
+  "missionExtended": "As a locally owned initiative, we leverage our technical expertise and cultural knowledge to develop digital solutions that uplift our region and resonate with both local and international audiences.",
+
   "gatewayToOromia": "Gateway to Oromia",
   "culturalHub": "A cultural and economic hub of the Oromo people",
   "ancient": "Ancient",
@@ -81,120 +95,185 @@
   "today": "Today",
   "noResults": "No results found",
   "loading": "Loading...",
+
   "exploreAll": "Explore All",
   "viewAll": "View All",
   "seeMore": "See more →",
   "contactAgent": "Contact Agent",
+
   "searchPlaceholder": "Search places, hotels, transport, attractions…",
   "exploreBishoftu": "Explore Bishoftu",
   "needHelp": "Need Help Planning Your Visit?",
-  "needHelpText": "Our local guides can help you create the perfect itinerary to experience the best of Bishoftu's attractions.",
+  "needHelpText": "Our local guides can help you design the perfect itinerary to experience Bishoftu's top attractions.",
   "contactGuide": "Contact a Local Guide",
+
   "whyExplore": "Why Explore With Us?",
-  "whyExploreText": "Go Bishoftu is your trusted companion for discovering the best of this beautiful region.",
+  "whyExploreText": "Go Bishoftu is your trusted companion for discovering the hidden gems and must-see sights of this beautiful region.",
   "benefits": {
     "expertGuidance": {
       "title": "Expert Guidance",
-      "description": "Our curated guides help you discover hidden gems and local favorites."
+      "description": "Our curated guides reveal hidden gems and local favorites you won’t find anywhere else."
     },
     "localConnections": {
       "title": "Local Connections",
-      "description": "Connect with verified local guides and authentic experiences."
+      "description": "Meet verified local guides and enjoy authentic, memorable experiences."
     },
     "trustedReviews": {
       "title": "Trusted Reviews",
-      "description": "Read genuine reviews from real visitors to make informed decisions."
+      "description": "Read honest reviews from real visitors to make informed choices."
     },
     "saveTime": {
       "title": "Save Time",
-      "description": "Find exactly what you're looking for with our smart categorization."
+      "description": "Find exactly what you need quickly with our smart categories and filters."
     }
   },
+
   "investmentTitle": "Invest",
-  "investmentSubtitle": "Discover lucrative opportunities in Ethiopia's fastest-growing tourism destination. Your gateway to East African hospitality investment.",
-  "whyInvest": "Strategic advantages that make Bishoftu an attractive investment destination.",
-  "opportunityTitle": "Explore diverse sectors from hospitality to real estate, all positioned for growth.",
+  "investmentSubtitle": "Unlock lucrative opportunities in Ethiopia’s fastest-growing tourism destination. Your gateway to East African hospitality investment.",
+  "whyInvest": "Strategic advantages that make Bishoftu a prime investment destination.",
+  "opportunityTitle": "Explore diverse sectors from hospitality to real estate, all poised for growth.",
+
   "getStarted": "Get Started",
   "contactTeam": "Connect With Our Investment Team",
   "downloadGuide": "Download Investment Guide",
-  "investInBishoftu": "Invest in",
+
+  "investInBishoftu": "Invest in Bishoftu",
   "featuredOpportunity": "Featured Opportunity",
   "requestProjectDetails": "Request Project Details",
   "requestInformation": "Request Information",
   "submitInquiry": "Submit Inquiry",
+
   "firstName": "First Name",
   "lastName": "Last Name",
   "emailAddress": "Email Address",
   "companyName": "Company Name",
+
   "investmentInterest": "Investment Interest (e.g., Hospitality, Real Estate)",
   "investmentGoals": "Tell us about your investment goals...",
+
   "phone": "Phone",
   "email": "Email",
   "office": "Office",
+
   "investmentCenter": "Bishoftu Investment Center",
   "investmentPhone": "+251 11 433 0000",
   "investmentEmail": "invest@gobishoftu.com",
+
   "investmentStats": {
     "tourismGrowth": "Annual Tourism Growth",
-    "fromAddis": "From Addis Ababa",
+    "fromAddis": "Distance from Addis Ababa",
     "craterLakes": "Crater Lakes",
     "annualVisitors": "Annual Visitors"
   },
   "investmentBenefits": {
     "growingMarket": {
       "title": "Growing Tourism Market",
-      "description": "100,000+ annual visitors with steady year-over-year growth."
+      "description": "Over 100,000 annual visitors, with steady year-over-year growth."
     },
+
     "primeLocation": {
-      "title": "Prime Location", 
-      "description": "Just 47km from Addis Ababa with excellent infrastructure."
+      "title": "Strategic Location",
+      "description": "Only 47 km from Addis Ababa, Bishoftu offers seamless access, modern infrastructure, and strong connectivity."
     },
+
     "investmentSecurity": {
-      "title": "Investment Security",
-      "description": "Stable environment with government support for tourism development."
+      "title": "Secure & Supportive Environment",
+      "description": "A stable investment climate with active government support for tourism and business development."
     },
+
     "skilledWorkforce": {
-      "title": "Skilled Workforce",
-      "description": "Access to trained hospitality and service industry professionals."
+      "title": "Skilled & Growing Workforce",
+      "description": "Access to experienced hospitality professionals and a dynamic service-sector talent pool."
     }
   },
+
   "investmentSectors": {
     "hospitality": {
       "title": "Hospitality & Tourism",
-      "description": "Hotels, resorts, tour operations, and adventure tourism ventures.",
-      "opportunities": ["Lakeside resorts", "Boutique hotels", "Eco-lodges", "Tour companies"]
+      "description": "Invest in hotels, resorts, tour operations, and adventure experiences in one of Ethiopia’s top destinations.",
+      "opportunities": [
+        "Lakeside luxury resorts",
+        "Boutique and business hotels",
+        "Eco-lodges & sustainable stays",
+        "Tour and adventure companies"
+      ]
     },
+
     "realEstate": {
-      "title": "Real Estate Development", 
-      "description": "Residential and commercial properties in growing areas.",
-      "opportunities": ["Residential complexes", "Commercial centers", "Mixed-use developments"]
+      "title": "Real Estate Development",
+      "description": "Residential and commercial opportunities in rapidly expanding neighborhoods.",
+      "opportunities": [
+        "Modern residential communities",
+        "Commercial and business centers",
+        "Mixed-use developments"
+      ]
     },
+
     "retail": {
-      "title": "Retail & Services",
-      "description": "Shops, restaurants, and service businesses for tourists and locals.",
-      "opportunities": ["Restaurants & cafes", "Craft shops", "Wellness centers", "Entertainment"]
+      "title": "Retail & Lifestyle Services",
+      "description": "Restaurants, shopping, and service businesses catering to both visitors and local residents.",
+      "opportunities": [
+        "Restaurants & cafés",
+        "Cultural craft shops",
+        "Wellness & spa centers",
+        "Entertainment venues"
+      ]
     },
+
     "agriculture": {
-      "title": "Agriculture & Agro-tourism",
-      "description": "Farm stays, organic produce, and agricultural tourism.",
-      "opportunities": ["Farm tourism", "Organic farms", "Coffee plantations", "Dairy farming"]
+      "title": "Agriculture & Agro-Tourism",
+      "description": "Sustainable farming, farm-stay experiences, and premium agricultural production.",
+      "opportunities": [
+        "Farm-stay tourism",
+        "Organic farming ventures",
+        "Coffee plantations",
+        "Modern dairy farming"
+      ]
     }
   },
   "featuredProject": {
-    "title": "Lakeside Resort Development",
-    "description": "We are seeking investment partners for a new luxury eco-resort on the shores of Lake Babogaya. This flagship project will feature 50 rooms, a world-class spa, multiple restaurants, and adventure tourism facilities.",
+    "title": "Lakeside Eco-Resort Development",
+    "description": "We are inviting strategic investment partners to join the development of a luxury eco-resort on the pristine shores of Lake Babogaya. This landmark project will feature 50 elegantly designed rooms, a world-class spa, signature restaurants, and curated adventure tourism experiences.",
     "features": [
-      "Premium lakefront location",
-      "Projected 15% annual ROI",
-      "3-year development timeline", 
-      "Government-backed tourism zone"
+      "Prime lakefront setting",
+      "Projected 15% annual return on investment",
+      "Estimated 3-year phased development",
+      "Located within a government-designated tourism growth zone"
     ]
   },
   "accommodationType": {
     "hotel": "Hotel",
-    "resort": "Resort", 
-    "guest-house": "Guest House",
+    "resort": "Resort",
     "guesthouse": "Guesthouse",
     "lodge": "Lodge"
-  }
+  },
+  "accommodationsTitle": "Accommodations",
+  "accommodationsSubtitle": "Find your perfect stay in Bishoftu with our curated selection of premium accommodations.",
+  "filterAccommodations": "Filter Accommodations",
+  "premium": "Premium",
+  "available": "Available",
+  "bishoftuEthiopia": "Bishoftu, Ethiopia",
+  "more": "more",
+  "night": "night",
+  "bookNow": "Book Now",
+  "noAccommodationsFound": "No accommodations found",
+  "noAccommodationsMessage": "No accommodations match your current filters. Try adjusting your criteria to see more options.",
+  "clearAllFilters": "Clear All Filters",
+  "type": "Type",
+  "all": "All",
+  "priceRange": "Price Range",
+  "minRating": "Minimum Rating",
+  "allRatings": "All Ratings",
+  "stars": "Stars",
+  "showing": "Showing",
+  "filteredBy": "Filtered by",
+  "properties": "properties",
+  "filters": "Filters",
+  "featured": "Featured",
+  "needHelpBooking": "Need Help Booking?",
+  "bookingHelpText": "Our team can assist you in finding the perfect accommodation for your Bishoftu adventure. Contact us for personalized recommendations.",
+  "contactUsForAssistance": "Contact Us for Assistance",
+  "needHelpTitle": "Need Help Booking?",
+  "needHelpSubtitle": "Our team can assist you in finding the perfect accommodation for your Bishoftu adventure. Contact us for personalized recommendations.",
+  "contactUs": "Contact Us for Assistance"
 }
